@@ -1,0 +1,1892 @@
+{
+ "categories": {
+  "edogawa-hospital": "江戸川病院",
+  "hosp-keio": "慶応義塾大学病院",
+  "yokote-mhp": "横手病院",
+  "tokyo-med": "東京医科大学病院",
+  "jikei-o": "大口病院",
+  "chp-kagawa": "香川県立中央病院",
+  "hp-heart": "榊原記念病院",
+  "jcqhc": "日本医療機能評価機構",
+  "city-fujisawa": "藤沢市民病院",
+  "hospital-itabashi": "日本大学医学部附属板橋病院",
+  "aichi-cancer-center": "愛知県がんセンター",
+  "municipal-hospital-ichinomiya": "一宮市民病院",
+  "ymghp": "山口県立総合医療センター",
+  "u-tokyo": "東京大学医学部附属病院",
+  "toyookahp-kumiai": "公立豊岡病院組合日高医療センター",
+  "hirohata-hp": "製鉄記念広畑病院",
+  "kyoto-u": "京都大学医学部付属病院",
+  "toshiba": "東芝病院",
+  "tobu-hospital": "東部地域病院",
+  "h-osaki": "大崎市民病院",
+  "tomakomai": "苫小牧市立病院",
+  "kanagawa-pho": "神奈川県立病院機構",
+  "sh-wsc": "桜ヒルズウィメンズクリニック",
+  "hirakatacity-hp": "市立ひらかた病院",
+  "kenkako": "兵庫県立加古川医療センター",
+  "pref-yamanashi": "山梨県立中央病院",
+  "others": "その他",
+  "gh-opho": "大阪府立医療センター",
+  "numazu-hospital": "沼津市立病院",
+  "takarazuka": "宝塚市立病院",
+  "med-takaoka": "高岡市民病院",
+  "kc-hospital": "杵築中央病院",
+  "nkmc": "長崎川棚医療センター",
+  "koseikan": "佐賀県医療センター好生館",
+  "kahoku-hospital": "山形県立河北病院",
+  "hospital-takasago": "高砂市民病院",
+  "ninohe-hp": "岩手県立二戸病院",
+  "yamaga-medical-center": "山鹿市民医療センター",
+  "yokohama-shiminhosp": "横浜市立市民病院",
+  "hospital-med-saga-u": "佐賀大学医学部附属病院",
+  "nakatsugawa-hp": "中津川市民病院",
+  "handa-city-hospital": "半田市立半田病院",
+  "siz-saiseikai": "静岡済生会総合病院",
+  "suita-tokushukai": "吹田徳洲会病院",
+  "fujita-hu": "藤田保健衛生大病院",
+  "osakacity-hp": "大阪市立総合医療センター",
+  "med-nagoya-u": "名古屋大学医学部附属病院",
+  "juntendo": "順天堂医院",
+  "mito-saisei": "水戸済生会総合病院",
+  "ashigarakami": "神奈川県立足柄上病院",
+  "fukui": "福井県立病院",
+  "saitama-med": "埼玉医科大学病院",
+  "warabi": "蕨市立病院",
+  "ncchd": "国立成育医療研究センター",
+  "meikai": "明海病院",
+  "kitasato-u": "北里研究所病院",
+  "hospital-sanda": "三田市民病院",
+  "city-chiba": "千葉市立海浜病院",
+  "pref-saitama": "埼玉県立がんセンター",
+  "mie-u": "三重大学医学部附属病院",
+  "ogaki-mh": "大垣市民病院",
+  "ypch": "山形県立中央病院",
+  "nagasaki-u": "長崎大学病院",
+  "city-kofu-hp": "市立甲府病院",
+  "oiki": "老木レディスクリニック",
+  "city-kitakyushu": "北九州市立医療センター",
+  "city-odawara": "小田原市立病院",
+  "mhlw": "厚生労働省",
+  "hosp-pref-okinawa": "沖縄県立中部病院",
+  "kyushu-u": "九州大学病院",
+  "kouseiren-sanjo": "三条総合病院",
+  "mmc-funabashi": "船橋市立医療センター",
+  "stmother": "セントマザー産婦人科医院",
+  "niigata-u": "新潟大医歯学総合病院",
+  "chikusei": "筑西市民病院",
+  "awajimc": "兵庫県立淡路医療センター",
+  "ntt-east": "ＮＴＴ東日本関東病院",
+  "ise-jrc": "伊勢赤十字病院",
+  "shimizuhospital": "静岡市立清水病院",
+  "hp-hata": "松本市立病院",
+  "city-aomori": "青森市民病院",
+  "kifmec": "神戸国際フロンティアメディカルセンター",
+  "pref-kochi": "高知県立あき総合病院",
+  "cent-hosp-pref-niigata": "新潟県立中央病院",
+  "nishi-kcho": "神戸市立医療センター西市民病院",
+  "municipal-hp": "彦根市立病院",
+  "dokkyomed": "越谷病院-獨協医科大学",
+  "kosei-hp": "立正佼成会付属佼成病院",
+  "toyota-kai": "刈谷豊田総合病院",
+  "notice": "お知らせ",
+  "tenjinkai": "新古賀病院",
+  "ncgm": "国立国際医療研究センター",
+  "hospital-mutsu": "むつ総合病院",
+  "city-nakatsu": "中津市民病院",
+  "medical-accident-investigation-system": "医療事故調査制度",
+  "khsc": "高知医療センター",
+  "city-bizen-okayama": "備前市立病院",
+  "hosp-yamanashi": "山梨大学医学部付属病院",
+  "imazu": "今津赤十字病院",
+  "fff": "船橋整形外科病院",
+  "kagoshima-med": "隼人福島眼科",
+  "gmhosp": "岐阜市民病院",
+  "yokohama-cu": "横浜市立大学付属病院",
+  "hosp-go": "国立病院機構大阪南医療センター",
+  "sekisonh": "総合せき損センター",
+  "ishimaki-jrc": "石巻赤十字病院",
+  "hokudai": "北海道大学病院",
+  "hyogo-cc": "兵庫県立がんセンター",
+  "nishihosp": "兵庫県立西宮病院",
+  "hyogo-kodomo": "兵庫県立こども病院",
+  "sbthp": "新発田病院",
+  "west-medical-center-city-nagoya": "名古屋市立西部医療センター病院",
+  "chuo-kcho": "神戸市立医療センター中央市民病院",
+  "kenkou-seikyou": "健生病院",
+  "chiba-cancer-center": "千葉県がんセンター",
+  "jikei": "慈恵会医科大学附属病院",
+  "toride-medical": "JAとりで総合医療センター",
+  "twmu": "東京女子医科大学病院",
+  "kasukabe-cityhp": "春日部市立病院",
+  "furukisanfujinka": "ふるき産婦人科",
+  "hosp-u-toyama": "富山大病院",
+  "aomori-kenbyo": "青森県立中央病院",
+  "scchr": "静岡がんセンター",
+  "agmc-hyogo": "尼崎総合医療センター",
+  "hirosaki": "弘前病院",
+  "hospital-med-gunma-university": "群馬大学医学部附属病院",
+  "hosp-niigata": "新潟市民病院",
+  "kumamoto-u": "熊本大学医学部附属病院",
+  "shin-kokura": "新小倉病院",
+  "akita-u": "秋田大医学部付属病院",
+  "nishichita-hp": "西知多総合病院",
+  "chiba-u": "千葉大学医学部附属病院",
+  "tsurumi-univ-dental-hospital": "鶴見大歯学部付属病院",
+  "kunisaki-hp": "国東市民病院",
+  "kurume-u": "久留米大学病院",
+  "hemc": "兵庫県災害医療センター"
+ },
+ "posts": [
+  {
+   "post_id": 1070,
+   "category_slug": "kyoto-u",
+   "date": "2020-06-01T11:24:00+09:00",
+   "title": "京大病院、医療ミス重なり男性死亡　誤点滴や蘇生措置で",
+   "slug": "many-medical-mistakes"
+  },
+  {
+   "post_id": 1067,
+   "category_slug": "chuo-kcho",
+   "date": "2020-05-25T11:19:00+09:00",
+   "title": "神戸・中央市民病院で医療ミス　肝臓の腫瘍見落とす",
+   "slug": "overlook-liver-tumor"
+  },
+  {
+   "post_id": 1063,
+   "category_slug": "nishihosp",
+   "date": "2020-05-22T12:13:00+09:00",
+   "title": "鎮痛剤と麻酔剤を誤って投与　兵庫県立西宮病院で医療過誤",
+   "slug": "incorrect-administration-of-anesthetic"
+  },
+  {
+   "post_id": 1059,
+   "category_slug": "kenkou-seikyou",
+   "date": "2020-05-18T11:53:00+09:00",
+   "title": "健生病院医療過誤訴訟　病院側が争う姿勢／徳島地裁",
+   "slug": "attitude-that-hospitals-fight"
+  },
+  {
+   "post_id": 1055,
+   "category_slug": "sbthp",
+   "date": "2020-05-14T11:48:00+09:00",
+   "title": "新潟県立新発田病院で医療事故。精密検査が実施されず",
+   "slug": "no-detailed-inspection"
+  },
+  {
+   "post_id": 1051,
+   "category_slug": "west-medical-center-city-nagoya",
+   "date": "2020-05-12T11:42:00+09:00",
+   "title": "名古屋市立病院で医療ミス＝患者女性死亡－名古屋",
+   "slug": "patient-woman-dies"
+  },
+  {
+   "post_id": 1049,
+   "category_slug": "hyogo-kodomo",
+   "date": "2020-05-08T11:33:00+09:00",
+   "title": "兵庫県立こども病院が医療ミス　気管手術の男児が死亡",
+   "slug": "boy-with-organ-surgery"
+  },
+  {
+   "post_id": 1045,
+   "category_slug": "hokudai",
+   "date": "2020-05-06T11:28:00+09:00",
+   "title": "北大病院、酸素投与忘れ　重症細菌性肺炎６０代患者、意識不明",
+   "slug": "forgetting-to-administer-oxygen"
+  },
+  {
+   "post_id": 1039,
+   "category_slug": "hyogo-cc",
+   "date": "2019-09-09T11:18:37+09:00",
+   "title": "県立がんセンターで医療事故　患者体内に医療器具が留置",
+   "slug": "medical-instruments-are-in-place"
+  },
+  {
+   "post_id": 1027,
+   "category_slug": "kc-hospital",
+   "date": "2019-07-12T12:05:36+09:00",
+   "title": "感染症悪化で足切断 杵築中央病院、医療ミス認める",
+   "slug": "foot-cut-due-to-worsening-infection"
+  },
+  {
+   "post_id": 1025,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2019-07-05T11:55:11+09:00",
+   "title": "2019年5月末までに1380件の医療事故、日本医療安全調査機構",
+   "slug": "2019-05"
+  },
+  {
+   "post_id": 1021,
+   "category_slug": "hospital-mutsu",
+   "date": "2019-07-08T11:53:43+09:00",
+   "title": "むつ総合病院で医療ミス2件、和解 癌見落とし等",
+   "slug": "2-medical-mistakes-settlement"
+  },
+  {
+   "post_id": 1018,
+   "category_slug": "takarazuka",
+   "date": "2019-07-03T11:41:56+09:00",
+   "title": "誤って尿管を切除 宝塚市立病院で医療ミス",
+   "slug": "accidental-excision-of-the-ureter"
+  },
+  {
+   "post_id": 1014,
+   "category_slug": "kenkako",
+   "date": "2019-07-01T11:36:20+09:00",
+   "title": "薬を過剰投与、患者の視力0.01に 加古川医療センター",
+   "slug": "overdose-of-anti-tuberculosis-drug"
+  },
+  {
+   "post_id": 1011,
+   "category_slug": "hospital-sanda",
+   "date": "2019-06-28T11:29:59+09:00",
+   "title": "三田市民病院で診断ミス　遺族に三百万円支払いへ",
+   "slug": "pay-3-million-yen-to-bereaved"
+  },
+  {
+   "post_id": 1008,
+   "category_slug": "nishi-kcho",
+   "date": "2019-06-26T11:25:39+09:00",
+   "title": "神戸・西市民病院で死亡の男性　発信機が電池切れ",
+   "slug": "transmitter-is-out-of-battery"
+  },
+  {
+   "post_id": 1003,
+   "category_slug": "kyushu-u",
+   "date": "2019-06-24T11:31:34+09:00",
+   "title": "医療ミスで九大病院に1.5億円支払い命令",
+   "slug": "150-million-yen-payment-order"
+  },
+  {
+   "post_id": 1000,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2019-05-17T11:58:43+09:00",
+   "title": "2019年3月末までに1308件の医療事故",
+   "slug": "2019年3月末までに1308件の医療事故"
+  },
+  {
+   "post_id": 997,
+   "category_slug": "shin-kokura",
+   "date": "2019-05-13T11:56:38+09:00",
+   "title": "肺手術ミスで死亡　新小倉病院側が和解",
+   "slug": "lung-surgery-mistake"
+  },
+  {
+   "post_id": 995,
+   "category_slug": "aomori-kenbyo",
+   "date": "2019-05-10T11:46:42+09:00",
+   "title": "青森県立中央病院「医療器具使用ミス」で死亡と提訴",
+   "slug": "青森県立中央病院「医療器具使用ミス」で死亡と"
+  },
+  {
+   "post_id": 993,
+   "category_slug": "hosp-u-toyama",
+   "date": "2019-05-08T11:45:12+09:00",
+   "title": "検査確認ミス、患者死亡＝がん発覚遅れ－富山大病院",
+   "slug": "inspection-confirmation-error"
+  },
+  {
+   "post_id": 991,
+   "category_slug": "kyoto-u",
+   "date": "2019-05-06T12:41:38+09:00",
+   "title": "手術で心臓を損傷、患者死亡　京大病院、医療事故を公表",
+   "slug": "damage-the-heart"
+  },
+  {
+   "post_id": 983,
+   "category_slug": "kunisaki-hp",
+   "date": "2019-03-21T11:46:09+09:00",
+   "title": "医療ミスで１千万円支払いへ　入院中の８０代男性死亡",
+   "slug": "patient-in-hospital-died"
+  },
+  {
+   "post_id": 980,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2019-03-19T11:32:46+09:00",
+   "title": "「医療事故調査、適正な運用を」　広尾病院事故20年",
+   "slug": "proper-operation"
+  },
+  {
+   "post_id": 978,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2019-03-12T11:28:41+09:00",
+   "title": "2019年1月末までに1260件の医療事故、73.9％で院内調査完了―日本医療安全調査機構",
+   "slug": "2019-01"
+  },
+  {
+   "post_id": 975,
+   "category_slug": "chiba-u",
+   "date": "2019-03-10T12:19:48+09:00",
+   "title": "医療ミスで植物状態　千葉大に1.5億円の賠償命令判決",
+   "slug": "plant-state-due-to-medical-error"
+  },
+  {
+   "post_id": 967,
+   "category_slug": "kumamoto-u",
+   "date": "2019-01-18T12:11:32+09:00",
+   "title": "熊大病院、がん検査結果を放置　患者の進行がん発見遅れる",
+   "slug": "leave-the-cancer-examination-results-neglected"
+  },
+  {
+   "post_id": 965,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2019-01-14T11:53:18+09:00",
+   "title": "2018年11月までに1200件の医療事故、72.8％で院内調査が完了―日本医療安全調査機構",
+   "slug": "2018-11"
+  },
+  {
+   "post_id": 963,
+   "category_slug": "furukisanfujinka",
+   "date": "2019-01-11T11:46:08+09:00",
+   "title": "「無痛分娩で障がい」、和解金と病院側が「遺憾の意」 ふるき産婦人科",
+   "slug": "settlement-money-and-regret"
+  },
+  {
+   "post_id": 958,
+   "category_slug": "tsurumi-univ-dental-hospital",
+   "date": "2019-01-08T13:42:46+09:00",
+   "title": "治療中に猥褻 歯科医師逮捕 鶴見大歯学部付属病院",
+   "slug": "obscenity-during-treatment"
+  },
+  {
+   "post_id": 954,
+   "category_slug": "aomori-kenbyo",
+   "date": "2018-12-07T11:52:32+09:00",
+   "title": "画像確認の改善求める　群大病院ＣＴ診断ミス　事故調報告書",
+   "slug": "ct-diagnosis-mistake"
+  },
+  {
+   "post_id": 950,
+   "category_slug": "aomori-kenbyo",
+   "date": "2018-12-03T11:50:13+09:00",
+   "title": "青森県立中央病院 医療事故2件で和解 計3900万の支払",
+   "slug": "settled-with-2-medical-accidents"
+  },
+  {
+   "post_id": 948,
+   "category_slug": "agmc-hyogo",
+   "date": "2018-11-30T11:36:38+09:00",
+   "title": "高校球児の靱帯再建手術でミス　尼崎総合医療センター",
+   "slug": "mistakes-in-surgery-of-high-school-ball-children"
+  },
+  {
+   "post_id": 946,
+   "category_slug": "hosp-niigata",
+   "date": "2018-11-28T11:27:20+09:00",
+   "title": "体内にガーゼを18年放置　新潟市民病院が医療ミス",
+   "slug": "leave-gauze-for-18-years"
+  },
+  {
+   "post_id": 943,
+   "category_slug": "kurume-u",
+   "date": "2018-11-26T11:25:40+09:00",
+   "title": "心臓の手術中に医療ミス、障害残る可能性　久留米大病院",
+   "slug": "possibility-that-obstacles-will-remain"
+  },
+  {
+   "post_id": 941,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2018-11-08T11:36:58+09:00",
+   "title": "2018/9までに千件超の医療事故、制度理解は依然進まず",
+   "slug": "2018-09"
+  },
+  {
+   "post_id": 939,
+   "category_slug": "hemc",
+   "date": "2018-11-05T11:23:11+09:00",
+   "title": "両顎骨折患者に誤って「おかゆ」　骨にずれ、再手術必要に",
+   "slug": "reoperation-was-needed"
+  },
+  {
+   "post_id": 936,
+   "category_slug": "hirosaki",
+   "date": "2018-11-01T12:11:48+09:00",
+   "title": "「治療遅れ指切断」弘前病院を提訴　青森地裁支部",
+   "slug": "finger-cutting-due-to-delayed-treatment"
+  },
+  {
+   "post_id": 934,
+   "category_slug": "yokote-mhp",
+   "date": "2018-10-30T11:57:34+09:00",
+   "title": "横手病院の患者死亡訴訟、遺族側が上告",
+   "slug": "family-side-appeals"
+  },
+  {
+   "post_id": 930,
+   "category_slug": "jikei",
+   "date": "2018-10-28T12:07:44+09:00",
+   "title": "2人とも&#8221;医療事故&#8221;で死亡した夫婦の悲劇【慈恵医大病院】",
+   "slug": "both-couple-died-in-medical-accident"
+  },
+  {
+   "post_id": 928,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2018-08-01T11:34:14+09:00",
+   "title": "医療事故調査制度発足から千件超の報告、7割超で院内調査完了",
+   "slug": "hospital-survey-completed"
+  },
+  {
+   "post_id": 925,
+   "category_slug": "nishichita-hp",
+   "date": "2018-07-16T11:37:00+09:00",
+   "title": "西知多総合病院 検体取り違え　患者側と和解　／愛知",
+   "slug": "mismatched-specimen"
+  },
+  {
+   "post_id": 923,
+   "category_slug": "hyogo-cc",
+   "date": "2018-07-13T11:27:04+09:00",
+   "title": "県立がんセンターで転移見落とし３年放置　ＣＴ検査",
+   "slug": "leave-for-three-years-after-overlooking-cancer-metastasis"
+  },
+  {
+   "post_id": 920,
+   "category_slug": "toride-medical",
+   "date": "2018-07-11T12:07:08+09:00",
+   "title": "死亡は「医療ミス」　ＪＡ茨城県厚生連などを遺族が提訴",
+   "slug": "appeal-as-medical-error"
+  },
+  {
+   "post_id": 918,
+   "category_slug": "scchr",
+   "date": "2018-07-09T12:03:24+09:00",
+   "title": "投与ミスで死亡 抗癌剤データ記録せず 静岡がんセンター",
+   "slug": "not-record-data-on-anticancer-drugs"
+  },
+  {
+   "post_id": 916,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2018-07-06T12:12:21+09:00",
+   "title": "18年5月までに997件の医療事故、内7割で院内調査完了",
+   "slug": "2018-05"
+  },
+  {
+   "post_id": 914,
+   "category_slug": "hosp-niigata",
+   "date": "2018-07-04T12:11:19+09:00",
+   "title": "新潟市民病院、医療ミスで患者死亡 賠償金２千万円で和解",
+   "slug": "patient-deceased-with-medical-error"
+  },
+  {
+   "post_id": 912,
+   "category_slug": "akita-u",
+   "date": "2018-07-02T11:40:04+09:00",
+   "title": "「手や腕に障害、医療ミスが原因」秋田の女性、秋田大を提訴",
+   "slug": "medical-mistakes-cause-obstacles-in-hands-and-arms"
+  },
+  {
+   "post_id": 909,
+   "category_slug": "tomakomai",
+   "date": "2018-06-28T12:11:18+09:00",
+   "title": "たんの吸引で医療ミス、入院の７０代男性が死亡",
+   "slug": "medical-mistake-due-to-aspiration"
+  },
+  {
+   "post_id": 907,
+   "category_slug": "hp-heart",
+   "date": "2018-06-26T12:04:45+09:00",
+   "title": "２歳死亡は医療ミス「麻酔管理の注意欠いた」　東京地裁",
+   "slug": "acked-attention-to-anesthesia-management"
+  },
+  {
+   "post_id": 904,
+   "category_slug": "chiba-u",
+   "date": "2018-06-24T11:50:36+09:00",
+   "title": "千葉大病院 「医療過誤」認めず　記者会見で疑問の声",
+   "slug": "no-medical-malpractice"
+  },
+  {
+   "post_id": 902,
+   "category_slug": "stmother",
+   "date": "2018-06-08T11:55:28+09:00",
+   "title": "不妊治療で死亡、３医師を書類送検　業過致死容疑　福岡県警",
+   "slug": "sending-documents-due-to-overwork-death"
+  },
+  {
+   "post_id": 900,
+   "category_slug": "others",
+   "date": "2018-06-04T11:54:57+09:00",
+   "title": "「ガーゼ置き忘れ」医療ミス警鐘　近藤特任助教、論文で事例紹介",
+   "slug": "case-study-introduction"
+  },
+  {
+   "post_id": 898,
+   "category_slug": "mhlw",
+   "date": "2018-05-31T11:44:50+09:00",
+   "title": "薬害・医療被害の市民団体、１００回へ　カルテ開示など成果",
+   "slug": "citizen-groups-of-phytotoxicity-medical-injury"
+  },
+  {
+   "post_id": 894,
+   "category_slug": "nagasaki-u",
+   "date": "2018-05-29T11:44:08+09:00",
+   "title": "体内にガーゼ置き忘れ　摘出し患者快方へ　長崎大病院",
+   "slug": "misplaced-gauze-in-the-body"
+  },
+  {
+   "post_id": 876,
+   "category_slug": "stmother",
+   "date": "2018-05-09T11:46:16+09:00",
+   "title": "遺族らに医療ミス報告せず　不妊治療後に女性死亡",
+   "slug": "death-after-infertility-treatment"
+  },
+  {
+   "post_id": 871,
+   "category_slug": "sh-wsc",
+   "date": "2018-05-04T11:30:06+09:00",
+   "title": "出産後死亡　仙台の医院に賠償求め遺族　／宮城",
+   "slug": "death-after-giving-birth"
+  },
+  {
+   "post_id": 841,
+   "category_slug": "nishi-kcho",
+   "date": "2018-01-15T11:55:26+09:00",
+   "title": "手術で後遺症女性　７千万円支払いで病院側と和解",
+   "slug": "after-effects-in-surgery"
+  },
+  {
+   "post_id": 829,
+   "category_slug": "kyoto-u",
+   "date": "2017-11-17T12:08:46+09:00",
+   "title": "処方薬の濃度738倍で患者死亡　院内製剤の医療ミス",
+   "slug": "prescription-drug-concentration-738-times"
+  },
+  {
+   "post_id": 807,
+   "category_slug": "hosp-pref-okinawa",
+   "date": "2017-09-27T11:41:25+09:00",
+   "title": "ハブ被害で医療ミス、血清投与遅れ　男性が中部病院を提訴",
+   "slug": "delay-in-serum-administration"
+  },
+  {
+   "post_id": 805,
+   "category_slug": "med-nagoya-u",
+   "date": "2017-09-26T12:36:00+09:00",
+   "title": "医療ミスで名大病院を提訴　遺族、２億７０００万円求める",
+   "slug": "compensation-cost-claim"
+  },
+  {
+   "post_id": 803,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2017-09-01T11:30:06+09:00",
+   "title": "2017年7月までに674件の医療事故が報告　調査制度",
+   "slug": "201707"
+  },
+  {
+   "post_id": 801,
+   "category_slug": "city-kofu-hp",
+   "date": "2017-08-30T12:27:47+09:00",
+   "title": "鼻の手術で医療ミス　今年４件目、賠償金１３００万円支払う",
+   "slug": "4th-medical-mistake-this-year"
+  },
+  {
+   "post_id": 796,
+   "category_slug": "toyota-kai",
+   "date": "2017-08-18T12:15:23+09:00",
+   "title": "７歳死亡、刈谷豊田総合病院側認め　6600万円支払命令",
+   "slug": "accept-medical-errors"
+  },
+  {
+   "post_id": 793,
+   "category_slug": "furukisanfujinka",
+   "date": "2017-08-16T12:07:22+09:00",
+   "title": "無痛分娩で母子が植物状態の悲劇　「人生が変わった」",
+   "slug": "maternal-and-child-plants-with-painless-labor"
+  },
+  {
+   "post_id": 789,
+   "category_slug": "ypch",
+   "date": "2017-08-02T11:14:57+09:00",
+   "title": "山形中央病院医療事故 後遺症の女性と９７８万円で県和解",
+   "slug": "settlement-2"
+  },
+  {
+   "post_id": 786,
+   "category_slug": "furukisanfujinka",
+   "date": "2017-07-31T12:01:13+09:00",
+   "title": "「麻酔ミスで母子とも植物状態」家族、京都の医院を提訴",
+   "slug": "both-mother-and-child-plant-state"
+  },
+  {
+   "post_id": 782,
+   "category_slug": "kouseiren-sanjo",
+   "date": "2017-07-22T12:14:32+09:00",
+   "title": "投薬ミスで男性死亡　三条総合病院、肝硬変治療薬取り違え",
+   "slug": "misplacement-of-cirrhosis-drugs"
+  },
+  {
+   "post_id": 779,
+   "category_slug": "mmc-funabashi",
+   "date": "2017-07-21T12:01:28+09:00",
+   "title": "子宮手術で医療事故、脳に障害　船橋市立医療センター",
+   "slug": "uterine-operation"
+  },
+  {
+   "post_id": 772,
+   "category_slug": "others",
+   "date": "2017-07-05T11:28:36+09:00",
+   "title": "日本医師会 医療ミス等繰り返す医師２７人に指導・勧告",
+   "slug": "guidance-by-doctors-repeating-medical-errors"
+  },
+  {
+   "post_id": 769,
+   "category_slug": "pref-yamanashi",
+   "date": "2017-07-03T12:18:16+09:00",
+   "title": "患者に異なる血液型輸血…山梨中央病院が医療ミス",
+   "slug": "different-blood-group-transfusion"
+  },
+  {
+   "post_id": 766,
+   "category_slug": "handa-city-hospital",
+   "date": "2017-06-03T12:16:49+09:00",
+   "title": "医療事故で女性死亡　愛知県半田市２５０万円賠償へ",
+   "slug": "compensation-250"
+  },
+  {
+   "post_id": 764,
+   "category_slug": "med-nagoya-u",
+   "date": "2017-05-29T11:42:05+09:00",
+   "title": "名大病院で診療ミス　がんの手術を受けた男性が翌日死亡",
+   "slug": "medical-treatment-mistake"
+  },
+  {
+   "post_id": 760,
+   "category_slug": "oiki",
+   "date": "2017-05-02T12:05:06+09:00",
+   "title": "「無痛分娩」で母親死亡か",
+   "slug": "painless-delivery"
+  },
+  {
+   "post_id": 757,
+   "category_slug": "shimizuhospital",
+   "date": "2017-05-01T11:34:26+09:00",
+   "title": "医療ミスで死亡、高齢患者遺族に賠償　静岡市立清水病院",
+   "slug": "malpractice-2"
+  },
+  {
+   "post_id": 753,
+   "category_slug": "saitama-med",
+   "date": "2017-04-10T11:33:13+09:00",
+   "title": "「脳手術は妥当」原告の請求棄却　地裁高崎支部判決",
+   "slug": "dismiss-the-plaintiffs-request"
+  },
+  {
+   "post_id": 750,
+   "category_slug": "hospital-itabashi",
+   "date": "2017-04-07T11:37:34+09:00",
+   "title": "日大板橋病院で投与ミス４件　一時、心肺停止の患者も",
+   "slug": "administration-error"
+  },
+  {
+   "post_id": 747,
+   "category_slug": "city-nakatsu",
+   "date": "2017-04-03T11:25:37+09:00",
+   "title": "中津市民病院 560万円賠償 外科手術で説明ミス／大分",
+   "slug": "explanation-mistake"
+  },
+  {
+   "post_id": 743,
+   "category_slug": "yokohama-shiminhosp",
+   "date": "2017-03-08T11:38:27+09:00",
+   "title": "医療ミスで脳の血管刺す　横浜市立病院、くも膜下出血発症",
+   "slug": "brain-stabbing"
+  },
+  {
+   "post_id": 741,
+   "category_slug": "u-tokyo",
+   "date": "2017-03-07T11:33:20+09:00",
+   "title": "薬取り違え男児死亡　名前確認せず　東大病院に入院中",
+   "slug": "inconsistent-medicine"
+  },
+  {
+   "post_id": 738,
+   "category_slug": "mie-u",
+   "date": "2017-03-06T12:18:12+09:00",
+   "title": "三重大病院で医療ミス　昨年９月、体内にガーゼ置き忘れ",
+   "slug": "gauze-misplaced"
+  },
+  {
+   "post_id": 731,
+   "category_slug": "city-kofu-hp",
+   "date": "2017-03-02T11:43:15+09:00",
+   "title": "市立甲府病院で医療ミス、２人と和解",
+   "slug": "settling-with-two-people-due-to-medical-errors"
+  },
+  {
+   "post_id": 729,
+   "category_slug": "med-nagoya-u",
+   "date": "2017-01-13T11:45:59+09:00",
+   "title": "肺がん見落とし　３年後に末期診断、死亡　名古屋大病院",
+   "slug": "lung-cancer-oversight"
+  },
+  {
+   "post_id": 726,
+   "category_slug": "aichi-cancer-center",
+   "date": "2017-01-12T11:40:43+09:00",
+   "title": "愛知がんセンター、遺族に１３００万円賠償　医療事故で和解",
+   "slug": "13-million-yen-reparation"
+  },
+  {
+   "post_id": 723,
+   "category_slug": "agmc-hyogo",
+   "date": "2017-01-11T11:11:54+09:00",
+   "title": "投薬ミスで入院７日間延長　尼崎総合医療センター",
+   "slug": "extended-hospital-stay-by-medication-error"
+  },
+  {
+   "post_id": 719,
+   "category_slug": "imazu",
+   "date": "2017-01-10T12:26:28+09:00",
+   "title": "難病患者をトイレに２時間放置 １か月後に死亡",
+   "slug": "left-intractable-patient-in-toilet-for-2-hours"
+  },
+  {
+   "post_id": 716,
+   "category_slug": "khsc",
+   "date": "2017-01-05T11:54:47+09:00",
+   "title": "高知医療センターが事故2件公表　吸入薬を注射し一時心肺停止",
+   "slug": "inhalation-medication-mistakenly-injected"
+  },
+  {
+   "post_id": 709,
+   "category_slug": "kyoto-u",
+   "date": "2016-12-30T11:54:00+09:00",
+   "title": "医療ミスで肺機能低下「切る必要ない所を切った」京大病院",
+   "slug": "pulmonary-function-deterioration-due-to-medical-error"
+  },
+  {
+   "post_id": 707,
+   "category_slug": "med-nagoya-u",
+   "date": "2016-12-29T11:47:49+09:00",
+   "title": "肺がん見逃し対処遅れ女性が死亡…名大病院",
+   "slug": "lung-cancer-countermeasure-delayed-response"
+  },
+  {
+   "post_id": 704,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-12-28T12:20:20+09:00",
+   "title": "2016年11月に報告された医療事故は30件",
+   "slug": "2016-11"
+  },
+  {
+   "post_id": 694,
+   "category_slug": "warabi",
+   "date": "2016-12-01T12:12:25+09:00",
+   "title": "医療事故で腸閉塞の男性死亡…蕨市立病院　2567万円補償",
+   "slug": "medical-accident-killed-a-man-with-bowel-obstruction"
+  },
+  {
+   "post_id": 692,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-11-30T12:05:20+09:00",
+   "title": "医療事故調１年　なぜ届け出が少ないか",
+   "slug": "why-are-notifications-less"
+  },
+  {
+   "post_id": 690,
+   "category_slug": "takarazuka",
+   "date": "2016-11-18T12:03:36+09:00",
+   "title": "手術後に障害、１８６０万円賠償　宝塚市民病院",
+   "slug": "disorder-after-surgery"
+  },
+  {
+   "post_id": 687,
+   "category_slug": "ntt-east",
+   "date": "2016-11-17T11:55:49+09:00",
+   "title": "ＮＴＴ東日本関東病院、輸血ミスで患者が一時重体",
+   "slug": "transfusion-mistake"
+  },
+  {
+   "post_id": 682,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-10-31T12:06:07+09:00",
+   "title": "医療事故の届け出388件 制度開始1年、想定下回る",
+   "slug": "2015_10-2016_9"
+  },
+  {
+   "post_id": 679,
+   "category_slug": "osakacity-hp",
+   "date": "2016-10-26T11:40:02+09:00",
+   "title": "放射線技師、偽装のＸ線画像送る　誤って左右逆に撮影",
+   "slug": "left-and-right-reverse-by-mistake"
+  },
+  {
+   "post_id": 677,
+   "category_slug": "jikei-o",
+   "date": "2016-10-25T11:28:36+09:00",
+   "title": "横浜・病院殺人 消毒液が点滴に混入か ゴム栓部から注入？",
+   "slug": "hospital-murder-2"
+  },
+  {
+   "post_id": 674,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-10-24T12:17:51+09:00",
+   "title": "医療事故 届け出、病院間で差　調査制度１年",
+   "slug": "the-difference-between-the-hospital"
+  },
+  {
+   "post_id": 670,
+   "category_slug": "hirohata-hp",
+   "date": "2016-10-18T11:44:57+09:00",
+   "title": "ホルマリンを誤注入 患者が告訴状提出",
+   "slug": "injection-erroneously-formalin"
+  },
+  {
+   "post_id": 667,
+   "category_slug": "edogawa-hospital",
+   "date": "2016-10-14T11:24:22+09:00",
+   "title": "江戸川病院、肝生検後の患者死亡で提訴される（報道）",
+   "slug": "patients-after-liver-biopsy"
+  },
+  {
+   "post_id": 664,
+   "category_slug": "gmhosp",
+   "date": "2016-10-13T12:10:38+09:00",
+   "title": "医療事故認め２０３３万円　女性患者遺族に賠償へ　／岐阜",
+   "slug": "compensation-to-the-bereaved-family"
+  },
+  {
+   "post_id": 662,
+   "category_slug": "chiba-cancer-center",
+   "date": "2016-10-12T12:03:30+09:00",
+   "title": "千葉県がんＣ患者6千人減　医療ミス尾を引く　２年連続赤字",
+   "slug": "patients-6000-down"
+  },
+  {
+   "post_id": 659,
+   "category_slug": "municipal-hp",
+   "date": "2016-10-11T11:57:34+09:00",
+   "title": "彦根市立病院で　院内に調査委、ミスは否定",
+   "slug": "hospital-in-the-investigation-committee"
+  },
+  {
+   "post_id": 655,
+   "category_slug": "med-nagoya-u",
+   "date": "2016-10-10T11:43:34+09:00",
+   "title": "情報共有不十分で肺がん患者死亡　名大病院謝罪",
+   "slug": "lack-of-information-sharing"
+  },
+  {
+   "post_id": 651,
+   "category_slug": "yokohama-shiminhosp",
+   "date": "2016-10-07T11:27:56+09:00",
+   "title": "医療ミスで脳の血管刺し、くも膜下出血　横浜市立市民病院",
+   "slug": "prick-blood-vessels-of-the-brain-in-medical-malpractice"
+  },
+  {
+   "post_id": 647,
+   "category_slug": "nkmc",
+   "date": "2016-10-06T12:13:40+09:00",
+   "title": "点滴ミス、患者が死亡　薬過剰投与　長崎川棚医療センター",
+   "slug": "the-patient-died-in-the-drip-mistake"
+  },
+  {
+   "post_id": 642,
+   "category_slug": "toyota-kai",
+   "date": "2016-10-05T12:00:33+09:00",
+   "title": "医療事故調査制度で過失認定　病院反発、遺族が提訴",
+   "slug": "negligence-certified-system"
+  },
+  {
+   "post_id": 639,
+   "category_slug": "jikei-o",
+   "date": "2016-10-03T12:15:15+09:00",
+   "title": "大口病院４階で４８人死亡　今年７～９月に　１日に５人も",
+   "slug": "48-deaths"
+  },
+  {
+   "post_id": 635,
+   "category_slug": "jikei-o",
+   "date": "2016-09-30T11:48:39+09:00",
+   "title": "大口病院殺人 消毒液が点滴に混入か ゴム栓部分から注入？",
+   "slug": "hospital-murder"
+  },
+  {
+   "post_id": 628,
+   "category_slug": "twmu",
+   "date": "2016-08-25T11:50:44+09:00",
+   "title": "東京女子医大医療事故、防げなかった要因は「日本の社会」",
+   "slug": "factors-that-did-not-prevent"
+  },
+  {
+   "post_id": 624,
+   "category_slug": "khsc",
+   "date": "2016-08-19T11:52:09+09:00",
+   "title": "高知医療センターが事務ミスと医療ミスを報告",
+   "slug": "secretary-misses-and-medical-malpractice"
+  },
+  {
+   "post_id": 621,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-08-18T12:06:46+09:00",
+   "title": "2016年7月に報告された医療事故は32件、累計317件",
+   "slug": "2016-07"
+  },
+  {
+   "post_id": 614,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-08-01T12:07:34+09:00",
+   "title": "遺族意見記載なしが４割　医療事故調査報告、半年で提出49件",
+   "slug": "no-survivor-opinion-described"
+  },
+  {
+   "post_id": 610,
+   "category_slug": "fujita-hu",
+   "date": "2016-07-29T12:01:53+09:00",
+   "title": "医療ミス訴訟 病院側に賠償命令",
+   "slug": "compensation-instruction"
+  },
+  {
+   "post_id": 606,
+   "category_slug": "yokote-mhp",
+   "date": "2016-07-28T11:59:51+09:00",
+   "title": "【訂正】下腹部痛の診断ミスで死亡　遺族ら提訴",
+   "slug": "died-in-the-diagnostic-mistake"
+  },
+  {
+   "post_id": 604,
+   "category_slug": "chiba-cancer-center",
+   "date": "2016-07-23T12:52:17+09:00",
+   "title": "手術中のミス患者に伝えず、千葉　２リットル大量出血",
+   "slug": "not-tell-a-mistake-during-surgery"
+  },
+  {
+   "post_id": 601,
+   "category_slug": "hosp-keio",
+   "date": "2016-07-25T11:42:32+09:00",
+   "title": "「医療ミス認めてほしい」　女児に脳障害　慶応大病院を提訴",
+   "slug": "brain-disorder-in-girls"
+  },
+  {
+   "post_id": 598,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-07-26T12:16:58+09:00",
+   "title": "医療事故調の制度見直しで意見募集- 15日まで、厚労省",
+   "slug": "opinion-recruited-in-review"
+  },
+  {
+   "post_id": 594,
+   "category_slug": "sekisonh",
+   "date": "2016-07-27T12:09:51+09:00",
+   "title": "「医療過誤」でまひ、中２ら提訴　地裁小倉　／福岡",
+   "slug": "systemic-paralysis"
+  },
+  {
+   "post_id": 590,
+   "category_slug": "ninohe-hp",
+   "date": "2016-07-22T12:07:45+09:00",
+   "title": "医療過誤で賠償、県が棄却求める　地裁・第１回弁論　／岩手",
+   "slug": "prefecture-seek-dismissal"
+  },
+  {
+   "post_id": 585,
+   "category_slug": "hospital-med-gunma-university",
+   "date": "2016-07-18T12:07:35+09:00",
+   "title": "群大病院また医療ミス　５０代男性、右手足ほとんど動かず",
+   "slug": "most-work-without-right-hand-and-foot"
+  },
+  {
+   "post_id": 582,
+   "category_slug": "others",
+   "date": "2016-07-14T12:00:07+09:00",
+   "title": "16年6月に報告された医療事故は34件、累計で285件",
+   "slug": "reported-medical-accident"
+  },
+  {
+   "post_id": 580,
+   "category_slug": "others",
+   "date": "2016-07-14T11:55:43+09:00",
+   "title": "抗がん剤医療事故 ６年３カ月間で２２８件 死亡例２０件",
+   "slug": "anti-cancer-agent-medical-accident"
+  },
+  {
+   "post_id": 576,
+   "category_slug": "hospital-med-gunma-university",
+   "date": "2016-07-13T11:46:40+09:00",
+   "title": "群馬大附属病院 手術後死亡の１３人に治療上の問題",
+   "slug": "therapeutic-problem"
+  },
+  {
+   "post_id": 574,
+   "category_slug": "others",
+   "date": "2016-07-01T12:10:02+09:00",
+   "title": "医療事故調査制度の発展を　被害者の会１０周年シンポ",
+   "slug": "10-anniversary"
+  },
+  {
+   "post_id": 571,
+   "category_slug": "others",
+   "date": "2016-06-30T12:05:01+09:00",
+   "title": "世界初「スマート治療室」　ネットで医療ミス防止へ",
+   "slug": "smart-treatment-room"
+  },
+  {
+   "post_id": 567,
+   "category_slug": "juntendo",
+   "date": "2016-06-29T12:01:36+09:00",
+   "title": "順天堂医院に立ち入り検査　点滴中断後「容体悪化」　医療ミスか",
+   "slug": "worsening-condition-after-infusion-interruption"
+  },
+  {
+   "post_id": 564,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-06-28T11:51:27+09:00",
+   "title": "医療事故調制度 届け出対象基準統一で連絡協設置の省令",
+   "slug": "notification-subject-criteria-unification"
+  },
+  {
+   "post_id": 561,
+   "category_slug": "hirakatacity-hp",
+   "date": "2016-06-15T11:43:11+09:00",
+   "title": "ひらかた病院 医療事故で和解　市と患者家族　／大阪",
+   "slug": "medical-accident-in-girls"
+  },
+  {
+   "post_id": 556,
+   "category_slug": "municipal-hospital-ichinomiya",
+   "date": "2016-06-14T12:17:38+09:00",
+   "title": "愛知・一宮市が医療ミス認め５０００万円支払い　１０歳男児死亡をめぐり和解",
+   "slug": "admit-medical-errors"
+  },
+  {
+   "post_id": 553,
+   "category_slug": "city-bizen-okayama",
+   "date": "2016-06-13T11:57:44+09:00",
+   "title": "薬過剰投与 死亡　備前市立病院、医療ミス認め賠償　／岡山",
+   "slug": "died-in-an-overdose-of-medicine"
+  },
+  {
+   "post_id": 548,
+   "category_slug": "med-takaoka",
+   "date": "2016-06-10T12:20:17+09:00",
+   "title": "医療ミス６０００万円支払い＝男性遺族と和解－富山",
+   "slug": "settlement"
+  },
+  {
+   "post_id": 546,
+   "category_slug": "ogaki-mh",
+   "date": "2016-06-09T12:08:19+09:00",
+   "title": "大垣市民病院、医療ミス　手術部位誤る",
+   "slug": "wrong-surgical-site"
+  },
+  {
+   "post_id": 543,
+   "category_slug": "city-kitakyushu",
+   "date": "2016-06-08T12:02:57+09:00",
+   "title": "医療ミス 北九州市と４０代男性が示談　／福岡",
+   "slug": "out-of-court"
+  },
+  {
+   "post_id": 541,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-06-07T11:49:53+09:00",
+   "title": "医療事故届け出の基準統一へ、協議会設置　自民党が提言",
+   "slug": "council-established"
+  },
+  {
+   "post_id": 536,
+   "category_slug": "tokyo-med",
+   "date": "2016-06-06T11:36:24+09:00",
+   "title": "手術中レーザーメス不具合か、患者が重いやけど",
+   "slug": "patient-is-heavy-burns"
+  },
+  {
+   "post_id": 534,
+   "category_slug": "kasukabe-cityhp",
+   "date": "2016-06-02T11:40:03+09:00",
+   "title": "春日部市立病院の医療過誤訴訟 遺族と和解成立　／埼玉",
+   "slug": "bereaved-family-and-the-settlement-was-reached"
+  },
+  {
+   "post_id": 532,
+   "category_slug": "others",
+   "date": "2016-06-01T11:33:38+09:00",
+   "title": "医療事故調見直しに向け検討会設置へ- 四病協・総合部会",
+   "slug": "review-committee-to-the-installation"
+  },
+  {
+   "post_id": 529,
+   "category_slug": "city-chiba",
+   "date": "2016-05-31T12:22:29+09:00",
+   "title": "市立海浜病院８人死亡「医療過誤なしも手術リスクを低評価」",
+   "slug": "low-ratings-surgery-risk"
+  },
+  {
+   "post_id": 527,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-05-30T11:34:31+09:00",
+   "title": "医療事故調査制度 統一の判断基準を検討へ",
+   "slug": "consider-the-criteria-of-unity"
+  },
+  {
+   "post_id": 521,
+   "category_slug": "others",
+   "date": "2016-05-25T12:05:00+09:00",
+   "title": "「不必要な手術？」小児甲状腺がん家族会が実態解明要請",
+   "slug": "311kazoku_jimdo"
+  },
+  {
+   "post_id": 517,
+   "category_slug": "fff",
+   "date": "2016-05-23T11:52:43+09:00",
+   "title": "船橋整形外科病院　去年導入の新手術で大腸傷つけ…女性死亡",
+   "slug": "medical-errors-in-the-new-surgery"
+  },
+  {
+   "post_id": 515,
+   "category_slug": "fff",
+   "date": "2016-05-24T11:42:32+09:00",
+   "title": "同じ日に別の手術でもミス　船橋整形外科病院医療ミス死",
+   "slug": "mistake-in-another-surgery-on-the-same-day"
+  },
+  {
+   "post_id": 513,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-05-16T11:34:51+09:00",
+   "title": "医療事故調査の届け出　７カ月で２００件超",
+   "slug": "200-items-more-than-in-the-seven-months"
+  },
+  {
+   "post_id": 506,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-05-13T11:53:54+09:00",
+   "title": "予期せぬ死亡、４月は34件届け出　医療事故調査制度",
+   "slug": "2016-04"
+  },
+  {
+   "post_id": 501,
+   "category_slug": "kitasato-u",
+   "date": "2016-05-06T12:15:59+09:00",
+   "title": "相模原北里大学病院救命救急センターの医療事故多発",
+   "slug": "frequent-medical-accidents"
+  },
+  {
+   "post_id": 496,
+   "category_slug": "takarazuka",
+   "date": "2016-05-02T11:35:29+09:00",
+   "title": "宝塚市立病院",
+   "slug": "takarazuka"
+  },
+  {
+   "post_id": 491,
+   "category_slug": "takarazuka",
+   "date": "2016-04-14T11:30:41+09:00",
+   "title": "手術患者体内にガーゼ置き忘れ　宝塚市立病院　／兵庫",
+   "slug": "misplaced-gauze-2"
+  },
+  {
+   "post_id": 488,
+   "category_slug": "chiba-cancer-center",
+   "date": "2016-04-13T12:22:38+09:00",
+   "title": "術中に数え間違え検査でも見落とす…ガーゼ忘れ",
+   "slug": "misplaced-gauze"
+  },
+  {
+   "post_id": 482,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-04-11T12:03:40+09:00",
+   "title": "「予期せぬ患者死亡」１８８件　医療事故調査制度半年で",
+   "slug": "from-2015-10-to-2016-03"
+  },
+  {
+   "post_id": 478,
+   "category_slug": "hospital-takasago",
+   "date": "2016-04-04T11:36:15+09:00",
+   "title": "乳房切除ミス、２０代女性が賠償提訴…大阪地裁",
+   "slug": "mastectomy-mistake"
+  },
+  {
+   "post_id": 474,
+   "category_slug": "edogawa-hospital",
+   "date": "2016-04-01T11:45:50+09:00",
+   "title": "【動画】検査入院直後、容体が急変し死亡　江戸川病院",
+   "slug": "sudden-death-immediately-after-inspection-hospitalization"
+  },
+  {
+   "post_id": 468,
+   "category_slug": "city-fujisawa",
+   "date": "2016-04-08T11:26:11+09:00",
+   "title": "医療事故で２７０万円賠償、藤沢市民病院/神奈川",
+   "slug": "compensation"
+  },
+  {
+   "post_id": 465,
+   "category_slug": "kahoku-hospital",
+   "date": "2016-03-30T12:18:19+09:00",
+   "title": "投薬再開遅れ死亡、河北病院の過失認定　仙台高裁・逆転判決",
+   "slug": "reverse-decision"
+  },
+  {
+   "post_id": 458,
+   "category_slug": "city-odawara",
+   "date": "2016-03-24T12:02:09+09:00",
+   "title": "小田原市立病院で妊婦に医療ミス、血液型誤り投与怠る",
+   "slug": "alse-description-of-the-blood-type"
+  },
+  {
+   "post_id": 454,
+   "category_slug": "ashigarakami",
+   "date": "2016-03-22T11:54:45+09:00",
+   "title": "消毒不十分の内視鏡を10人に使用、県立足柄上病院で",
+   "slug": "inadequate-disinfection"
+  },
+  {
+   "post_id": 452,
+   "category_slug": "hosp-niigata",
+   "date": "2016-03-25T12:14:03+09:00",
+   "title": "新潟市民病院",
+   "slug": "hosp-niigata"
+  },
+  {
+   "post_id": 450,
+   "category_slug": "chiba-cancer-center",
+   "date": "2016-03-23T12:06:04+09:00",
+   "title": "千葉県がんセンター",
+   "slug": "chiba-cancer-center-info"
+  },
+  {
+   "post_id": 443,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-03-15T12:11:21+09:00",
+   "title": "医療事故調制度、第三者機関が初の調査へ",
+   "slug": "third-party-organization-is-the-first-investigation"
+  },
+  {
+   "post_id": 441,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-03-14T12:09:19+09:00",
+   "title": "２月の医療事故報告件数25件、相談件数142件",
+   "slug": "2016-02"
+  },
+  {
+   "post_id": 438,
+   "category_slug": "chp-kagawa",
+   "date": "2016-03-16T11:58:38+09:00",
+   "title": "【医療事故】香川県立中央病院　がんを見落とし患者が死亡",
+   "slug": "oversight-cancer"
+  },
+  {
+   "post_id": 435,
+   "category_slug": "edogawa-hospital",
+   "date": "2016-03-18T11:41:31+09:00",
+   "title": "「見殺しです」検査2日後に死亡　江戸川病院で医療ミスか",
+   "slug": "letting-die-without-helping"
+  },
+  {
+   "post_id": 432,
+   "category_slug": "takarazuka",
+   "date": "2016-03-17T11:31:42+09:00",
+   "title": "チューブを誤って切断、医療事故 宝塚市立病院",
+   "slug": "cutting-the-wrong-tube"
+  },
+  {
+   "post_id": 429,
+   "category_slug": "tomakomai",
+   "date": "2016-03-11T12:26:16+09:00",
+   "title": "医療事故で示談　苫小牧市立病院　補正予算で専決処分",
+   "slug": "malpractice-settlement-2"
+  },
+  {
+   "post_id": 426,
+   "category_slug": "yokohama-cu",
+   "date": "2016-03-10T12:17:49+09:00",
+   "title": "濃度の高い酢酸液を注入する医療事故 横浜市立大学付属病院",
+   "slug": "injecting-a-high-concentration-acetic-acid-solution"
+  },
+  {
+   "post_id": 422,
+   "category_slug": "ncchd",
+   "date": "2016-03-09T12:06:14+09:00",
+   "title": "国立成育医療研究センターで医療事故",
+   "slug": "malpractice"
+  },
+  {
+   "post_id": 420,
+   "category_slug": "hosp-niigata",
+   "date": "2016-03-08T11:57:57+09:00",
+   "title": "腰椎の手術で医療事故 新潟市民病院",
+   "slug": "medical-accident-in-surgery-of-the-lumbar-spine"
+  },
+  {
+   "post_id": 417,
+   "category_slug": "ogaki-mh",
+   "date": "2016-03-07T11:52:51+09:00",
+   "title": "大垣市民病院 医療事故に絡む患者死亡で和解　／岐阜",
+   "slug": "malpractice-settlement"
+  },
+  {
+   "post_id": 411,
+   "category_slug": "notice",
+   "date": "2016-03-05T11:58:20+09:00",
+   "title": "医療ミス調査会 専用Androidアプリ",
+   "slug": "android-application"
+  },
+  {
+   "post_id": 408,
+   "category_slug": "yamaga-medical-center",
+   "date": "2016-03-04T11:27:31+09:00",
+   "title": "山鹿市民医療センター　手術後対応ミス、１７００万円で和解",
+   "slug": "surgery-after-the-corresponding-mistake"
+  },
+  {
+   "post_id": 398,
+   "category_slug": "municipal-hospital-ichinomiya",
+   "date": "2016-03-01T12:03:43+09:00",
+   "title": "愛知・一宮市が医療ミス認める　１０歳男児死亡をめぐり和解",
+   "slug": "settlement-of-medical-malpractice"
+  },
+  {
+   "post_id": 394,
+   "category_slug": "city-chiba",
+   "date": "2016-02-14T08:37:52+09:00",
+   "title": "千葉市立海浜病院",
+   "slug": "city-chiba"
+  },
+  {
+   "post_id": 392,
+   "category_slug": "chiba-cancer-center",
+   "date": "2016-02-18T12:26:34+09:00",
+   "title": "県が拠点病院の再指定推薦取り下げ　千葉県がんセンター",
+   "slug": "withdrew-the-re-designation-recommendation-of-hospitals"
+  },
+  {
+   "post_id": 390,
+   "category_slug": "chiba-cancer-center",
+   "date": "2016-02-19T12:14:33+09:00",
+   "title": "病院の『医療事故』年間1300～2000人死亡！",
+   "slug": "hiding-constitution"
+  },
+  {
+   "post_id": 387,
+   "category_slug": "mhlw",
+   "date": "2016-02-17T12:09:09+09:00",
+   "title": "特定機能病院の承認要件見直し　全死亡例に報告義務",
+   "slug": "advanced-treatment-hospital"
+  },
+  {
+   "post_id": 374,
+   "category_slug": "scchr",
+   "date": "2016-02-11T12:29:27+09:00",
+   "title": "インスリン投与で意識障害　患者死亡も「関係不明」　静岡県立がんセンター",
+   "slug": "disturbance-of-consciousness-in-insulin-administration"
+  },
+  {
+   "post_id": 370,
+   "category_slug": "hosp-u-toyama",
+   "date": "2016-02-10T12:21:27+09:00",
+   "title": "富山大への賠償命令確定、医療ミスで女性死亡",
+   "slug": "compensation-instruction-finalized"
+  },
+  {
+   "post_id": 365,
+   "category_slug": "twmu",
+   "date": "2016-02-09T12:09:18+09:00",
+   "title": "女子医大の特定機能病院の承認取消、通過点にすぎず",
+   "slug": "approval-cancellation-passing-point"
+  },
+  {
+   "post_id": 361,
+   "category_slug": "koseikan",
+   "date": "2016-02-08T12:02:27+09:00",
+   "title": "好生館　１０００万円支払い和解　手術で後遺症の男性と",
+   "slug": "sequelae-because-of-surgery"
+  },
+  {
+   "post_id": 358,
+   "category_slug": "kosei-hp",
+   "date": "2016-02-05T11:42:15+09:00",
+   "title": "佼成病院の医療ミス、重体女性が死亡　高濃度酢酸誤投与",
+   "slug": "of-a-high-concentration-of-acetic-acid"
+  },
+  {
+   "post_id": 355,
+   "category_slug": "numazu-hospital",
+   "date": "2016-02-04T11:35:41+09:00",
+   "title": "薬剤投与後、数分で死亡　沼津市立病院で医療事故",
+   "slug": "drug-administration-mistake"
+  },
+  {
+   "post_id": 351,
+   "category_slug": "kenkako",
+   "date": "2016-02-03T12:32:54+09:00",
+   "title": "頭の中にドリルの破片２カ月　加古川医療センターで医療事故",
+   "slug": "debris-of-the-drill-in-the-head"
+  },
+  {
+   "post_id": 348,
+   "category_slug": "tenjinkai",
+   "date": "2016-02-02T12:26:44+09:00",
+   "title": "「腸閉塞と気づかず」…医師が措置遅れ５千万円賠償　福岡・久留米の病院",
+   "slug": "unaware-and-intestinal-obstruction"
+  },
+  {
+   "post_id": 346,
+   "category_slug": "mhlw",
+   "date": "2016-02-01T11:47:38+09:00",
+   "title": "全死亡事例の報告義務化　厚生省が新承認要件",
+   "slug": "mandatory-reporting-of-all-deaths"
+  },
+  {
+   "post_id": 339,
+   "category_slug": "chikusei",
+   "date": "2016-01-29T12:00:27+09:00",
+   "title": "手術で消毒ミス、３０代女性顔に腫れ　茨城・筑西市民病院",
+   "slug": "disinfection-miss"
+  },
+  {
+   "post_id": 336,
+   "category_slug": "toshiba",
+   "date": "2016-01-28T12:51:01+09:00",
+   "title": "政治評論家の本澤二郎さんが東芝病院を刑事告訴",
+   "slug": "criminal-complaint"
+  },
+  {
+   "post_id": 334,
+   "category_slug": "cent-hosp-pref-niigata",
+   "date": "2016-01-27T12:44:33+09:00",
+   "title": "食道がん治療2年5か月放置　県立中央病院で医療事故",
+   "slug": "esophageal-cancer-treatment-left"
+  },
+  {
+   "post_id": 329,
+   "category_slug": "city-kitakyushu",
+   "date": "2016-01-26T12:08:20+09:00",
+   "title": "左脚まひ、和解協議へ　北九州市立医療センター　／福岡",
+   "slug": "left-leg-paralysis"
+  },
+  {
+   "post_id": 326,
+   "category_slug": "hosp-yamanashi",
+   "date": "2016-01-23T17:01:57+09:00",
+   "title": "鎮痛剤過剰投与　山梨大付属病院で医療ミス",
+   "slug": "analgesic-overdose"
+  },
+  {
+   "post_id": 317,
+   "category_slug": "hospital-med-gunma-university",
+   "date": "2016-01-21T12:50:10+09:00",
+   "title": "群大病院が遺族側に回答…調査結果出た後「説明の場設ける」",
+   "slug": "provide-a-forum-for-explanation"
+  },
+  {
+   "post_id": 310,
+   "category_slug": "ncgm",
+   "date": "2016-01-19T12:28:34+09:00",
+   "title": "造影剤誤注入で患者死亡、医師に有罪判決「初歩的ミス」",
+   "slug": "injection-false-contrast-agent"
+  },
+  {
+   "post_id": 293,
+   "category_slug": "city-chiba",
+   "date": "2016-01-18T12:11:05+09:00",
+   "title": "【動画】手術後に7人死亡　千葉市立海浜病院に立入調査",
+   "slug": "postoperative-death-video"
+  },
+  {
+   "post_id": 290,
+   "category_slug": "mhlw",
+   "date": "2016-01-11T12:34:20+09:00",
+   "title": "厚労省、がん治療実績を一覧に…ホームページで病院選び",
+   "slug": "cancer-treatment-performance"
+  },
+  {
+   "post_id": 287,
+   "category_slug": "kanagawa-pho",
+   "date": "2016-01-15T12:28:15+09:00",
+   "title": "重症患者に輸血ミス、さらに容体悪化　神奈川の県立病院",
+   "slug": "critically-ill-patients-to-the-blood-transfusion-mistake"
+  },
+  {
+   "post_id": 284,
+   "category_slug": "city-chiba",
+   "date": "2016-01-14T12:20:33+09:00",
+   "title": "千葉市立病院８人術後死、市「ミスとは考えず」",
+   "slug": "postoperative-death"
+  },
+  {
+   "post_id": 282,
+   "category_slug": "mhlw",
+   "date": "2016-01-13T12:19:33+09:00",
+   "title": "検査で血液取り違えが５件　国内2004年以降",
+   "slug": "blood-mix-up-inspection"
+  },
+  {
+   "post_id": 279,
+   "category_slug": "ishimaki-jrc",
+   "date": "2016-01-16T12:04:19+09:00",
+   "title": "針を抜き忘れ50代女性死亡　石巻赤十字病院",
+   "slug": "death-to-forget-disconnect-the-needle"
+  },
+  {
+   "post_id": 277,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2016-01-12T12:52:33+09:00",
+   "title": "医療事故調査制度、２０１５年１２月の届け出３６件",
+   "slug": "2015-12"
+  },
+  {
+   "post_id": 274,
+   "category_slug": "chuo-kcho",
+   "date": "2016-01-10T23:43:20+09:00",
+   "title": "新旧の人工器具、誤って埋め込む　神戸市立中央市民病院",
+   "slug": "embedding-the-wrong-prosthesis"
+  },
+  {
+   "post_id": 269,
+   "category_slug": "dokkyomed",
+   "date": "2016-01-09T12:39:04+09:00",
+   "title": "肺がん手術で死亡の男性遺族が医師と獨協医大越谷病院提訴",
+   "slug": "medical-errors-in-lung-cancer-surgery"
+  },
+  {
+   "post_id": 265,
+   "category_slug": "niigata-u",
+   "date": "2016-01-09T12:52:38+09:00",
+   "title": "白内障手術で医療ミス　新潟大病院、患者に謝罪",
+   "slug": "cataract-operation"
+  },
+  {
+   "post_id": 261,
+   "category_slug": "meikai",
+   "date": "2016-01-08T12:38:57+09:00",
+   "title": "【明海病院】がん発見遅れで４２００万円支払い命令",
+   "slug": "neglect-definitive-diagnosis"
+  },
+  {
+   "post_id": 258,
+   "category_slug": "med-nagoya-u",
+   "date": "2016-01-02T17:18:30+09:00",
+   "title": "名古屋大学医学部附属病院",
+   "slug": "med-nagoya-u"
+  },
+  {
+   "post_id": 256,
+   "category_slug": "awajimc",
+   "date": "2016-01-02T17:08:09+09:00",
+   "title": "兵庫県立淡路医療センター",
+   "slug": "awajimc"
+  },
+  {
+   "post_id": 254,
+   "category_slug": "kenkako",
+   "date": "2016-01-02T16:56:25+09:00",
+   "title": "兵庫県立加古川医療センター",
+   "slug": "kenkako"
+  },
+  {
+   "post_id": 252,
+   "category_slug": "hospital-mutsu",
+   "date": "2016-01-02T16:51:07+09:00",
+   "title": "むつ総合病院",
+   "slug": "hospital-mutsu"
+  },
+  {
+   "post_id": 249,
+   "category_slug": "ise-jrc",
+   "date": "2016-01-02T16:21:07+09:00",
+   "title": "伊勢赤十字病院",
+   "slug": "ise-jrc"
+  },
+  {
+   "post_id": 247,
+   "category_slug": "tobu-hospital",
+   "date": "2016-01-02T16:16:18+09:00",
+   "title": "東部地域病院",
+   "slug": "tobu-hospital"
+  },
+  {
+   "post_id": 245,
+   "category_slug": "siz-saiseikai",
+   "date": "2016-01-02T16:08:12+09:00",
+   "title": "静岡済生会総合病院",
+   "slug": "siz-saiseikai"
+  },
+  {
+   "post_id": 243,
+   "category_slug": "hospital-med-gunma-university",
+   "date": "2016-01-02T15:57:56+09:00",
+   "title": "群馬大学医学部附属病院",
+   "slug": "hospital-med-gunma-university"
+  },
+  {
+   "post_id": 241,
+   "category_slug": "twmu",
+   "date": "2016-01-02T15:49:08+09:00",
+   "title": "東京女子医科大学病院",
+   "slug": "twmu"
+  },
+  {
+   "post_id": 235,
+   "category_slug": "fukui",
+   "date": "2016-01-06T12:02:21+09:00",
+   "title": "福井県立病院で医療ミス　１６年前、体内にガーゼ置き忘れ",
+   "slug": "misplace-the-gauze"
+  },
+  {
+   "post_id": 231,
+   "category_slug": "hosp-go",
+   "date": "2016-01-05T11:58:07+09:00",
+   "title": "悪性なのに良性と誤診…国立病院機構大阪南医療センター",
+   "slug": "died-of-cancerous-peritonitis"
+  },
+  {
+   "post_id": 229,
+   "category_slug": "kenkako",
+   "date": "2016-01-04T12:44:39+09:00",
+   "title": "がん誤診、胃３分の２切除　兵庫県立加古川医療センター",
+   "slug": "cancer-misdiagnosis"
+  },
+  {
+   "post_id": 226,
+   "category_slug": "gh-opho",
+   "date": "2016-01-03T13:39:42+09:00",
+   "title": "筋弛緩剤誤投与の薬剤師ら懲戒処分　大阪府立医療センター",
+   "slug": "administration-erroneous-muscle-relaxant"
+  },
+  {
+   "post_id": 222,
+   "category_slug": "kenkako",
+   "date": "2016-01-02T13:27:01+09:00",
+   "title": "人工関節手術で医療ミス　兵庫・加古川医療センター",
+   "slug": "medical-errors-in-the-artificial-joint-surgery"
+  },
+  {
+   "post_id": 219,
+   "category_slug": "hospital-med-saga-u",
+   "date": "2016-01-01T22:28:08+09:00",
+   "title": "ＭＲＩ検査遅れ後遺症…佐賀大学医学部附属病院で医療ミス",
+   "slug": "sequelae-by-the-inspection-delay"
+  },
+  {
+   "post_id": 215,
+   "category_slug": "agmc-hyogo",
+   "date": "2015-12-29T10:20:17+09:00",
+   "title": "幼児の足一部壊死　尼崎総合医療センターで事故",
+   "slug": "some-necrosis"
+  },
+  {
+   "post_id": 212,
+   "category_slug": "hospital-sanda",
+   "date": "2015-12-28T12:19:50+09:00",
+   "title": "誤って違う指を手術　三田市民病院などに賠償命令",
+   "slug": "surgery-accidentally-different-finger"
+  },
+  {
+   "post_id": 209,
+   "category_slug": "toyookahp-kumiai",
+   "date": "2015-12-31T11:30:52+09:00",
+   "title": "胃カメラ洗浄不足、９００人検査へ　日高医療センター",
+   "slug": "lack-stomach-camera-cleaning"
+  },
+  {
+   "post_id": 206,
+   "category_slug": "awajimc",
+   "date": "2015-12-30T16:17:37+09:00",
+   "title": "心電図異常のアラームに気づかず男性死亡　兵庫県立淡路医療センター",
+   "slug": "not-aware-of-the-electrocardiogram-abnormalities-of-alarm"
+  },
+  {
+   "post_id": 201,
+   "category_slug": "chiba-cancer-center",
+   "date": "2015-12-26T02:59:26+09:00",
+   "title": "必要ないのに右乳房全摘出　取り違える　千葉県がんセンター",
+   "slug": "breast-total-resection"
+  },
+  {
+   "post_id": 198,
+   "category_slug": "edogawa-hospital",
+   "date": "2015-12-24T22:04:51+09:00",
+   "title": "江戸川病院で腎移植の患者死亡　業務上過失致死容疑で捜査",
+   "slug": "living-donor-kidney-transplant"
+  },
+  {
+   "post_id": 195,
+   "category_slug": "hospital-med-gunma-university",
+   "date": "2015-12-23T21:36:33+09:00",
+   "title": "「手術しなければ延命」…群大問題、遺族側会見",
+   "slug": "life-prolonging-without-surgery"
+  },
+  {
+   "post_id": 192,
+   "category_slug": "ise-jrc",
+   "date": "2015-12-23T02:02:55+09:00",
+   "title": "伊勢赤十字病院 人工透析後死亡、遺族と示談成立　／三重",
+   "slug": "the-settlement-established"
+  },
+  {
+   "post_id": 188,
+   "category_slug": "med-nagoya-u",
+   "date": "2015-12-21T23:58:53+09:00",
+   "title": "患者の肺がん、３年以上見落とす　名大病院が医療ミス",
+   "slug": "oversight-of-lung-cancer"
+  },
+  {
+   "post_id": 180,
+   "category_slug": "edogawa-hospital",
+   "date": "2015-12-19T08:39:24+09:00",
+   "title": "江戸川病院",
+   "slug": "edogawa-hospital"
+  },
+  {
+   "post_id": 177,
+   "category_slug": "edogawa-hospital",
+   "date": "2015-12-19T08:37:08+09:00",
+   "title": "医療ミスを認めぬ江戸川病院、内部告発で火葬直前に警察解剖",
+   "slug": "whistle-blowing"
+  },
+  {
+   "post_id": 164,
+   "category_slug": "edogawa-hospital",
+   "date": "2015-12-19T01:27:48+09:00",
+   "title": "【狂気の世界】江戸川病院の内装が怖すぎると話題に！",
+   "slug": "mad-hospital"
+  },
+  {
+   "post_id": 130,
+   "category_slug": "kifmec",
+   "date": "2015-12-17T21:59:23+09:00",
+   "title": "神戸の病院で、再開した生体肝移植で患者死亡　９例目で５人",
+   "slug": "restart-and-dead"
+  },
+  {
+   "post_id": 127,
+   "category_slug": "kifmec",
+   "date": "2015-12-16T11:06:56+09:00",
+   "title": "神戸・生体肝移植問題　神戸市は８日に立ち入り検査へ",
+   "slug": "on-the-spot-inspection"
+  },
+  {
+   "post_id": 122,
+   "category_slug": "kifmec",
+   "date": "2015-12-15T12:38:04+09:00",
+   "title": "【賛否両論】生体肝移植再開　神戸の患者４人死亡の病院",
+   "slug": "living-donor-liver-transplant-surgery-restart"
+  },
+  {
+   "post_id": 119,
+   "category_slug": "kifmec",
+   "date": "2015-12-14T12:37:48+09:00",
+   "title": "生体肝移植患者死亡で緊急討論も　神戸で日本肝移植研究会",
+   "slug": "umin2015"
+  },
+  {
+   "post_id": 116,
+   "category_slug": "kifmec",
+   "date": "2015-12-13T12:44:36+09:00",
+   "title": "生体肝移植問題、神戸の病院が研究会に異議申し立てへ",
+   "slug": "objection"
+  },
+  {
+   "post_id": 113,
+   "category_slug": "kifmec",
+   "date": "2015-12-12T20:36:04+09:00",
+   "title": "生体肝移植で患者７人中４人死亡【神戸国際FMEC】",
+   "slug": "living-donor-liver-transplant-surgery"
+  },
+  {
+   "post_id": 109,
+   "category_slug": "chiba-cancer-center",
+   "date": "2015-12-12T01:04:52+09:00",
+   "title": "抗がん剤死亡、医療過誤は否定【千葉県がんセンター】",
+   "slug": "anticancer-drug"
+  },
+  {
+   "post_id": 106,
+   "category_slug": "h-osaki",
+   "date": "2015-12-09T23:33:02+09:00",
+   "title": "大崎市民病院が医療ミス　正常な卵巣を切除",
+   "slug": "ovariectomy"
+  },
+  {
+   "post_id": 102,
+   "category_slug": "medical-accident-investigation-system",
+   "date": "2015-12-08T23:45:18+09:00",
+   "title": "医療事故調査制度 開始２か月 課題話し合う",
+   "slug": "after-2-months"
+  },
+  {
+   "post_id": 90,
+   "category_slug": "siz-saiseikai",
+   "date": "2015-12-06T21:35:22+09:00",
+   "title": "静岡済生会総合病院　ＣＴ検査での見落としにより患者死亡",
+   "slug": "computed-tomographic-scanning"
+  },
+  {
+   "post_id": 86,
+   "category_slug": "nakatsugawa-hp",
+   "date": "2015-12-05T22:20:54+09:00",
+   "title": "中津川市民病院で69歳死亡。患者遺族と2200万円和解",
+   "slug": "survivor-reconciliation"
+  },
+  {
+   "post_id": 81,
+   "category_slug": "hospital-mutsu",
+   "date": "2015-12-04T10:34:28+09:00",
+   "title": "【むつ総合病院】医療ミス２人死亡　カテーテル挿入誤る",
+   "slug": "malpractice-catheter"
+  },
+  {
+   "post_id": 78,
+   "category_slug": "hospital-med-gunma-university",
+   "date": "2015-12-03T23:25:38+09:00",
+   "title": "国立大評価委員会が群馬大に「最低評価」",
+   "slug": "kokuritu-shingi"
+  },
+  {
+   "post_id": 73,
+   "category_slug": "chiba-cancer-center",
+   "date": "2015-12-03T02:05:48+09:00",
+   "title": "千葉県がんセンターで腹腔鏡手術後に死亡が相次ぐ",
+   "slug": "laparoscopic-surgery"
+  },
+  {
+   "post_id": 70,
+   "category_slug": "hp-hata",
+   "date": "2015-11-26T00:12:16+09:00",
+   "title": "松本市立病院で「ホルマリン」を5人に誤投与",
+   "slug": "formalin"
+  },
+  {
+   "post_id": 65,
+   "category_slug": "jikei",
+   "date": "2015-11-24T00:12:01+09:00",
+   "title": "慈恵会医科大学附属病院の青戸病院からの医療事故報告",
+   "slug": "apology"
+  },
+  {
+   "post_id": 58,
+   "category_slug": "kyoto-u",
+   "date": "2015-11-22T21:18:47+09:00",
+   "title": "京都大学医学部付属病院で機器の取り違え医療ミス",
+   "slug": "mix-up-of-equipment"
+  },
+  {
+   "post_id": 56,
+   "category_slug": "mhlw",
+   "date": "2015-11-21T23:50:17+09:00",
+   "title": "医療事故再発防止へ新制度始まる！",
+   "slug": "prevent-medical-accidents-recurrence"
+  },
+  {
+   "post_id": 48,
+   "category_slug": "twmu",
+   "date": "2015-11-20T02:15:19+09:00",
+   "title": "東京女子医大プロポフォール投与事件",
+   "slug": "propofol"
+  },
+  {
+   "post_id": 24,
+   "category_slug": "hospital-med-gunma-university",
+   "date": "2015-11-17T02:04:35+09:00",
+   "title": "群馬医大の連続医療ミス問題で医療事故調査委員会が初会合",
+   "slug": "gunma-university-hospital-serial-murders"
+  },
+  {
+   "post_id": 12,
+   "category_slug": "edogawa-hospital",
+   "date": "2015-11-15T21:57:50+09:00",
+   "title": "江戸川病院で医療ミスか。25歳男性が検査後に死亡。",
+   "slug": "edogawa-hospital-malpractice"
+  }
+ ]
+}

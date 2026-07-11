@@ -1,0 +1,12 @@
+{
+  "description": "週次更新でチェックするニュースソース（Googleニュース RSS）。q= のキーワードを調整可能。",
+  "feeds": [
+    "https://news.google.com/rss/search?q=%E5%8C%BB%E7%99%82%E3%83%9F%E3%82%B9%20when%3A14d&hl=ja&gl=JP&ceid=JP:ja",
+    "https://news.google.com/rss/search?q=%E5%8C%BB%E7%99%82%E9%81%8E%E8%AA%A4%20when%3A14d&hl=ja&gl=JP&ceid=JP:ja",
+    "https://news.google.com/rss/search?q=%E5%8C%BB%E7%99%82%E4%BA%8B%E6%95%85%20when%3A14d&hl=ja&gl=JP&ceid=JP:ja"
+  ],
+  "notes": [
+    "キーワード: 医療ミス / 医療過誤 / 医療事故（URLエンコード済み）。when:14d は直近14日。",
+    "全国紙・地方紙・通信社の記事が対象。既存記事の出典（朝日/時事/地方紙）と親和性が高い。"
+  ]
+}

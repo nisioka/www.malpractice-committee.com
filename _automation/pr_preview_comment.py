@@ -17,8 +17,14 @@ def main(argv) -> int:
         print(__doc__)
         return 1
     manifest = pathlib.Path(argv[1])
+    if not manifest.is_file():
+        print(f"{MARKER}\nこのPRで追加・変更された表示対象ページはありませんでした。")
+        return 0
     rawbase = argv[2].rstrip("/")
     rows = [l.split("\t") for l in manifest.read_text(encoding="utf-8").splitlines() if l.strip()]
+    if not rows:
+        print(f"{MARKER}\nこのPRで追加・変更された表示対象ページはありませんでした。")
+        return 0
 
     out = [
         MARKER,

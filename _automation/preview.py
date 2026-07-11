@@ -59,8 +59,10 @@ class RewriteHandler(http.server.SimpleHTTPRequestHandler):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8787)
+    ap.add_argument("--host", default="127.0.0.1",
+                    help="バインド先。既定はローカルのみ。LAN公開したい時のみ 0.0.0.0 等を指定")
     args = ap.parse_args()
-    with socketserver.ThreadingTCPServer(("0.0.0.0", args.port), RewriteHandler) as httpd:
+    with socketserver.ThreadingTCPServer((args.host, args.port), RewriteHandler) as httpd:
         print(f"プレビュー起動: http://localhost:{args.port}/  (Ctrl+C で停止)")
         try:
             httpd.serve_forever()

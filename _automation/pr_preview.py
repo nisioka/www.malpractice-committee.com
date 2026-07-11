@@ -56,12 +56,24 @@ def find_chrome() -> str:
 
 
 def changed_html(base: str) -> list[str]:
-    cmd = ["git", "diff", "--name-only", "--diff-filter=AM", f"{base}...HEAD", "--", "*.html"]
-    out = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
-    files = [f for f in out.stdout.splitlines() if f.strip()]
-    # AMP/モバイル複製やツール自身のテンプレは除外（本文ページに集中）
+    """追加(A)を先頭、変更(M)を後ろに並べて返す。
+
+    ページ送り(page/N)は「カードが1件ずつずれるだけ」で見た目の確認価値が低く枚数も多いため
+    プレビュー対象から除外する（新記事・カテゴリ・トップ・病院索引に集中）。AMP/モバイル複製と
+    ツール自身のテンプレも除外。
+    """
+    def diff(flt):
+        cmd = ["git", "diff", "--name-only", f"--diff-filter={flt}", f"{base}...HEAD", "--", "*.html"]
+        out = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
+        return [f for f in out.stdout.splitlines() if f.strip()]
+
     skip = ("_automation/", "/amp/", "Pnoamp=")
-    return [f for f in files if not any(s in f for s in skip)]
+    def keep(f):
+        return not any(s in f for s in skip) and not re.match(r"page/\d+/", f)
+
+    added = [f for f in diff("A") if keep(f)]
+    modified = [f for f in diff("M") if keep(f)]
+    return added + modified
 
 
 def start_server(port_holder: list):
@@ -84,7 +96,12 @@ def screenshot(chrome: str, url: str, out_png: pathlib.Path) -> bool:
         "--force-device-scale-factor=1", "--virtual-time-budget=10000",
         "--window-size=1280,3400", f"--screenshot={out_png}", url,
     ]
-    r = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
+    # タイムアウト/描画失敗は当該ページを飛ばして継続（1枚のハングで全体を落とさない）
+    try:
+        subprocess.run(cmd, capture_output=True, text=True, timeout=90)
+    except (subprocess.TimeoutExpired, subprocess.SubprocessError) as e:
+        print(f"撮影タイムアウト/失敗: {url} ({e})", file=sys.stderr)
+        return False
     return out_png.is_file() and out_png.stat().st_size > 0
 
 
@@ -102,7 +119,7 @@ def main(argv) -> int:
     if not files:
         print("変更されたHTMLページなし（プレビュー対象なし）", file=sys.stderr)
         return 0
-    limit = int(os.environ.get("PREVIEW_MAX", "25"))
+    limit = int(os.environ.get("PREVIEW_MAX", "12"))
     dropped = files[limit:]
     files = files[:limit]
 

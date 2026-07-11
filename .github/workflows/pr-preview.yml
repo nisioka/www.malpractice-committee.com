@@ -32,10 +32,10 @@ jobs:
         id: render
         env:
           CHROME_BIN: /usr/bin/google-chrome
+          BASE_REF: ${{ github.base_ref }}   # ${{ }}をrun内に直接埋め込まない（インジェクション対策）
         run: |
-          git fetch origin "${{ github.base_ref }}" --depth=1 || true
-          python3 _automation/pr_preview.py \
-            --base "origin/${{ github.base_ref }}" --out /tmp/previews || true
+          git fetch --depth=1 origin "$BASE_REF"
+          python3 _automation/pr_preview.py --base "origin/$BASE_REF" --out /tmp/previews
           count=$(ls /tmp/previews/*.png 2>/dev/null | wc -l)
           echo "count=$count" >> "$GITHUB_OUTPUT"
           echo "描画ページ数: $count"
@@ -68,7 +68,13 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A
             git commit -m "preview: PR #${PR}" || echo "変更なし"
-            git push origin pr-previews
+            # 別PRのジョブが同時に pr-previews を更新した場合に備え rebase して再試行
+            for attempt in 1 2 3 4 5; do
+              git push origin pr-previews && break
+              echo "push競合、rebaseして再試行 ($attempt)"
+              git fetch origin pr-previews && git rebase origin/pr-previews || git rebase --abort
+              sleep $((attempt * 3))
+            done
             echo "rawbase=https://raw.githubusercontent.com/${REPO}/$(git rev-parse HEAD)/${DIR}" >> "$GITHUB_OUTPUT" )
 
       - name: PR に sticky コメント投稿/更新

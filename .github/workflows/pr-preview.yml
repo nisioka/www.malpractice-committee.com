@@ -1,0 +1,93 @@
+# このPRで追加/変更された HTML ページを実CSS付きでスクショし、PRにコメント投稿する。
+# 新規ページを決め打ちしないので、今後の新記事も自動的にプレビュー対象になる。
+name: PR プレビュー（変更ページのスクショ）
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write        # pr-previews ブランチへ画像を push
+  pull-requests: write   # PR にコメント
+
+concurrency:
+  group: pr-preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout（履歴全部＝diff用）
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 変更ページを描画（GitHubランナーには Chrome が同梱）
+        id: render
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1 || true
+          python3 _automation/pr_preview.py \
+            --base "origin/${{ github.base_ref }}" --out /tmp/previews || true
+          count=$(ls /tmp/previews/*.png 2>/dev/null | wc -l)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "描画ページ数: $count"
+
+      - name: 画像を pr-previews ブランチへ公開
+        if: steps.render.outputs.count != '0'
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          PR="${{ github.event.number }}"
+          REPO="${{ github.repository }}"
+          DIR="pr-${PR}"
+          URL="https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          tmp="$(mktemp -d)"
+          if git clone --depth=1 --branch pr-previews "$URL" "$tmp" 2>/dev/null; then
+            :
+          else
+            git clone --depth=1 "$URL" "$tmp"
+            ( cd "$tmp"
+              git checkout --orphan pr-previews
+              git rm -rf . >/dev/null 2>&1 || true
+              printf 'PR プレビュー画像の保管用ブランチ（自動生成・削除可）\n' > README.md )
+          fi
+          ( cd "$tmp"
+            rm -rf "$DIR"; mkdir -p "$DIR"
+            cp /tmp/previews/*.png /tmp/previews/manifest.tsv "$DIR"/
+            git config user.name  "pr-preview-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "preview: PR #${PR}" || echo "変更なし"
+            git push origin pr-previews
+            echo "rawbase=https://raw.githubusercontent.com/${REPO}/$(git rev-parse HEAD)/${DIR}" >> "$GITHUB_OUTPUT" )
+
+      - name: PR に sticky コメント投稿/更新
+        if: steps.render.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          python3 _automation/pr_preview_comment.py \
+            /tmp/previews/manifest.tsv "${{ steps.publish.outputs.rawbase }}" > /tmp/body.md
+          MARKER='<!-- pr-preview-bot -->'
+          CID=$(gh api "repos/${{ github.repository }}/issues/${{ github.event.number }}/comments" \
+                  --paginate --jq ".[] | select(.body | contains(\"$MARKER\")) | .id" | head -1)
+          if [ -n "$CID" ]; then
+            gh api -X PATCH "repos/${{ github.repository }}/issues/comments/${CID}" \
+              -F body=@/tmp/body.md >/dev/null
+            echo "コメント更新: $CID"
+          else
+            gh api -X POST "repos/${{ github.repository }}/issues/${{ github.event.number }}/comments" \
+              -F body=@/tmp/body.md >/dev/null
+            echo "コメント新規投稿"
+          fi

@@ -73,13 +73,19 @@ jobs:
             git add -A
             git commit -m "preview: PR #${PR}" || echo "変更なし"
             # 別PRのジョブが同時に pr-previews を更新した場合に備え rebase して再試行
+            pushed=0
             for attempt in 1 2 3 4 5; do
-              git push origin pr-previews && break
+              if git push origin pr-previews; then pushed=1; break; fi
               echo "push競合、rebaseして再試行 ($attempt)"
               git fetch origin pr-previews && git rebase origin/pr-previews || git rebase --abort
               sleep $((attempt * 3))
             done
-            echo "rawbase=https://raw.githubusercontent.com/${REPO}/$(git rev-parse HEAD)/${DIR}" >> "$GITHUB_OUTPUT" )
+            if [ "$pushed" = "1" ]; then
+              echo "rawbase=https://raw.githubusercontent.com/${REPO}/$(git rev-parse HEAD)/${DIR}" >> "$GITHUB_OUTPUT"
+            else
+              echo "push失敗: 5回再試行しても成功しませんでした（壊れた画像リンクを投稿しない）" >&2
+              exit 1
+            fi )
 
       - name: PR に sticky コメント投稿/更新
         if: success()   # 0件時も実行し、既存コメントを「対象なし」に更新（陳腐化防止）

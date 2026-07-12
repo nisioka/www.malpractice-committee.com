@@ -34,10 +34,16 @@ def main(argv) -> int:
         "（マージ前の見た目確認用）。",
         "",
     ]
-    for png, rel, label in rows:
+    for row in rows:
+        png, rel, label = row[0], row[1], row[2]
+        src_url = row[3] if len(row) > 3 else ""
+        src_name = row[4] if len(row) > 4 else ""
         out.append(f"<details open><summary><b><code>{label}</code></b> &nbsp; "
                    f"<code>{rel}</code></summary>")
         out.append("")
+        if src_url:
+            out.append(f"🔗 **出典**: [{src_name or src_url}]({src_url})")
+            out.append("")
         out.append(f"![{label}]({rawbase}/{png})")
         out.append("")
         out.append("</details>")

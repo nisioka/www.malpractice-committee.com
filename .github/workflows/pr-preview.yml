@@ -1,0 +1,109 @@
+# このPRで追加/変更された HTML ページを実CSS付きでスクショし、PRにコメント投稿する。
+# 新規ページを決め打ちしないので、今後の新記事も自動的にプレビュー対象になる。
+name: PR プレビュー（変更ページのスクショ）
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write        # pr-previews ブランチへ画像を push
+  pull-requests: write   # PR にコメント
+
+concurrency:
+  group: pr-preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout（履歴全部＝diff用）
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false   # PR由来コードにpush資格情報を残さない（公開・comment は専用tokenで実施）
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 日本語フォント導入（ランナーにJPフォントが無く豆腐化するため）
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+
+      - name: 変更ページを描画（GitHubランナーには Chrome が同梱）
+        id: render
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+          BASE_REF: ${{ github.base_ref }}   # ${{ }}をrun内に直接埋め込まない（インジェクション対策）
+        run: |
+          git fetch --depth=1 origin "$BASE_REF"
+          python3 _automation/pr_preview.py --base "origin/$BASE_REF" --out /tmp/previews
+          count=$(ls /tmp/previews/*.png 2>/dev/null | wc -l)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "描画ページ数: $count"
+
+      - name: 画像を pr-previews ブランチへ公開
+        if: steps.render.outputs.count != '0'
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          PR="${{ github.event.number }}"
+          REPO="${{ github.repository }}"
+          DIR="pr-${PR}"
+          URL="https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          tmp="$(mktemp -d)"
+          if git clone --depth=1 --branch pr-previews "$URL" "$tmp" 2>/dev/null; then
+            :
+          else
+            git clone --depth=1 "$URL" "$tmp"
+            ( cd "$tmp"
+              git checkout --orphan pr-previews
+              git rm -rf . >/dev/null 2>&1 || true
+              printf 'PR プレビュー画像の保管用ブランチ（自動生成・削除可）\n' > README.md )
+          fi
+          ( cd "$tmp"
+            rm -rf "$DIR"; mkdir -p "$DIR"
+            cp /tmp/previews/*.png /tmp/previews/manifest.tsv "$DIR"/
+            git config user.name  "pr-preview-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "preview: PR #${PR}" || echo "変更なし"
+            # 別PRのジョブが同時に pr-previews を更新した場合に備え rebase して再試行
+            pushed=0
+            for attempt in 1 2 3 4 5; do
+              if git push origin pr-previews; then pushed=1; break; fi
+              echo "push競合、rebaseして再試行 ($attempt)"
+              git fetch origin pr-previews && git rebase origin/pr-previews || git rebase --abort
+              sleep $((attempt * 3))
+            done
+            if [ "$pushed" = "1" ]; then
+              echo "rawbase=https://raw.githubusercontent.com/${REPO}/$(git rev-parse HEAD)/${DIR}" >> "$GITHUB_OUTPUT"
+            else
+              echo "push失敗: 5回再試行しても成功しませんでした（壊れた画像リンクを投稿しない）" >&2
+              exit 1
+            fi )
+
+      - name: PR に sticky コメント投稿/更新
+        if: success()   # 0件時も実行し、既存コメントを「対象なし」に更新（陳腐化防止）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          python3 _automation/pr_preview_comment.py \
+            /tmp/previews/manifest.tsv "${{ steps.publish.outputs.rawbase }}" > /tmp/body.md
+          MARKER='<!-- pr-preview-bot -->'
+          CID=$(gh api "repos/${{ github.repository }}/issues/${{ github.event.number }}/comments" \
+                  --paginate --jq ".[] | select(.body | contains(\"$MARKER\")) | .id" | head -1)
+          if [ -n "$CID" ]; then
+            gh api -X PATCH "repos/${{ github.repository }}/issues/comments/${CID}" \
+              -F body=@/tmp/body.md >/dev/null
+            echo "コメント更新: $CID"
+          else
+            gh api -X POST "repos/${{ github.repository }}/issues/${{ github.event.number }}/comments" \
+              -F body=@/tmp/body.md >/dev/null
+            echo "コメント新規投稿"
+          fi

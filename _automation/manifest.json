@@ -120,6 +120,7 @@
   "twmu": "東京女子医科大学病院",
   "kasukabe-cityhp": "春日部市立病院",
   "furukisanfujinka": "ふるき産婦人科",
+  "osaka-metro-u": "大阪公立大学医学部附属病院",
   "hosp-u-toyama": "富山大病院",
   "aomori-kenbyo": "青森県立中央病院",
   "scchr": "静岡がんセンター",
@@ -138,6 +139,13 @@
   "hemc": "兵庫県災害医療センター"
  },
  "posts": [
+  {
+   "post_id": 1071,
+   "category_slug": "osaka-metro-u",
+   "date": "2026-07-11T10:00:00+09:00",
+   "title": "頸椎手術でスクリュー誤挿入、四肢まひ　旧大阪市立大学病院に約4400万円の賠償命令",
+   "slug": "cervical-screw-misplacement"
+  },
   {
    "post_id": 1070,
    "category_slug": "kyoto-u",

@@ -22,11 +22,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false   # PR由来コードにpush資格情報を残さない（公開・comment は専用tokenで実施）
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: 日本語フォント導入（ランナーにJPフォントが無く豆腐化するため）
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
 
       - name: 変更ページを描画（GitHubランナーには Chrome が同梱）
         id: render
@@ -78,7 +82,7 @@ jobs:
             echo "rawbase=https://raw.githubusercontent.com/${REPO}/$(git rev-parse HEAD)/${DIR}" >> "$GITHUB_OUTPUT" )
 
       - name: PR に sticky コメント投稿/更新
-        if: steps.render.outputs.count != '0'
+        if: success()   # 0件時も実行し、既存コメントを「対象なし」に更新（陳腐化防止）
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

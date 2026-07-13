@@ -110,6 +110,7 @@
   "hyogo-cc": "兵庫県立がんセンター",
   "nishihosp": "兵庫県立西宮病院",
   "hyogo-kodomo": "兵庫県立こども病院",
+  "osaka-metro-u": "大阪公立大学医学部附属病院",
   "sbthp": "新発田病院",
   "west-medical-center-city-nagoya": "名古屋市立西部医療センター病院",
   "chuo-kcho": "神戸市立医療センター中央市民病院",
@@ -120,7 +121,6 @@
   "twmu": "東京女子医科大学病院",
   "kasukabe-cityhp": "春日部市立病院",
   "furukisanfujinka": "ふるき産婦人科",
-  "osaka-metro-u": "大阪公立大学医学部附属病院",
   "hosp-u-toyama": "富山大病院",
   "aomori-kenbyo": "青森県立中央病院",
   "scchr": "静岡がんセンター",
@@ -139,6 +139,13 @@
   "hemc": "兵庫県災害医療センター"
  },
  "posts": [
+  {
+   "post_id": 1072,
+   "category_slug": "chp-kagawa",
+   "date": "2026-07-13T10:00:00+09:00",
+   "title": "ロボット手術後に出血性ショックで死亡　香川県立中央病院、遺族に3200万円賠償へ",
+   "slug": "robot-surgery-hemostasis-death"
+  },
   {
    "post_id": 1071,
    "category_slug": "osaka-metro-u",

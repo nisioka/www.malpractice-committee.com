@@ -187,67 +187,116 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
       <section class="post-content" itemprop="text">
       
       
-<p>医療ミス・医療過誤・医療事故を報じた病院の索引です。全125病院・211記事を五十音順にまとめています。病院名をクリックすると、その病院の記事一覧が開きます。</p>
+<div class="hidx">
+<style>
+.hidx{--hidx-accent:#0b6ea8;line-height:1.7}
+.hidx .hidx-summary{margin:.2em 0 1em;color:#444}
+.hidx .hidx-summary strong{color:var(--hidx-accent)}
+.hidx-tools{position:sticky;top:0;z-index:5;background:#fff;
+  padding:.5em 0 .4em;margin-bottom:1em;border-bottom:1px solid #e2e2e2}
+.hidx-tools input[type=search]{width:100%;box-sizing:border-box;
+  padding:.6em .8em;font-size:16px;border:1px solid #bbb;border-radius:8px}
+.hidx-nav{display:flex;flex-wrap:wrap;gap:.35em;margin-top:.5em}
+.hidx-nav a{display:inline-block;min-width:2.1em;text-align:center;
+  padding:.3em .1em;border:1px solid #cfd8dd;border-radius:6px;
+  color:var(--hidx-accent);text-decoration:none;font-weight:600;font-size:.95em}
+.hidx-nav a:hover{background:var(--hidx-accent);color:#fff;border-color:var(--hidx-accent)}
+.hidx-row{margin:0 0 1.4em}
+.hidx-row h2{scroll-margin-top:64px;border-left:5px solid var(--hidx-accent);
+  padding:.15em .55em;margin:.2em 0 .5em;font-size:1.15em;background:#f3f7fa}
+.hidx-list{list-style:none;margin:0;padding:0}
+.hidx-item{padding:.4em .2em;border-bottom:1px dotted #e6e6e6}
+.hidx-item.is-hidden{display:none}
+.hidx-hosp{font-weight:600}
+.hidx-count{display:inline-block;margin-left:.45em;padding:0 .5em;
+  font-size:.78em;line-height:1.7;color:#555;background:#eef2f4;border-radius:10px}
+.hidx-sep{color:#bbb;margin:0 .4em}
+.hidx-art{color:#333}
+.hidx-item details>summary{cursor:pointer;list-style:none;display:flex;
+  align-items:center;gap:.1em}
+.hidx-item details>summary::-webkit-details-marker{display:none}
+.hidx-item details>summary::before{content:"\25b6";color:#9aa;font-size:.7em;
+  margin-right:.5em;transition:transform .15s}
+.hidx-item details[open]>summary::before{transform:rotate(90deg)}
+.hidx-sublist{list-style:none;margin:.4em 0 .2em;padding:.2em 0 .2em 1.9em;
+  border-left:2px solid #eef2f4}
+.hidx-sublist li{padding:.2em 0}
+.hidx-noresult{display:none;padding:1em;color:#a33;background:#fff5f5;
+  border:1px solid #f0caca;border-radius:8px}
+.hidx.is-searching .hidx-noresult.is-visible{display:block}
+@media (max-width:600px){.hidx-nav a{min-width:1.9em;padding:.35em 0}}
+</style>
+<p class="hidx-summary">医療ミス・医療過誤・医療事故を報じた病院の索引です。全<strong>125</strong>病院・<strong>211</strong>記事を五十音順にまとめています。病院名で記事一覧へ、記事名で本文へ移動できます。</p>
+<div class="hidx-tools">
+<input type="search" id="hidx-q" placeholder="病院名・記事タイトルで絞り込み…" aria-label="索引を絞り込み" autocomplete="off">
+<nav class="hidx-nav" aria-label="五十音ジャンプ">
+<a href="#row-あ行">あ</a><a href="#row-か行">か</a><a href="#row-さ行">さ</a><a href="#row-た行">た</a><a href="#row-な行">な</a><a href="#row-は行">は</a><a href="#row-ま行">ま</a><a href="#row-や行">や</a><a href="#row-ら行">ら</a><a href="#row-わ行">わ</a>
+</nav>
+</div>
+<p class="hidx-noresult">該当する病院・記事が見つかりませんでした。キーワードを変えてお試しください。</p>
+<div class="hidx-row" id="row-あ行">
 <h2>あ行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/aichi-cancer-center/">愛知県がんセンター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/13-million-yen-reparation/">愛知がんセンター、遺族に１３００万円賠償　医療事故で和解</a></li>
-</ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="愛知県がんセンター あいちけんがんせんたー 愛知がんセンター、遺族に１３００万円賠償　医療事故で和解">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/aichi-cancer-center/">愛知県がんセンター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/13-million-yen-reparation/">愛知がんセンター、遺族に１３００万円賠償　医療事故で和解</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/aomori-kenbyo/">青森県立中央病院</a>（3件）
-<ul>
+<li class="hidx-item" data-text="青森県立中央病院 あおもりけんりっちゅうおうびょういん 青森県立中央病院「医療器具使用ミス」で死亡と提訴 画像確認の改善求める　群大病院ＣＴ診断ミス　事故調報告書 青森県立中央病院 医療事故2件で和解 計3900万の支払">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/aomori-kenbyo/">青森県立中央病院</a><span class="hidx-count">3件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/青森県立中央病院「医療器具使用ミス」で死亡と/">青森県立中央病院「医療器具使用ミス」で死亡と提訴</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/ct-diagnosis-mistake/">画像確認の改善求める　群大病院ＣＴ診断ミス　事故調報告書</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/settled-with-2-medical-accidents/">青森県立中央病院 医療事故2件で和解 計3900万の支払</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/akita-u/">秋田大医学部付属病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/medical-mistakes-cause-obstacles-in-hands-and-arms/">「手や腕に障害、医療ミスが原因」秋田の女性、秋田大を提訴</a></li>
-</ul>
+<li class="hidx-item" data-text="秋田大医学部付属病院 あきただいいがくぶふぞくびょういん 「手や腕に障害、医療ミスが原因」秋田の女性、秋田大を提訴">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/akita-u/">秋田大医学部付属病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/medical-mistakes-cause-obstacles-in-hands-and-arms/">「手や腕に障害、医療ミスが原因」秋田の女性、秋田大を提訴</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/meikai/">明海病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/neglect-definitive-diagnosis/">【明海病院】がん発見遅れで４２００万円支払い命令</a></li>
-</ul>
+<li class="hidx-item" data-text="明海病院 あけみびょういん 【明海病院】がん発見遅れで４２００万円支払い命令">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/meikai/">明海病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/neglect-definitive-diagnosis/">【明海病院】がん発見遅れで４２００万円支払い命令</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/agmc-hyogo/">尼崎総合医療センター</a>（3件）
-<ul>
+<li class="hidx-item" data-text="尼崎総合医療センター あまがさきそうごういりょうせんたー 高校球児の靱帯再建手術でミス　尼崎総合医療センター 投薬ミスで入院７日間延長　尼崎総合医療センター 幼児の足一部壊死　尼崎総合医療センターで事故">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/agmc-hyogo/">尼崎総合医療センター</a><span class="hidx-count">3件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/mistakes-in-surgery-of-high-school-ball-children/">高校球児の靱帯再建手術でミス　尼崎総合医療センター</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/extended-hospital-stay-by-medication-error/">投薬ミスで入院７日間延長　尼崎総合医療センター</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/some-necrosis/">幼児の足一部壊死　尼崎総合医療センターで事故</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/ishimaki-jrc/">石巻赤十字病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/death-to-forget-disconnect-the-needle/">針を抜き忘れ50代女性死亡　石巻赤十字病院</a></li>
-</ul>
+<li class="hidx-item" data-text="石巻赤十字病院 いしのまきせきじゅうじびょういん 針を抜き忘れ50代女性死亡　石巻赤十字病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/ishimaki-jrc/">石巻赤十字病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/death-to-forget-disconnect-the-needle/">針を抜き忘れ50代女性死亡　石巻赤十字病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/ise-jrc/">伊勢赤十字病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="伊勢赤十字病院 いせせきじゅうじびょういん 伊勢赤十字病院 伊勢赤十字病院 人工透析後死亡、遺族と示談成立　／三重">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/ise-jrc/">伊勢赤十字病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/ise-jrc/">伊勢赤十字病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/the-settlement-established/">伊勢赤十字病院 人工透析後死亡、遺族と示談成立　／三重</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/municipal-hospital-ichinomiya/">一宮市民病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="一宮市民病院 いちのみやしみんびょういん 愛知・一宮市が医療ミス認め５０００万円支払い　１０歳男児死亡をめぐり和解 愛知・一宮市が医療ミス認める　１０歳男児死亡をめぐり和解">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/municipal-hospital-ichinomiya/">一宮市民病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/admit-medical-errors/">愛知・一宮市が医療ミス認め５０００万円支払い　１０歳男児死亡をめぐり和解</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/settlement-of-medical-malpractice/">愛知・一宮市が医療ミス認める　１０歳男児死亡をめぐり和解</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/imazu/">今津赤十字病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/left-intractable-patient-in-toilet-for-2-hours/">難病患者をトイレに２時間放置 １か月後に死亡</a></li>
-</ul>
+<li class="hidx-item" data-text="今津赤十字病院 いまづせきじゅうじびょういん 難病患者をトイレに２時間放置 １か月後に死亡">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/imazu/">今津赤十字病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/left-intractable-patient-in-toilet-for-2-hours/">難病患者をトイレに２時間放置 １か月後に死亡</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/ninohe-hp/">岩手県立二戸病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/prefecture-seek-dismissal/">医療過誤で賠償、県が棄却求める　地裁・第１回弁論　／岩手</a></li>
-</ul>
+<li class="hidx-item" data-text="岩手県立二戸病院 いわてけんりつにのへびょういん 医療過誤で賠償、県が棄却求める　地裁・第１回弁論　／岩手">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/ninohe-hp/">岩手県立二戸病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/prefecture-seek-dismissal/">医療過誤で賠償、県が棄却求める　地裁・第１回弁論　／岩手</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/edogawa-hospital/">江戸川病院</a>（8件）
-<ul>
+<li class="hidx-item" data-text="江戸川病院 えどがわびょういん 江戸川病院、肝生検後の患者死亡で提訴される（報道） 【動画】検査入院直後、容体が急変し死亡　江戸川病院 「見殺しです」検査2日後に死亡　江戸川病院で医療ミスか 江戸川病院で腎移植の患者死亡　業務上過失致死容疑で捜査 江戸川病院 医療ミスを認めぬ江戸川病院、内部告発で火葬直前に警察解剖 【狂気の世界】江戸川病院の内装が怖すぎると話題に！ 江戸川病院で医療ミスか。25歳男性が検査後に死亡。">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/edogawa-hospital/">江戸川病院</a><span class="hidx-count">8件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/patients-after-liver-biopsy/">江戸川病院、肝生検後の患者死亡で提訴される（報道）</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/sudden-death-immediately-after-inspection-hospitalization/">【動画】検査入院直後、容体が急変し死亡　江戸川病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/letting-die-without-helping/">「見殺しです」検査2日後に死亡　江戸川病院で医療ミスか</a></li>
@@ -257,132 +306,123 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 <li><a href="https://www.malpractice-committee.tech.server-on.net/mad-hospital/">【狂気の世界】江戸川病院の内装が怖すぎると話題に！</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/edogawa-hospital-malpractice/">江戸川病院で医療ミスか。25歳男性が検査後に死亡。</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/ogaki-mh/">大垣市民病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="大垣市民病院 おおがきしみんびょういん 大垣市民病院、医療ミス　手術部位誤る 大垣市民病院 医療事故に絡む患者死亡で和解　／岐阜">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/ogaki-mh/">大垣市民病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/wrong-surgical-site/">大垣市民病院、医療ミス　手術部位誤る</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/malpractice-settlement/">大垣市民病院 医療事故に絡む患者死亡で和解　／岐阜</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/jikei-o/">大口病院</a>（3件）
-<ul>
+<li class="hidx-item" data-text="大口病院 おおぐちびょういん 横浜・病院殺人 消毒液が点滴に混入か ゴム栓部から注入？ 大口病院４階で４８人死亡　今年７～９月に　１日に５人も 大口病院殺人 消毒液が点滴に混入か ゴム栓部分から注入？">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/jikei-o/">大口病院</a><span class="hidx-count">3件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/hospital-murder-2/">横浜・病院殺人 消毒液が点滴に混入か ゴム栓部から注入？</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/48-deaths/">大口病院４階で４８人死亡　今年７～９月に　１日に５人も</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/hospital-murder/">大口病院殺人 消毒液が点滴に混入か ゴム栓部分から注入？</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/osaka-metro-u/">大阪公立大学医学部附属病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/cervical-screw-misplacement/">頸椎手術でスクリュー誤挿入、四肢まひ　旧大阪市立大学病院に約4400万円の賠償命令</a></li>
-</ul>
+<li class="hidx-item" data-text="大阪公立大学医学部附属病院 おおさかこうりつだいがくいがくぶふぞくびょういん 頸椎手術でスクリュー誤挿入、四肢まひ　旧大阪市立大学病院に約4400万円の賠償命令">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/osaka-metro-u/">大阪公立大学医学部附属病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/cervical-screw-misplacement/">頸椎手術でスクリュー誤挿入、四肢まひ　旧大阪市立大学病院に約4400万円の賠償命令</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/osakacity-hp/">大阪市立総合医療センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/left-and-right-reverse-by-mistake/">放射線技師、偽装のＸ線画像送る　誤って左右逆に撮影</a></li>
-</ul>
+<li class="hidx-item" data-text="大阪市立総合医療センター おおさかしりつそうごういりょうせんたー 放射線技師、偽装のＸ線画像送る　誤って左右逆に撮影">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/osakacity-hp/">大阪市立総合医療センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/left-and-right-reverse-by-mistake/">放射線技師、偽装のＸ線画像送る　誤って左右逆に撮影</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/gh-opho/">大阪府立医療センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/administration-erroneous-muscle-relaxant/">筋弛緩剤誤投与の薬剤師ら懲戒処分　大阪府立医療センター</a></li>
-</ul>
+<li class="hidx-item" data-text="大阪府立医療センター おおさかふりついりょうせんたー 筋弛緩剤誤投与の薬剤師ら懲戒処分　大阪府立医療センター">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/gh-opho/">大阪府立医療センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/administration-erroneous-muscle-relaxant/">筋弛緩剤誤投与の薬剤師ら懲戒処分　大阪府立医療センター</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/h-osaki/">大崎市民病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/ovariectomy/">大崎市民病院が医療ミス　正常な卵巣を切除</a></li>
-</ul>
+<li class="hidx-item" data-text="大崎市民病院 おおさきしみんびょういん 大崎市民病院が医療ミス　正常な卵巣を切除">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/h-osaki/">大崎市民病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/ovariectomy/">大崎市民病院が医療ミス　正常な卵巣を切除</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hosp-pref-okinawa/">沖縄県立中部病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/delay-in-serum-administration/">ハブ被害で医療ミス、血清投与遅れ　男性が中部病院を提訴</a></li>
-</ul>
+<li class="hidx-item" data-text="沖縄県立中部病院 おきなわけんりっちゅうぶびょういん ハブ被害で医療ミス、血清投与遅れ　男性が中部病院を提訴">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hosp-pref-okinawa/">沖縄県立中部病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/delay-in-serum-administration/">ハブ被害で医療ミス、血清投与遅れ　男性が中部病院を提訴</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/city-odawara/">小田原市立病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/alse-description-of-the-blood-type/">小田原市立病院で妊婦に医療ミス、血液型誤り投与怠る</a></li>
-</ul>
+<li class="hidx-item" data-text="小田原市立病院 おだわらしりつびょういん 小田原市立病院で妊婦に医療ミス、血液型誤り投与怠る">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/city-odawara/">小田原市立病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/alse-description-of-the-blood-type/">小田原市立病院で妊婦に医療ミス、血液型誤り投与怠る</a>
 </li>
 </ul>
+</div>
+<div class="hidx-row" id="row-か行">
 <h2>か行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/chp-kagawa/">香川県立中央病院</a>（2件）
-<ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="香川県立中央病院 かがわけんりっちゅうおうびょういん ロボット手術後に出血性ショックで死亡　香川県立中央病院、遺族に3200万円賠償へ 【医療事故】香川県立中央病院　がんを見落とし患者が死亡">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/chp-kagawa/">香川県立中央病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/robot-surgery-hemostasis-death/">ロボット手術後に出血性ショックで死亡　香川県立中央病院、遺族に3200万円賠償へ</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/oversight-cancer/">【医療事故】香川県立中央病院　がんを見落とし患者が死亡</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kasukabe-cityhp/">春日部市立病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/bereaved-family-and-the-settlement-was-reached/">春日部市立病院の医療過誤訴訟 遺族と和解成立　／埼玉</a></li>
-</ul>
+<li class="hidx-item" data-text="春日部市立病院 かすかべしりつびょういん 春日部市立病院の医療過誤訴訟 遺族と和解成立　／埼玉">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kasukabe-cityhp/">春日部市立病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/bereaved-family-and-the-settlement-was-reached/">春日部市立病院の医療過誤訴訟 遺族と和解成立　／埼玉</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/ashigarakami/">神奈川県立足柄上病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/inadequate-disinfection/">消毒不十分の内視鏡を10人に使用、県立足柄上病院で</a></li>
-</ul>
+<li class="hidx-item" data-text="神奈川県立足柄上病院 かながわけんりつあしがらかみびょういん 消毒不十分の内視鏡を10人に使用、県立足柄上病院で">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/ashigarakami/">神奈川県立足柄上病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/inadequate-disinfection/">消毒不十分の内視鏡を10人に使用、県立足柄上病院で</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kanagawa-pho/">神奈川県立病院機構</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/critically-ill-patients-to-the-blood-transfusion-mistake/">重症患者に輸血ミス、さらに容体悪化　神奈川の県立病院</a></li>
-</ul>
+<li class="hidx-item" data-text="神奈川県立病院機構 かながわけんりつびょういんきこう 重症患者に輸血ミス、さらに容体悪化　神奈川の県立病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kanagawa-pho/">神奈川県立病院機構</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/critically-ill-patients-to-the-blood-transfusion-mistake/">重症患者に輸血ミス、さらに容体悪化　神奈川の県立病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/toyota-kai/">刈谷豊田総合病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="刈谷豊田総合病院 かりやとよだそうごうびょういん ７歳死亡、刈谷豊田総合病院側認め　6600万円支払命令 医療事故調査制度で過失認定　病院反発、遺族が提訴">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/toyota-kai/">刈谷豊田総合病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/accept-medical-errors/">７歳死亡、刈谷豊田総合病院側認め　6600万円支払命令</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/negligence-certified-system/">医療事故調査制度で過失認定　病院反発、遺族が提訴</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/city-kitakyushu/">北九州市立医療センター</a>（2件）
-<ul>
+<li class="hidx-item" data-text="北九州市立医療センター きたきゅうしゅうしりついりょうせんたー 医療ミス 北九州市と４０代男性が示談　／福岡 左脚まひ、和解協議へ　北九州市立医療センター　／福岡">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/city-kitakyushu/">北九州市立医療センター</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/out-of-court/">医療ミス 北九州市と４０代男性が示談　／福岡</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/left-leg-paralysis/">左脚まひ、和解協議へ　北九州市立医療センター　／福岡</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kitasato-u/">北里研究所病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/frequent-medical-accidents/">相模原北里大学病院救命救急センターの医療事故多発</a></li>
-</ul>
+<li class="hidx-item" data-text="北里研究所病院 きたざとけんきゅうしょびょういん 相模原北里大学病院救命救急センターの医療事故多発">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kitasato-u/">北里研究所病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/frequent-medical-accidents/">相模原北里大学病院救命救急センターの医療事故多発</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kc-hospital/">杵築中央病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/foot-cut-due-to-worsening-infection/">感染症悪化で足切断 杵築中央病院、医療ミス認める</a></li>
-</ul>
+<li class="hidx-item" data-text="杵築中央病院 きつきちゅうおうびょういん 感染症悪化で足切断 杵築中央病院、医療ミス認める">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kc-hospital/">杵築中央病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/foot-cut-due-to-worsening-infection/">感染症悪化で足切断 杵築中央病院、医療ミス認める</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kyushu-u/">九州大学病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/150-million-yen-payment-order/">医療ミスで九大病院に1.5億円支払い命令</a></li>
-</ul>
+<li class="hidx-item" data-text="九州大学病院 きゅうしゅうだいがくびょういん 医療ミスで九大病院に1.5億円支払い命令">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kyushu-u/">九州大学病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/150-million-yen-payment-order/">医療ミスで九大病院に1.5億円支払い命令</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kyoto-u/">京都大学医学部付属病院</a>（5件）
-<ul>
+<li class="hidx-item" data-text="京都大学医学部付属病院 きょうとだいがくいがくぶふぞくびょういん 京大病院、医療ミス重なり男性死亡　誤点滴や蘇生措置で 手術で心臓を損傷、患者死亡　京大病院、医療事故を公表 処方薬の濃度738倍で患者死亡　院内製剤の医療ミス 医療ミスで肺機能低下「切る必要ない所を切った」京大病院 京都大学医学部付属病院で機器の取り違え医療ミス">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kyoto-u/">京都大学医学部付属病院</a><span class="hidx-count">5件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/many-medical-mistakes/">京大病院、医療ミス重なり男性死亡　誤点滴や蘇生措置で</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/damage-the-heart/">手術で心臓を損傷、患者死亡　京大病院、医療事故を公表</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/prescription-drug-concentration-738-times/">処方薬の濃度738倍で患者死亡　院内製剤の医療ミス</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/pulmonary-function-deterioration-due-to-medical-error/">医療ミスで肺機能低下「切る必要ない所を切った」京大病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/mix-up-of-equipment/">京都大学医学部付属病院で機器の取り違え医療ミス</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/gmhosp/">岐阜市民病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/compensation-to-the-bereaved-family/">医療事故認め２０３３万円　女性患者遺族に賠償へ　／岐阜</a></li>
-</ul>
+<li class="hidx-item" data-text="岐阜市民病院 ぎふしたみびょういん 医療事故認め２０３３万円　女性患者遺族に賠償へ　／岐阜">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/gmhosp/">岐阜市民病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/compensation-to-the-bereaved-family/">医療事故認め２０３３万円　女性患者遺族に賠償へ　／岐阜</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kunisaki-hp/">国東市民病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/patient-in-hospital-died/">医療ミスで１千万円支払いへ　入院中の８０代男性死亡</a></li>
-</ul>
+<li class="hidx-item" data-text="国東市民病院 くにさきしみんびょういん 医療ミスで１千万円支払いへ　入院中の８０代男性死亡">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kunisaki-hp/">国東市民病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/patient-in-hospital-died/">医療ミスで１千万円支払いへ　入院中の８０代男性死亡</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kumamoto-u/">熊本大学医学部附属病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/leave-the-cancer-examination-results-neglected/">熊大病院、がん検査結果を放置　患者の進行がん発見遅れる</a></li>
-</ul>
+<li class="hidx-item" data-text="熊本大学医学部附属病院 くまもとだいがくいがくぶふぞくびょういん 熊大病院、がん検査結果を放置　患者の進行がん発見遅れる">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kumamoto-u/">熊本大学医学部附属病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/leave-the-cancer-examination-results-neglected/">熊大病院、がん検査結果を放置　患者の進行がん発見遅れる</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kurume-u/">久留米大学病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/possibility-that-obstacles-will-remain/">心臓の手術中に医療ミス、障害残る可能性　久留米大病院</a></li>
-</ul>
+<li class="hidx-item" data-text="久留米大学病院 くるめだいがくびょういん 心臓の手術中に医療ミス、障害残る可能性　久留米大病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kurume-u/">久留米大学病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/possibility-that-obstacles-will-remain/">心臓の手術中に医療ミス、障害残る可能性　久留米大病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hospital-med-gunma-university/">群馬大学医学部附属病院</a>（7件）
-<ul>
+<li class="hidx-item" data-text="群馬大学医学部附属病院 ぐんまだいがくいがくぶふぞくびょういん 群大病院また医療ミス　５０代男性、右手足ほとんど動かず 群馬大附属病院 手術後死亡の１３人に治療上の問題 群大病院が遺族側に回答…調査結果出た後「説明の場設ける」 群馬大学医学部附属病院 「手術しなければ延命」…群大問題、遺族側会見 国立大評価委員会が群馬大に「最低評価」 群馬医大の連続医療ミス問題で医療事故調査委員会が初会合">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hospital-med-gunma-university/">群馬大学医学部附属病院</a><span class="hidx-count">7件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/most-work-without-right-hand-and-foot/">群大病院また医療ミス　５０代男性、右手足ほとんど動かず</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/therapeutic-problem/">群馬大附属病院 手術後死亡の１３人に治療上の問題</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/provide-a-forum-for-explanation/">群大病院が遺族側に回答…調査結果出た後「説明の場設ける」</a></li>
@@ -391,20 +431,24 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 <li><a href="https://www.malpractice-committee.tech.server-on.net/kokuritu-shingi/">国立大評価委員会が群馬大に「最低評価」</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/gunma-university-hospital-serial-murders/">群馬医大の連続医療ミス問題で医療事故調査委員会が初会合</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hosp-keio/">慶応義塾大学病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/brain-disorder-in-girls/">「医療ミス認めてほしい」　女児に脳障害　慶応大病院を提訴</a></li>
-</ul>
+<li class="hidx-item" data-text="慶応義塾大学病院 けいおうぎじゅくだいがくびょういん 「医療ミス認めてほしい」　女児に脳障害　慶応大病院を提訴">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hosp-keio/">慶応義塾大学病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/brain-disorder-in-girls/">「医療ミス認めてほしい」　女児に脳障害　慶応大病院を提訴</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/khsc/">高知医療センター</a>（2件）
-<ul>
+<li class="hidx-item" data-text="高知医療センター こうちいりょうせんたー 高知医療センターが事故2件公表　吸入薬を注射し一時心肺停止 高知医療センターが事務ミスと医療ミスを報告">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/khsc/">高知医療センター</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/inhalation-medication-mistakenly-injected/">高知医療センターが事故2件公表　吸入薬を注射し一時心肺停止</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/secretary-misses-and-medical-malpractice/">高知医療センターが事務ミスと医療ミスを報告</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kifmec/">神戸国際フロンティアメディカルセンター</a>（6件）
-<ul>
+<li class="hidx-item" data-text="神戸国際フロンティアメディカルセンター こうべこくさいふろんてぃあめでぃかるせんたー 神戸の病院で、再開した生体肝移植で患者死亡　９例目で５人 神戸・生体肝移植問題　神戸市は８日に立ち入り検査へ 【賛否両論】生体肝移植再開　神戸の患者４人死亡の病院 生体肝移植患者死亡で緊急討論も　神戸で日本肝移植研究会 生体肝移植問題、神戸の病院が研究会に異議申し立てへ 生体肝移植で患者７人中４人死亡【神戸国際FMEC】">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kifmec/">神戸国際フロンティアメディカルセンター</a><span class="hidx-count">6件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/restart-and-dead/">神戸の病院で、再開した生体肝移植で患者死亡　９例目で５人</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/on-the-spot-inspection/">神戸・生体肝移植問題　神戸市は８日に立ち入り検査へ</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/living-donor-liver-transplant-surgery-restart/">【賛否両論】生体肝移植再開　神戸の患者４人死亡の病院</a></li>
@@ -412,194 +456,180 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 <li><a href="https://www.malpractice-committee.tech.server-on.net/objection/">生体肝移植問題、神戸の病院が研究会に異議申し立てへ</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/living-donor-liver-transplant-surgery/">生体肝移植で患者７人中４人死亡【神戸国際FMEC】</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/chuo-kcho/">神戸市立医療センター中央市民病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="神戸市立医療センター中央市民病院 こうべしりついりょうせんたーちゅうおうしみんびょういん 神戸・中央市民病院で医療ミス　肝臓の腫瘍見落とす 新旧の人工器具、誤って埋め込む　神戸市立中央市民病院">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/chuo-kcho/">神戸市立医療センター中央市民病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/overlook-liver-tumor/">神戸・中央市民病院で医療ミス　肝臓の腫瘍見落とす</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/embedding-the-wrong-prosthesis/">新旧の人工器具、誤って埋め込む　神戸市立中央市民病院</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/nishi-kcho/">神戸市立医療センター西市民病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="神戸市立医療センター西市民病院 こうべしりついりょうせんたーにしいちたみびょういん 神戸・西市民病院で死亡の男性　発信機が電池切れ 手術で後遺症女性　７千万円支払いで病院側と和解">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/nishi-kcho/">神戸市立医療センター西市民病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/transmitter-is-out-of-battery/">神戸・西市民病院で死亡の男性　発信機が電池切れ</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/after-effects-in-surgery/">手術で後遺症女性　７千万円支払いで病院側と和解</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/toyookahp-kumiai/">公立豊岡病院組合日高医療センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/lack-stomach-camera-cleaning/">胃カメラ洗浄不足、９００人検査へ　日高医療センター</a></li>
-</ul>
+<li class="hidx-item" data-text="公立豊岡病院組合日高医療センター こうりつとよおかびょういんくみあいひだかいりょうせんたー 胃カメラ洗浄不足、９００人検査へ　日高医療センター">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/toyookahp-kumiai/">公立豊岡病院組合日高医療センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/lack-stomach-camera-cleaning/">胃カメラ洗浄不足、９００人検査へ　日高医療センター</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/ncgm/">国立国際医療研究センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/injection-false-contrast-agent/">造影剤誤注入で患者死亡、医師に有罪判決「初歩的ミス」</a></li>
-</ul>
+<li class="hidx-item" data-text="国立国際医療研究センター こくりつこくさいいりょうけんきゅうせんたー 造影剤誤注入で患者死亡、医師に有罪判決「初歩的ミス」">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/ncgm/">国立国際医療研究センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/injection-false-contrast-agent/">造影剤誤注入で患者死亡、医師に有罪判決「初歩的ミス」</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/ncchd/">国立成育医療研究センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/malpractice/">国立成育医療研究センターで医療事故</a></li>
-</ul>
+<li class="hidx-item" data-text="国立成育医療研究センター こくりつせいいくいりょうけんきゅうせんたー 国立成育医療研究センターで医療事故">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/ncchd/">国立成育医療研究センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/malpractice/">国立成育医療研究センターで医療事故</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hosp-go/">国立病院機構大阪南医療センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/died-of-cancerous-peritonitis/">悪性なのに良性と誤診…国立病院機構大阪南医療センター</a></li>
-</ul>
+<li class="hidx-item" data-text="国立病院機構大阪南医療センター こくりつびょういんきこうおおさかみなみいりょうせんたー 悪性なのに良性と誤診…国立病院機構大阪南医療センター">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hosp-go/">国立病院機構大阪南医療センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/died-of-cancerous-peritonitis/">悪性なのに良性と誤診…国立病院機構大阪南医療センター</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/dokkyomed/">越谷病院-獨協医科大学</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/medical-errors-in-lung-cancer-surgery/">肺がん手術で死亡の男性遺族が医師と獨協医大越谷病院提訴</a></li>
-</ul>
+<li class="hidx-item" data-text="越谷病院-獨協医科大学 こしがやびょういん-どっきょういかだいがく 肺がん手術で死亡の男性遺族が医師と獨協医大越谷病院提訴">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/dokkyomed/">越谷病院-獨協医科大学</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/medical-errors-in-lung-cancer-surgery/">肺がん手術で死亡の男性遺族が医師と獨協医大越谷病院提訴</a>
 </li>
 </ul>
+</div>
+<div class="hidx-row" id="row-さ行">
 <h2>さ行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/saitama-med/">埼玉医科大学病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/dismiss-the-plaintiffs-request/">「脳手術は妥当」原告の請求棄却　地裁高崎支部判決</a></li>
-</ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="埼玉医科大学病院 さいたまいかだいがくびょういん 「脳手術は妥当」原告の請求棄却　地裁高崎支部判決">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/saitama-med/">埼玉医科大学病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/dismiss-the-plaintiffs-request/">「脳手術は妥当」原告の請求棄却　地裁高崎支部判決</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hp-heart/">榊原記念病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/acked-attention-to-anesthesia-management/">２歳死亡は医療ミス「麻酔管理の注意欠いた」　東京地裁</a></li>
-</ul>
+<li class="hidx-item" data-text="榊原記念病院 さかきばらきねんびょういん ２歳死亡は医療ミス「麻酔管理の注意欠いた」　東京地裁">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hp-heart/">榊原記念病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/acked-attention-to-anesthesia-management/">２歳死亡は医療ミス「麻酔管理の注意欠いた」　東京地裁</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/koseikan/">佐賀県医療センター好生館</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/sequelae-because-of-surgery/">好生館　１０００万円支払い和解　手術で後遺症の男性と</a></li>
-</ul>
+<li class="hidx-item" data-text="佐賀県医療センター好生館 さがけんいりょうせんたーよしおかん 好生館　１０００万円支払い和解　手術で後遺症の男性と">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/koseikan/">佐賀県医療センター好生館</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/sequelae-because-of-surgery/">好生館　１０００万円支払い和解　手術で後遺症の男性と</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hospital-med-saga-u/">佐賀大学医学部附属病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/sequelae-by-the-inspection-delay/">ＭＲＩ検査遅れ後遺症…佐賀大学医学部附属病院で医療ミス</a></li>
-</ul>
+<li class="hidx-item" data-text="佐賀大学医学部附属病院 さがだいがくいがくぶふぞくびょういん ＭＲＩ検査遅れ後遺症…佐賀大学医学部附属病院で医療ミス">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hospital-med-saga-u/">佐賀大学医学部附属病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/sequelae-by-the-inspection-delay/">ＭＲＩ検査遅れ後遺症…佐賀大学医学部附属病院で医療ミス</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/sh-wsc/">桜ヒルズウィメンズクリニック</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/death-after-giving-birth/">出産後死亡　仙台の医院に賠償求め遺族　／宮城</a></li>
-</ul>
+<li class="hidx-item" data-text="桜ヒルズウィメンズクリニック さくらひるずうぃめんずくりにっく 出産後死亡　仙台の医院に賠償求め遺族　／宮城">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/sh-wsc/">桜ヒルズウィメンズクリニック</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/death-after-giving-birth/">出産後死亡　仙台の医院に賠償求め遺族　／宮城</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kouseiren-sanjo/">三条総合病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/misplacement-of-cirrhosis-drugs/">投薬ミスで男性死亡　三条総合病院、肝硬変治療薬取り違え</a></li>
-</ul>
+<li class="hidx-item" data-text="三条総合病院 さんじょうそうごうびょういん 投薬ミスで男性死亡　三条総合病院、肝硬変治療薬取り違え">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kouseiren-sanjo/">三条総合病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/misplacement-of-cirrhosis-drugs/">投薬ミスで男性死亡　三条総合病院、肝硬変治療薬取り違え</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/scchr/">静岡がんセンター</a>（2件）
-<ul>
+<li class="hidx-item" data-text="静岡がんセンター しずおかがんせんたー 投与ミスで死亡 抗癌剤データ記録せず 静岡がんセンター インスリン投与で意識障害　患者死亡も「関係不明」　静岡県立がんセンター">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/scchr/">静岡がんセンター</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/not-record-data-on-anticancer-drugs/">投与ミスで死亡 抗癌剤データ記録せず 静岡がんセンター</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/disturbance-of-consciousness-in-insulin-administration/">インスリン投与で意識障害　患者死亡も「関係不明」　静岡県立がんセンター</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/siz-saiseikai/">静岡済生会総合病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="静岡済生会総合病院 しずおかさいせいかいそうごうびょういん 静岡済生会総合病院 静岡済生会総合病院　ＣＴ検査での見落としにより患者死亡">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/siz-saiseikai/">静岡済生会総合病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/siz-saiseikai/">静岡済生会総合病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/computed-tomographic-scanning/">静岡済生会総合病院　ＣＴ検査での見落としにより患者死亡</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/shimizuhospital/">静岡市立清水病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/malpractice-2/">医療ミスで死亡、高齢患者遺族に賠償　静岡市立清水病院</a></li>
-</ul>
+<li class="hidx-item" data-text="静岡市立清水病院 しずおかしりつしみずびょういん 医療ミスで死亡、高齢患者遺族に賠償　静岡市立清水病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/shimizuhospital/">静岡市立清水病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/malpractice-2/">医療ミスで死亡、高齢患者遺族に賠償　静岡市立清水病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/sbthp/">新発田病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/no-detailed-inspection/">新潟県立新発田病院で医療事故。精密検査が実施されず</a></li>
-</ul>
+<li class="hidx-item" data-text="新発田病院 しばたびょういん 新潟県立新発田病院で医療事故。精密検査が実施されず">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/sbthp/">新発田病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/no-detailed-inspection/">新潟県立新発田病院で医療事故。精密検査が実施されず</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/city-kofu-hp/">市立甲府病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="市立甲府病院 しりつこうふびょういん 鼻の手術で医療ミス　今年４件目、賠償金１３００万円支払う 市立甲府病院で医療ミス、２人と和解">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/city-kofu-hp/">市立甲府病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/4th-medical-mistake-this-year/">鼻の手術で医療ミス　今年４件目、賠償金１３００万円支払う</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/settling-with-two-people-due-to-medical-errors/">市立甲府病院で医療ミス、２人と和解</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hirakatacity-hp/">市立ひらかた病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/medical-accident-in-girls/">ひらかた病院 医療事故で和解　市と患者家族　／大阪</a></li>
-</ul>
+<li class="hidx-item" data-text="市立ひらかた病院 しりつひらかたびょういん ひらかた病院 医療事故で和解　市と患者家族　／大阪">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hirakatacity-hp/">市立ひらかた病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/medical-accident-in-girls/">ひらかた病院 医療事故で和解　市と患者家族　／大阪</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/shin-kokura/">新小倉病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/lung-surgery-mistake/">肺手術ミスで死亡　新小倉病院側が和解</a></li>
-</ul>
+<li class="hidx-item" data-text="新小倉病院 しんおぐらびょういん 肺手術ミスで死亡　新小倉病院側が和解">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/shin-kokura/">新小倉病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/lung-surgery-mistake/">肺手術ミスで死亡　新小倉病院側が和解</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/tenjinkai/">新古賀病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/unaware-and-intestinal-obstruction/">「腸閉塞と気づかず」…医師が措置遅れ５千万円賠償　福岡・久留米の病院</a></li>
-</ul>
+<li class="hidx-item" data-text="新古賀病院 しんこがびょういん 「腸閉塞と気づかず」…医師が措置遅れ５千万円賠償　福岡・久留米の病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/tenjinkai/">新古賀病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/unaware-and-intestinal-obstruction/">「腸閉塞と気づかず」…医師が措置遅れ５千万円賠償　福岡・久留米の病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/jikei/">慈恵会医科大学附属病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="慈恵会医科大学附属病院 じけいかいいかだいがくふぞくびょういん 2人とも&amp;#8221;医療事故&amp;#8221;で死亡した夫婦の悲劇【慈恵医大病院】 慈恵会医科大学附属病院の青戸病院からの医療事故報告">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/jikei/">慈恵会医科大学附属病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/both-couple-died-in-medical-accident/">2人とも&amp;#8221;医療事故&amp;#8221;で死亡した夫婦の悲劇【慈恵医大病院】</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/apology/">慈恵会医科大学附属病院の青戸病院からの医療事故報告</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/juntendo/">順天堂医院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/worsening-condition-after-infusion-interruption/">順天堂医院に立ち入り検査　点滴中断後「容体悪化」　医療ミスか</a></li>
-</ul>
+<li class="hidx-item" data-text="順天堂医院 じゅんてんどういいん 順天堂医院に立ち入り検査　点滴中断後「容体悪化」　医療ミスか">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/juntendo/">順天堂医院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/worsening-condition-after-infusion-interruption/">順天堂医院に立ち入り検査　点滴中断後「容体悪化」　医療ミスか</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hirohata-hp/">製鉄記念広畑病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/injection-erroneously-formalin/">ホルマリンを誤注入 患者が告訴状提出</a></li>
-</ul>
+<li class="hidx-item" data-text="製鉄記念広畑病院 せいてつきねんひろはたびょういん ホルマリンを誤注入 患者が告訴状提出">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hirohata-hp/">製鉄記念広畑病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/injection-erroneously-formalin/">ホルマリンを誤注入 患者が告訴状提出</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/stmother/">セントマザー産婦人科医院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="セントマザー産婦人科医院 せんとまざーさんふじんかいいん 不妊治療で死亡、３医師を書類送検　業過致死容疑　福岡県警 遺族らに医療ミス報告せず　不妊治療後に女性死亡">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/stmother/">セントマザー産婦人科医院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/sending-documents-due-to-overwork-death/">不妊治療で死亡、３医師を書類送検　業過致死容疑　福岡県警</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/death-after-infertility-treatment/">遺族らに医療ミス報告せず　不妊治療後に女性死亡</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/sekisonh/">総合せき損センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/systemic-paralysis/">「医療過誤」でまひ、中２ら提訴　地裁小倉　／福岡</a></li>
-</ul>
+<li class="hidx-item" data-text="総合せき損センター そうごうせきそんせんたー 「医療過誤」でまひ、中２ら提訴　地裁小倉　／福岡">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/sekisonh/">総合せき損センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/systemic-paralysis/">「医療過誤」でまひ、中２ら提訴　地裁小倉　／福岡</a>
 </li>
 </ul>
+</div>
+<div class="hidx-row" id="row-た行">
 <h2>た行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/toride-medical/">JAとりで総合医療センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/appeal-as-medical-error/">死亡は「医療ミス」　ＪＡ茨城県厚生連などを遺族が提訴</a></li>
-</ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="JAとりで総合医療センター JAとりでそうごういりょうせんたー 死亡は「医療ミス」　ＪＡ茨城県厚生連などを遺族が提訴">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/toride-medical/">JAとりで総合医療センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/appeal-as-medical-error/">死亡は「医療ミス」　ＪＡ茨城県厚生連などを遺族が提訴</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/med-takaoka/">高岡市民病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/settlement/">医療ミス６０００万円支払い＝男性遺族と和解－富山</a></li>
-</ul>
+<li class="hidx-item" data-text="高岡市民病院 たかおかしたみびょういん 医療ミス６０００万円支払い＝男性遺族と和解－富山">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/med-takaoka/">高岡市民病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/settlement/">医療ミス６０００万円支払い＝男性遺族と和解－富山</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hospital-takasago/">高砂市民病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/mastectomy-mistake/">乳房切除ミス、２０代女性が賠償提訴…大阪地裁</a></li>
-</ul>
+<li class="hidx-item" data-text="高砂市民病院 たかさごしみんびょういん 乳房切除ミス、２０代女性が賠償提訴…大阪地裁">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hospital-takasago/">高砂市民病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/mastectomy-mistake/">乳房切除ミス、２０代女性が賠償提訴…大阪地裁</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/takarazuka/">宝塚市立病院</a>（5件）
-<ul>
+<li class="hidx-item" data-text="宝塚市立病院 たからづかしりつびょういん 誤って尿管を切除 宝塚市立病院で医療ミス 手術後に障害、１８６０万円賠償　宝塚市民病院 宝塚市立病院 手術患者体内にガーゼ置き忘れ　宝塚市立病院　／兵庫 チューブを誤って切断、医療事故 宝塚市立病院">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/takarazuka/">宝塚市立病院</a><span class="hidx-count">5件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/accidental-excision-of-the-ureter/">誤って尿管を切除 宝塚市立病院で医療ミス</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/disorder-after-surgery/">手術後に障害、１８６０万円賠償　宝塚市民病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/takarazuka/">宝塚市立病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/misplaced-gauze-2/">手術患者体内にガーゼ置き忘れ　宝塚市立病院　／兵庫</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/cutting-the-wrong-tube/">チューブを誤って切断、医療事故 宝塚市立病院</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kenkou-seikyou/">健生病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/attitude-that-hospitals-fight/">健生病院医療過誤訴訟　病院側が争う姿勢／徳島地裁</a></li>
-</ul>
+<li class="hidx-item" data-text="健生病院 たけおびょういん 健生病院医療過誤訴訟　病院側が争う姿勢／徳島地裁">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kenkou-seikyou/">健生病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/attitude-that-hospitals-fight/">健生病院医療過誤訴訟　病院側が争う姿勢／徳島地裁</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/chikusei/">筑西市民病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/disinfection-miss/">手術で消毒ミス、３０代女性顔に腫れ　茨城・筑西市民病院</a></li>
-</ul>
+<li class="hidx-item" data-text="筑西市民病院 ちくせいしみんびょういん 手術で消毒ミス、３０代女性顔に腫れ　茨城・筑西市民病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/chikusei/">筑西市民病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/disinfection-miss/">手術で消毒ミス、３０代女性顔に腫れ　茨城・筑西市民病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/city-chiba/">千葉市立海浜病院</a>（4件）
-<ul>
+<li class="hidx-item" data-text="千葉市立海浜病院 ちばいちりつかいひんびょういん 市立海浜病院８人死亡「医療過誤なしも手術リスクを低評価」 千葉市立海浜病院 【動画】手術後に7人死亡　千葉市立海浜病院に立入調査 千葉市立病院８人術後死、市「ミスとは考えず」">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/city-chiba/">千葉市立海浜病院</a><span class="hidx-count">4件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/low-ratings-surgery-risk/">市立海浜病院８人死亡「医療過誤なしも手術リスクを低評価」</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/city-chiba/">千葉市立海浜病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/postoperative-death-video/">【動画】手術後に7人死亡　千葉市立海浜病院に立入調査</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/postoperative-death/">千葉市立病院８人術後死、市「ミスとは考えず」</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/chiba-cancer-center/">千葉県がんセンター</a>（9件）
-<ul>
+<li class="hidx-item" data-text="千葉県がんセンター ちばけんがんせんたー 千葉県がんＣ患者6千人減　医療ミス尾を引く　２年連続赤字 手術中のミス患者に伝えず、千葉　２リットル大量出血 術中に数え間違え検査でも見落とす…ガーゼ忘れ 千葉県がんセンター 県が拠点病院の再指定推薦取り下げ　千葉県がんセンター 病院の『医療事故』年間1300～2000人死亡！ 必要ないのに右乳房全摘出　取り違える　千葉県がんセンター 抗がん剤死亡、医療過誤は否定【千葉県がんセンター】 千葉県がんセンターで腹腔鏡手術後に死亡が相次ぐ">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/chiba-cancer-center/">千葉県がんセンター</a><span class="hidx-count">9件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/patients-6000-down/">千葉県がんＣ患者6千人減　医療ミス尾を引く　２年連続赤字</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/not-tell-a-mistake-during-surgery/">手術中のミス患者に伝えず、千葉　２リットル大量出血</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/misplaced-gauze/">術中に数え間違え検査でも見落とす…ガーゼ忘れ</a></li>
@@ -610,88 +640,85 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 <li><a href="https://www.malpractice-committee.tech.server-on.net/anticancer-drug/">抗がん剤死亡、医療過誤は否定【千葉県がんセンター】</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/laparoscopic-surgery/">千葉県がんセンターで腹腔鏡手術後に死亡が相次ぐ</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/chiba-u/">千葉大学医学部附属病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="千葉大学医学部附属病院 ちばだいがくいがくぶふぞくびょういん 医療ミスで植物状態　千葉大に1.5億円の賠償命令判決 千葉大病院 「医療過誤」認めず　記者会見で疑問の声">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/chiba-u/">千葉大学医学部附属病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/plant-state-due-to-medical-error/">医療ミスで植物状態　千葉大に1.5億円の賠償命令判決</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/no-medical-malpractice/">千葉大病院 「医療過誤」認めず　記者会見で疑問の声</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/tsurumi-univ-dental-hospital/">鶴見大歯学部付属病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/obscenity-during-treatment/">治療中に猥褻 歯科医師逮捕 鶴見大歯学部付属病院</a></li>
-</ul>
+<li class="hidx-item" data-text="鶴見大歯学部付属病院 つるみだいしがくぶふぞくびょういん 治療中に猥褻 歯科医師逮捕 鶴見大歯学部付属病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/tsurumi-univ-dental-hospital/">鶴見大歯学部付属病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/obscenity-during-treatment/">治療中に猥褻 歯科医師逮捕 鶴見大歯学部付属病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/tokyo-med/">東京医科大学病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/patient-is-heavy-burns/">手術中レーザーメス不具合か、患者が重いやけど</a></li>
-</ul>
+<li class="hidx-item" data-text="東京医科大学病院 とうきょういかだいがくびょういん 手術中レーザーメス不具合か、患者が重いやけど">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/tokyo-med/">東京医科大学病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/patient-is-heavy-burns/">手術中レーザーメス不具合か、患者が重いやけど</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/twmu/">東京女子医科大学病院</a>（4件）
-<ul>
+<li class="hidx-item" data-text="東京女子医科大学病院 とうきょうじょしいかだいがくびょういん 東京女子医大医療事故、防げなかった要因は「日本の社会」 女子医大の特定機能病院の承認取消、通過点にすぎず 東京女子医科大学病院 東京女子医大プロポフォール投与事件">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/twmu/">東京女子医科大学病院</a><span class="hidx-count">4件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/factors-that-did-not-prevent/">東京女子医大医療事故、防げなかった要因は「日本の社会」</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/approval-cancellation-passing-point/">女子医大の特定機能病院の承認取消、通過点にすぎず</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/twmu/">東京女子医科大学病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/propofol/">東京女子医大プロポフォール投与事件</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/u-tokyo/">東京大学医学部附属病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/inconsistent-medicine/">薬取り違え男児死亡　名前確認せず　東大病院に入院中</a></li>
-</ul>
+<li class="hidx-item" data-text="東京大学医学部附属病院 とうきょうだいがくいがくぶふぞくびょういん 薬取り違え男児死亡　名前確認せず　東大病院に入院中">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/u-tokyo/">東京大学医学部附属病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/inconsistent-medicine/">薬取り違え男児死亡　名前確認せず　東大病院に入院中</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/toshiba/">東芝病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/criminal-complaint/">政治評論家の本澤二郎さんが東芝病院を刑事告訴</a></li>
-</ul>
+<li class="hidx-item" data-text="東芝病院 とうしばびょういん 政治評論家の本澤二郎さんが東芝病院を刑事告訴">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/toshiba/">東芝病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/criminal-complaint/">政治評論家の本澤二郎さんが東芝病院を刑事告訴</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/tobu-hospital/">東部地域病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/tobu-hospital/">東部地域病院</a></li>
-</ul>
+<li class="hidx-item" data-text="東部地域病院 とうぶちいきびょういん 東部地域病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/tobu-hospital/">東部地域病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/tobu-hospital/">東部地域病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/tomakomai/">苫小牧市立病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="苫小牧市立病院 とまこまいしりつびょういん たんの吸引で医療ミス、入院の７０代男性が死亡 医療事故で示談　苫小牧市立病院　補正予算で専決処分">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/tomakomai/">苫小牧市立病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/medical-mistake-due-to-aspiration/">たんの吸引で医療ミス、入院の７０代男性が死亡</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/malpractice-settlement-2/">医療事故で示談　苫小牧市立病院　補正予算で専決処分</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hosp-u-toyama/">富山大病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="富山大病院 とやまだいびょういん 検査確認ミス、患者死亡＝がん発覚遅れ－富山大病院 富山大への賠償命令確定、医療ミスで女性死亡">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hosp-u-toyama/">富山大病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/inspection-confirmation-error/">検査確認ミス、患者死亡＝がん発覚遅れ－富山大病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/compensation-instruction-finalized/">富山大への賠償命令確定、医療ミスで女性死亡</a></li>
 </ul>
+</details>
 </li>
 </ul>
+</div>
+<div class="hidx-row" id="row-な行">
 <h2>な行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/nakatsugawa-hp/">中津川市民病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/survivor-reconciliation/">中津川市民病院で69歳死亡。患者遺族と2200万円和解</a></li>
-</ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="中津川市民病院 なかつがわしみんびょういん 中津川市民病院で69歳死亡。患者遺族と2200万円和解">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/nakatsugawa-hp/">中津川市民病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/survivor-reconciliation/">中津川市民病院で69歳死亡。患者遺族と2200万円和解</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/city-nakatsu/">中津市民病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/explanation-mistake/">中津市民病院 560万円賠償 外科手術で説明ミス／大分</a></li>
-</ul>
+<li class="hidx-item" data-text="中津市民病院 なかつしみんびょういん 中津市民病院 560万円賠償 外科手術で説明ミス／大分">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/city-nakatsu/">中津市民病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/explanation-mistake/">中津市民病院 560万円賠償 外科手術で説明ミス／大分</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/nkmc/">長崎川棚医療センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/the-patient-died-in-the-drip-mistake/">点滴ミス、患者が死亡　薬過剰投与　長崎川棚医療センター</a></li>
-</ul>
+<li class="hidx-item" data-text="長崎川棚医療センター ながさきかわたないりょうせんたー 点滴ミス、患者が死亡　薬過剰投与　長崎川棚医療センター">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/nkmc/">長崎川棚医療センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/the-patient-died-in-the-drip-mistake/">点滴ミス、患者が死亡　薬過剰投与　長崎川棚医療センター</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/nagasaki-u/">長崎大学病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/misplaced-gauze-in-the-body/">体内にガーゼ置き忘れ　摘出し患者快方へ　長崎大病院</a></li>
-</ul>
+<li class="hidx-item" data-text="長崎大学病院 ながさきだいがくびょういん 体内にガーゼ置き忘れ　摘出し患者快方へ　長崎大病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/nagasaki-u/">長崎大学病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/misplaced-gauze-in-the-body/">体内にガーゼ置き忘れ　摘出し患者快方へ　長崎大病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/west-medical-center-city-nagoya/">名古屋市立西部医療センター病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/patient-woman-dies/">名古屋市立病院で医療ミス＝患者女性死亡－名古屋</a></li>
-</ul>
+<li class="hidx-item" data-text="名古屋市立西部医療センター病院 なごやしりつせいぶいりょうせんたーびょういん 名古屋市立病院で医療ミス＝患者女性死亡－名古屋">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/west-medical-center-city-nagoya/">名古屋市立西部医療センター病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/patient-woman-dies/">名古屋市立病院で医療ミス＝患者女性死亡－名古屋</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/med-nagoya-u/">名古屋大学医学部附属病院</a>（7件）
-<ul>
+<li class="hidx-item" data-text="名古屋大学医学部附属病院 なごやだいがくいがくぶふぞくびょういん 医療ミスで名大病院を提訴　遺族、２億７０００万円求める 名大病院で診療ミス　がんの手術を受けた男性が翌日死亡 肺がん見落とし　３年後に末期診断、死亡　名古屋大病院 肺がん見逃し対処遅れ女性が死亡…名大病院 情報共有不十分で肺がん患者死亡　名大病院謝罪 名古屋大学医学部附属病院 患者の肺がん、３年以上見落とす　名大病院が医療ミス">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/med-nagoya-u/">名古屋大学医学部附属病院</a><span class="hidx-count">7件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/compensation-cost-claim/">医療ミスで名大病院を提訴　遺族、２億７０００万円求める</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/medical-treatment-mistake/">名大病院で診療ミス　がんの手術を受けた男性が翌日死亡</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/lung-cancer-oversight/">肺がん見落とし　３年後に末期診断、死亡　名古屋大病院</a></li>
@@ -700,235 +727,251 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 <li><a href="https://www.malpractice-committee.tech.server-on.net/med-nagoya-u/">名古屋大学医学部附属病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/oversight-of-lung-cancer/">患者の肺がん、３年以上見落とす　名大病院が医療ミス</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/cent-hosp-pref-niigata/">新潟県立中央病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/esophageal-cancer-treatment-left/">食道がん治療2年5か月放置　県立中央病院で医療事故</a></li>
-</ul>
+<li class="hidx-item" data-text="新潟県立中央病院 にいがたけんりっちゅうおうびょういん 食道がん治療2年5か月放置　県立中央病院で医療事故">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/cent-hosp-pref-niigata/">新潟県立中央病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/esophageal-cancer-treatment-left/">食道がん治療2年5か月放置　県立中央病院で医療事故</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hosp-niigata/">新潟市民病院</a>（4件）
-<ul>
+<li class="hidx-item" data-text="新潟市民病院 にいがたしたみびょういん 体内にガーゼを18年放置　新潟市民病院が医療ミス 新潟市民病院、医療ミスで患者死亡 賠償金２千万円で和解 新潟市民病院 腰椎の手術で医療事故 新潟市民病院">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hosp-niigata/">新潟市民病院</a><span class="hidx-count">4件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/leave-gauze-for-18-years/">体内にガーゼを18年放置　新潟市民病院が医療ミス</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/patient-deceased-with-medical-error/">新潟市民病院、医療ミスで患者死亡 賠償金２千万円で和解</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/hosp-niigata/">新潟市民病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/medical-accident-in-surgery-of-the-lumbar-spine/">腰椎の手術で医療事故 新潟市民病院</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/niigata-u/">新潟大医歯学総合病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/cataract-operation/">白内障手術で医療ミス　新潟大病院、患者に謝罪</a></li>
-</ul>
+<li class="hidx-item" data-text="新潟大医歯学総合病院 にいがただいいしがくそうごうびょういん 白内障手術で医療ミス　新潟大病院、患者に謝罪">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/niigata-u/">新潟大医歯学総合病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/cataract-operation/">白内障手術で医療ミス　新潟大病院、患者に謝罪</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/nishichita-hp/">西知多総合病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/mismatched-specimen/">西知多総合病院 検体取り違え　患者側と和解　／愛知</a></li>
-</ul>
+<li class="hidx-item" data-text="西知多総合病院 にしちたそうごうびょういん 西知多総合病院 検体取り違え　患者側と和解　／愛知">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/nishichita-hp/">西知多総合病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/mismatched-specimen/">西知多総合病院 検体取り違え　患者側と和解　／愛知</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hospital-itabashi/">日本大学医学部附属板橋病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/administration-error/">日大板橋病院で投与ミス４件　一時、心肺停止の患者も</a></li>
-</ul>
+<li class="hidx-item" data-text="日本大学医学部附属板橋病院 にほんだいがくいがくぶふぞくいたばしびょういん 日大板橋病院で投与ミス４件　一時、心肺停止の患者も">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hospital-itabashi/">日本大学医学部附属板橋病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/administration-error/">日大板橋病院で投与ミス４件　一時、心肺停止の患者も</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/numazu-hospital/">沼津市立病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/drug-administration-mistake/">薬剤投与後、数分で死亡　沼津市立病院で医療事故</a></li>
-</ul>
+<li class="hidx-item" data-text="沼津市立病院 ぬまづしりつびょういん 薬剤投与後、数分で死亡　沼津市立病院で医療事故">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/numazu-hospital/">沼津市立病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/drug-administration-mistake/">薬剤投与後、数分で死亡　沼津市立病院で医療事故</a>
 </li>
 </ul>
+</div>
+<div class="hidx-row" id="row-は行">
 <h2>は行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/handa-city-hospital/">半田市立半田病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/compensation-250/">医療事故で女性死亡　愛知県半田市２５０万円賠償へ</a></li>
-</ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="半田市立半田病院 はんだしりつはんだびょういん 医療事故で女性死亡　愛知県半田市２５０万円賠償へ">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/handa-city-hospital/">半田市立半田病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/compensation-250/">医療事故で女性死亡　愛知県半田市２５０万円賠償へ</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/municipal-hp/">彦根市立病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/hospital-in-the-investigation-committee/">彦根市立病院で　院内に調査委、ミスは否定</a></li>
-</ul>
+<li class="hidx-item" data-text="彦根市立病院 ひこねしりつびょういん 彦根市立病院で　院内に調査委、ミスは否定">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/municipal-hp/">彦根市立病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/hospital-in-the-investigation-committee/">彦根市立病院で　院内に調査委、ミスは否定</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hemc/">兵庫県災害医療センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/reoperation-was-needed/">両顎骨折患者に誤って「おかゆ」　骨にずれ、再手術必要に</a></li>
-</ul>
+<li class="hidx-item" data-text="兵庫県災害医療センター ひょうごけんさいがいいりょうせんたー 両顎骨折患者に誤って「おかゆ」　骨にずれ、再手術必要に">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hemc/">兵庫県災害医療センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/reoperation-was-needed/">両顎骨折患者に誤って「おかゆ」　骨にずれ、再手術必要に</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/awajimc/">兵庫県立淡路医療センター</a>（2件）
-<ul>
+<li class="hidx-item" data-text="兵庫県立淡路医療センター ひょうごけんりつあわじいりょうせんたー 兵庫県立淡路医療センター 心電図異常のアラームに気づかず男性死亡　兵庫県立淡路医療センター">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/awajimc/">兵庫県立淡路医療センター</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/awajimc/">兵庫県立淡路医療センター</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/not-aware-of-the-electrocardiogram-abnormalities-of-alarm/">心電図異常のアラームに気づかず男性死亡　兵庫県立淡路医療センター</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kenkako/">兵庫県立加古川医療センター</a>（5件）
-<ul>
+<li class="hidx-item" data-text="兵庫県立加古川医療センター ひょうごけんりつかこがわいりょうせんたー 薬を過剰投与、患者の視力0.01に 加古川医療センター 頭の中にドリルの破片２カ月　加古川医療センターで医療事故 兵庫県立加古川医療センター がん誤診、胃３分の２切除　兵庫県立加古川医療センター 人工関節手術で医療ミス　兵庫・加古川医療センター">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kenkako/">兵庫県立加古川医療センター</a><span class="hidx-count">5件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/overdose-of-anti-tuberculosis-drug/">薬を過剰投与、患者の視力0.01に 加古川医療センター</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/debris-of-the-drill-in-the-head/">頭の中にドリルの破片２カ月　加古川医療センターで医療事故</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/kenkako/">兵庫県立加古川医療センター</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/cancer-misdiagnosis/">がん誤診、胃３分の２切除　兵庫県立加古川医療センター</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/medical-errors-in-the-artificial-joint-surgery/">人工関節手術で医療ミス　兵庫・加古川医療センター</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hyogo-cc/">兵庫県立がんセンター</a>（2件）
-<ul>
+<li class="hidx-item" data-text="兵庫県立がんセンター ひょうごけんりつがんせんたー 県立がんセンターで医療事故　患者体内に医療器具が留置 県立がんセンターで転移見落とし３年放置　ＣＴ検査">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hyogo-cc/">兵庫県立がんセンター</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/medical-instruments-are-in-place/">県立がんセンターで医療事故　患者体内に医療器具が留置</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/leave-for-three-years-after-overlooking-cancer-metastasis/">県立がんセンターで転移見落とし３年放置　ＣＴ検査</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hyogo-kodomo/">兵庫県立こども病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/boy-with-organ-surgery/">兵庫県立こども病院が医療ミス　気管手術の男児が死亡</a></li>
-</ul>
+<li class="hidx-item" data-text="兵庫県立こども病院 ひょうごけんりつこどもびょういん 兵庫県立こども病院が医療ミス　気管手術の男児が死亡">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hyogo-kodomo/">兵庫県立こども病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/boy-with-organ-surgery/">兵庫県立こども病院が医療ミス　気管手術の男児が死亡</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/nishihosp/">兵庫県立西宮病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/incorrect-administration-of-anesthetic/">鎮痛剤と麻酔剤を誤って投与　兵庫県立西宮病院で医療過誤</a></li>
-</ul>
+<li class="hidx-item" data-text="兵庫県立西宮病院 ひょうごけんりつにしのみやびょういん 鎮痛剤と麻酔剤を誤って投与　兵庫県立西宮病院で医療過誤">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/nishihosp/">兵庫県立西宮病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/incorrect-administration-of-anesthetic/">鎮痛剤と麻酔剤を誤って投与　兵庫県立西宮病院で医療過誤</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hirosaki/">弘前病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/finger-cutting-due-to-delayed-treatment/">「治療遅れ指切断」弘前病院を提訴　青森地裁支部</a></li>
-</ul>
+<li class="hidx-item" data-text="弘前病院 ひろさきびょういん 「治療遅れ指切断」弘前病院を提訴　青森地裁支部">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hirosaki/">弘前病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/finger-cutting-due-to-delayed-treatment/">「治療遅れ指切断」弘前病院を提訴　青森地裁支部</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/city-bizen-okayama/">備前市立病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/died-in-an-overdose-of-medicine/">薬過剰投与 死亡　備前市立病院、医療ミス認め賠償　／岡山</a></li>
-</ul>
+<li class="hidx-item" data-text="備前市立病院 びぜんしりつびょういん 薬過剰投与 死亡　備前市立病院、医療ミス認め賠償　／岡山">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/city-bizen-okayama/">備前市立病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/died-in-an-overdose-of-medicine/">薬過剰投与 死亡　備前市立病院、医療ミス認め賠償　／岡山</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/fukui/">福井県立病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/misplace-the-gauze/">福井県立病院で医療ミス　１６年前、体内にガーゼ置き忘れ</a></li>
-</ul>
+<li class="hidx-item" data-text="福井県立病院 ふくいけんりつびょういん 福井県立病院で医療ミス　１６年前、体内にガーゼ置き忘れ">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/fukui/">福井県立病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/misplace-the-gauze/">福井県立病院で医療ミス　１６年前、体内にガーゼ置き忘れ</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/city-fujisawa/">藤沢市民病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/compensation/">医療事故で２７０万円賠償、藤沢市民病院/神奈川</a></li>
-</ul>
+<li class="hidx-item" data-text="藤沢市民病院 ふじさわしたみびょういん 医療事故で２７０万円賠償、藤沢市民病院/神奈川">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/city-fujisawa/">藤沢市民病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/compensation/">医療事故で２７０万円賠償、藤沢市民病院/神奈川</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/fujita-hu/">藤田保健衛生大病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/compensation-instruction/">医療ミス訴訟 病院側に賠償命令</a></li>
-</ul>
+<li class="hidx-item" data-text="藤田保健衛生大病院 ふじたほけんえいせいだいびょういん 医療ミス訴訟 病院側に賠償命令">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/fujita-hu/">藤田保健衛生大病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/compensation-instruction/">医療ミス訴訟 病院側に賠償命令</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/mmc-funabashi/">船橋市立医療センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/uterine-operation/">子宮手術で医療事故、脳に障害　船橋市立医療センター</a></li>
-</ul>
+<li class="hidx-item" data-text="船橋市立医療センター ふなばししりついりょうせんたー 子宮手術で医療事故、脳に障害　船橋市立医療センター">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/mmc-funabashi/">船橋市立医療センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/uterine-operation/">子宮手術で医療事故、脳に障害　船橋市立医療センター</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/fff/">船橋整形外科病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="船橋整形外科病院 ふなばしせいけいげかびょういん 船橋整形外科病院　去年導入の新手術で大腸傷つけ…女性死亡 同じ日に別の手術でもミス　船橋整形外科病院医療ミス死">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/fff/">船橋整形外科病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/medical-errors-in-the-new-surgery/">船橋整形外科病院　去年導入の新手術で大腸傷つけ…女性死亡</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/mistake-in-another-surgery-on-the-same-day/">同じ日に別の手術でもミス　船橋整形外科病院医療ミス死</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/furukisanfujinka/">ふるき産婦人科</a>（3件）
-<ul>
+<li class="hidx-item" data-text="ふるき産婦人科 ふるきさんふじんか 「無痛分娩で障がい」、和解金と病院側が「遺憾の意」 ふるき産婦人科 無痛分娩で母子が植物状態の悲劇　「人生が変わった」 「麻酔ミスで母子とも植物状態」家族、京都の医院を提訴">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/furukisanfujinka/">ふるき産婦人科</a><span class="hidx-count">3件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/settlement-money-and-regret/">「無痛分娩で障がい」、和解金と病院側が「遺憾の意」 ふるき産婦人科</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/maternal-and-child-plants-with-painless-labor/">無痛分娩で母子が植物状態の悲劇　「人生が変わった」</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/both-mother-and-child-plant-state/">「麻酔ミスで母子とも植物状態」家族、京都の医院を提訴</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hokudai/">北海道大学病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/forgetting-to-administer-oxygen/">北大病院、酸素投与忘れ　重症細菌性肺炎６０代患者、意識不明</a></li>
-</ul>
+<li class="hidx-item" data-text="北海道大学病院 ほっかいどうだいがくびょういん 北大病院、酸素投与忘れ　重症細菌性肺炎６０代患者、意識不明">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hokudai/">北海道大学病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/forgetting-to-administer-oxygen/">北大病院、酸素投与忘れ　重症細菌性肺炎６０代患者、意識不明</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/ntt-east/">ＮＴＴ東日本関東病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/transfusion-mistake/">ＮＴＴ東日本関東病院、輸血ミスで患者が一時重体</a></li>
-</ul>
+<li class="hidx-item" data-text="ＮＴＴ東日本関東病院 ＮＴＴひがしにほんかんとうびょういん ＮＴＴ東日本関東病院、輸血ミスで患者が一時重体">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/ntt-east/">ＮＴＴ東日本関東病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/transfusion-mistake/">ＮＴＴ東日本関東病院、輸血ミスで患者が一時重体</a>
 </li>
 </ul>
+</div>
+<div class="hidx-row" id="row-ま行">
 <h2>ま行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hp-hata/">松本市立病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/formalin/">松本市立病院で「ホルマリン」を5人に誤投与</a></li>
-</ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="松本市立病院 まつもとしりつびょういん 松本市立病院で「ホルマリン」を5人に誤投与">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hp-hata/">松本市立病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/formalin/">松本市立病院で「ホルマリン」を5人に誤投与</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/mie-u/">三重大学医学部附属病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/gauze-misplaced/">三重大病院で医療ミス　昨年９月、体内にガーゼ置き忘れ</a></li>
-</ul>
+<li class="hidx-item" data-text="三重大学医学部附属病院 みえだいがくいがくぶふぞくびょういん 三重大病院で医療ミス　昨年９月、体内にガーゼ置き忘れ">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/mie-u/">三重大学医学部附属病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/gauze-misplaced/">三重大病院で医療ミス　昨年９月、体内にガーゼ置き忘れ</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hospital-sanda/">三田市民病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="三田市民病院 みたしみんびょういん 三田市民病院で診断ミス　遺族に三百万円支払いへ 誤って違う指を手術　三田市民病院などに賠償命令">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hospital-sanda/">三田市民病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/pay-3-million-yen-to-bereaved/">三田市民病院で診断ミス　遺族に三百万円支払いへ</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/surgery-accidentally-different-finger/">誤って違う指を手術　三田市民病院などに賠償命令</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hospital-mutsu/">むつ総合病院</a>（3件）
-<ul>
+<li class="hidx-item" data-text="むつ総合病院 むつそうごうびょういん むつ総合病院で医療ミス2件、和解 癌見落とし等 むつ総合病院 【むつ総合病院】医療ミス２人死亡　カテーテル挿入誤る">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hospital-mutsu/">むつ総合病院</a><span class="hidx-count">3件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/2-medical-mistakes-settlement/">むつ総合病院で医療ミス2件、和解 癌見落とし等</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/hospital-mutsu/">むつ総合病院</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/malpractice-catheter/">【むつ総合病院】医療ミス２人死亡　カテーテル挿入誤る</a></li>
 </ul>
+</details>
 </li>
 </ul>
+</div>
+<div class="hidx-row" id="row-や行">
 <h2>や行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/yamaga-medical-center/">山鹿市民医療センター</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/surgery-after-the-corresponding-mistake/">山鹿市民医療センター　手術後対応ミス、１７００万円で和解</a></li>
-</ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="山鹿市民医療センター やまがしみんいりょうせんたー 山鹿市民医療センター　手術後対応ミス、１７００万円で和解">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/yamaga-medical-center/">山鹿市民医療センター</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/surgery-after-the-corresponding-mistake/">山鹿市民医療センター　手術後対応ミス、１７００万円で和解</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kahoku-hospital/">山形県立河北病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/reverse-decision/">投薬再開遅れ死亡、河北病院の過失認定　仙台高裁・逆転判決</a></li>
-</ul>
+<li class="hidx-item" data-text="山形県立河北病院 やまがたけんたちかわきたびょういん 投薬再開遅れ死亡、河北病院の過失認定　仙台高裁・逆転判決">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kahoku-hospital/">山形県立河北病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/reverse-decision/">投薬再開遅れ死亡、河北病院の過失認定　仙台高裁・逆転判決</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/ypch/">山形県立中央病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/settlement-2/">山形中央病院医療事故 後遺症の女性と９７８万円で県和解</a></li>
-</ul>
+<li class="hidx-item" data-text="山形県立中央病院 やまがたけんりっちゅうおうびょういん 山形中央病院医療事故 後遺症の女性と９７８万円で県和解">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/ypch/">山形県立中央病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/settlement-2/">山形中央病院医療事故 後遺症の女性と９７８万円で県和解</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/pref-yamanashi/">山梨県立中央病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/different-blood-group-transfusion/">患者に異なる血液型輸血…山梨中央病院が医療ミス</a></li>
-</ul>
+<li class="hidx-item" data-text="山梨県立中央病院 やまなしけんりっちゅうおうびょういん 患者に異なる血液型輸血…山梨中央病院が医療ミス">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/pref-yamanashi/">山梨県立中央病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/different-blood-group-transfusion/">患者に異なる血液型輸血…山梨中央病院が医療ミス</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/hosp-yamanashi/">山梨大学医学部付属病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/analgesic-overdose/">鎮痛剤過剰投与　山梨大付属病院で医療ミス</a></li>
-</ul>
+<li class="hidx-item" data-text="山梨大学医学部付属病院 やまなしだいがくいがくぶふぞくびょういん 鎮痛剤過剰投与　山梨大付属病院で医療ミス">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/hosp-yamanashi/">山梨大学医学部付属病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/analgesic-overdose/">鎮痛剤過剰投与　山梨大付属病院で医療ミス</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/yokote-mhp/">横手病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="横手病院 よこてびょういん 横手病院の患者死亡訴訟、遺族側が上告 【訂正】下腹部痛の診断ミスで死亡　遺族ら提訴">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/yokote-mhp/">横手病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/family-side-appeals/">横手病院の患者死亡訴訟、遺族側が上告</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/died-in-the-diagnostic-mistake/">【訂正】下腹部痛の診断ミスで死亡　遺族ら提訴</a></li>
 </ul>
+</details>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/yokohama-cu/">横浜市立大学付属病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/injecting-a-high-concentration-acetic-acid-solution/">濃度の高い酢酸液を注入する医療事故 横浜市立大学付属病院</a></li>
-</ul>
+<li class="hidx-item" data-text="横浜市立大学付属病院 よこはまいちりつだいがくふぞくびょういん 濃度の高い酢酸液を注入する医療事故 横浜市立大学付属病院">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/yokohama-cu/">横浜市立大学付属病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/injecting-a-high-concentration-acetic-acid-solution/">濃度の高い酢酸液を注入する医療事故 横浜市立大学付属病院</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/yokohama-shiminhosp/">横浜市立市民病院</a>（2件）
-<ul>
+<li class="hidx-item" data-text="横浜市立市民病院 よこはましりっしたみびょういん 医療ミスで脳の血管刺す　横浜市立病院、くも膜下出血発症 医療ミスで脳の血管刺し、くも膜下出血　横浜市立市民病院">
+<details>
+<summary><a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/yokohama-shiminhosp/">横浜市立市民病院</a><span class="hidx-count">2件</span></summary>
+<ul class="hidx-sublist">
 <li><a href="https://www.malpractice-committee.tech.server-on.net/brain-stabbing/">医療ミスで脳の血管刺す　横浜市立病院、くも膜下出血発症</a></li>
 <li><a href="https://www.malpractice-committee.tech.server-on.net/prick-blood-vessels-of-the-brain-in-medical-malpractice/">医療ミスで脳の血管刺し、くも膜下出血　横浜市立市民病院</a></li>
 </ul>
+</details>
 </li>
 </ul>
+</div>
+<div class="hidx-row" id="row-ら行">
 <h2>ら行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/kosei-hp/">立正佼成会付属佼成病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/of-a-high-concentration-of-acetic-acid/">佼成病院の医療ミス、重体女性が死亡　高濃度酢酸誤投与</a></li>
-</ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="立正佼成会付属佼成病院 りっしょうこうせいかいふぞくこうせいびょういん 佼成病院の医療ミス、重体女性が死亡　高濃度酢酸誤投与">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/kosei-hp/">立正佼成会付属佼成病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/of-a-high-concentration-of-acetic-acid/">佼成病院の医療ミス、重体女性が死亡　高濃度酢酸誤投与</a>
 </li>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/oiki/">老木レディスクリニック</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/painless-delivery/">「無痛分娩」で母親死亡か</a></li>
-</ul>
+<li class="hidx-item" data-text="老木レディスクリニック ろうぼくれでぃすくりにっく 「無痛分娩」で母親死亡か">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/oiki/">老木レディスクリニック</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/painless-delivery/">「無痛分娩」で母親死亡か</a>
 </li>
 </ul>
+</div>
+<div class="hidx-row" id="row-わ行">
 <h2>わ行</h2>
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/category/warabi/">蕨市立病院</a>（1件）
-<ul>
-<li><a href="https://www.malpractice-committee.tech.server-on.net/medical-accident-killed-a-man-with-bowel-obstruction/">医療事故で腸閉塞の男性死亡…蕨市立病院　2567万円補償</a></li>
-</ul>
+<ul class="hidx-list">
+<li class="hidx-item" data-text="蕨市立病院 わらびしりつびょういん 医療事故で腸閉塞の男性死亡…蕨市立病院　2567万円補償">
+<a class="hidx-hosp" href="https://www.malpractice-committee.tech.server-on.net/category/warabi/">蕨市立病院</a><span class="hidx-count">1件</span><span class="hidx-sep">—</span><a class="hidx-art" href="https://www.malpractice-committee.tech.server-on.net/medical-accident-killed-a-man-with-bowel-obstruction/">医療事故で腸閉塞の男性死亡…蕨市立病院　2567万円補償</a>
 </li>
 </ul>
+</div>
+<script>
+(function(){
+  var root=document.querySelector('.hidx');
+  if(!root)return;
+  var q=document.getElementById('hidx-q');
+  var items=[].slice.call(root.querySelectorAll('.hidx-item'));
+  var rows=[].slice.call(root.querySelectorAll('.hidx-row'));
+  var none=root.querySelector('.hidx-noresult');
+  function norm(s){return (s||'').toLowerCase();}
+  function apply(){
+    var k=norm(q.value).trim();
+    var searching=k.length>0;
+    root.classList.toggle('is-searching',searching);
+    var hit=0;
+    items.forEach(function(it){
+      var m=!searching||norm(it.getAttribute('data-text')).indexOf(k)>=0;
+      it.classList.toggle('is-hidden',!m);
+      if(m)hit++;
+      var d=it.querySelector('details');
+      if(d&&searching)d.open=true;
+      else if(d&&!searching)d.open=false;
+    });
+    rows.forEach(function(r){
+      var any=r.querySelector('.hidx-item:not(.is-hidden)');
+      r.style.display=any?'':'none';
+    });
+    if(none)none.classList.toggle('is-visible',searching&&hit===0);
+  }
+  q.addEventListener('input',apply);
+})();
+</script>
+</div>
       </section>
 
 

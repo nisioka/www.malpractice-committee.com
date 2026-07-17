@@ -63,6 +63,94 @@ def esc(s):
     return htmllib.escape(s, quote=False)
 
 
+def attr(s):
+    """属性値用エスケープ（" ' & < > をすべて実体参照化）。"""
+    return htmllib.escape(s, quote=True)
+
+
+# 五十音ジャンプナビの1文字ラベル
+ROW_LABEL = {
+    "あ行": "あ", "か行": "か", "さ行": "さ", "た行": "た", "な行": "な",
+    "は行": "は", "ま行": "ま", "や行": "や", "ら行": "ら", "わ行": "わ",
+    "その他": "他",
+}
+
+# 索引ページ専用スタイル（.hidx 配下にスコープ）
+HIDX_STYLE = """<style>
+.hidx{--hidx-accent:#0b6ea8;line-height:1.7}
+.hidx .hidx-summary{margin:.2em 0 1em;color:#444}
+.hidx .hidx-summary strong{color:var(--hidx-accent)}
+.hidx-tools{position:sticky;top:0;z-index:5;background:#fff;
+  padding:.5em 0 .4em;margin-bottom:1em;border-bottom:1px solid #e2e2e2}
+.hidx-tools input[type=search]{width:100%;box-sizing:border-box;
+  padding:.6em .8em;font-size:16px;border:1px solid #bbb;border-radius:8px}
+.hidx-nav{display:flex;flex-wrap:wrap;gap:.35em;margin-top:.5em}
+.hidx-nav a{display:inline-block;min-width:2.1em;text-align:center;
+  padding:.3em .1em;border:1px solid #cfd8dd;border-radius:6px;
+  color:var(--hidx-accent);text-decoration:none;font-weight:600;font-size:.95em}
+.hidx-nav a:hover{background:var(--hidx-accent);color:#fff;border-color:var(--hidx-accent)}
+.hidx-row{margin:0 0 1.4em}
+.hidx-row h2{scroll-margin-top:64px;border-left:5px solid var(--hidx-accent);
+  padding:.15em .55em;margin:.2em 0 .5em;font-size:1.15em;background:#f3f7fa}
+.hidx-list{list-style:none;margin:0;padding:0}
+.hidx-item{padding:.4em .2em;border-bottom:1px dotted #e6e6e6}
+.hidx-item.is-hidden{display:none}
+.hidx-hosp{font-weight:600}
+.hidx-count{display:inline-block;margin-left:.45em;padding:0 .5em;
+  font-size:.78em;line-height:1.7;color:#555;background:#eef2f4;border-radius:10px}
+.hidx-sep{color:#bbb;margin:0 .4em}
+.hidx-art{color:#333}
+.hidx-item details>summary{cursor:pointer;list-style:none;display:flex;
+  align-items:center;gap:.1em}
+.hidx-item details>summary::-webkit-details-marker{display:none}
+.hidx-item details>summary::before{content:"\\25b6";color:#9aa;font-size:.7em;
+  margin-right:.5em;transition:transform .15s}
+.hidx-item details[open]>summary::before{transform:rotate(90deg)}
+.hidx-sublist{list-style:none;margin:.4em 0 .2em;padding:.2em 0 .2em 1.9em;
+  border-left:2px solid #eef2f4}
+.hidx-sublist li{padding:.2em 0}
+.hidx-noresult{display:none;padding:1em;color:#a33;background:#fff5f5;
+  border:1px solid #f0caca;border-radius:8px}
+.hidx.is-searching .hidx-noresult.is-visible{display:block}
+@media (max-width:600px){.hidx-nav a{min-width:1.9em;padding:.35em 0}}
+</style>
+"""
+
+# 絞り込み用スクリプト（JS無効でも一覧はそのまま閲覧可能）
+HIDX_SCRIPT = """<script>
+(function(){
+  var root=document.querySelector('.hidx');
+  if(!root)return;
+  var q=document.getElementById('hidx-q');
+  var items=[].slice.call(root.querySelectorAll('.hidx-item'));
+  var rows=[].slice.call(root.querySelectorAll('.hidx-row'));
+  var none=root.querySelector('.hidx-noresult');
+  function norm(s){return (s||'').toLowerCase();}
+  function apply(){
+    var k=norm(q.value).trim();
+    var searching=k.length>0;
+    root.classList.toggle('is-searching',searching);
+    var hit=0;
+    items.forEach(function(it){
+      var m=!searching||norm(it.getAttribute('data-text')).indexOf(k)>=0;
+      it.classList.toggle('is-hidden',!m);
+      if(m)hit++;
+      var d=it.querySelector('details');
+      if(d&&searching)d.open=true;
+      else if(d&&!searching)d.open=false;
+    });
+    rows.forEach(function(r){
+      var any=r.querySelector('.hidx-item:not(.is-hidden)');
+      r.style.display=any?'':'none';
+    });
+    if(none)none.classList.toggle('is-visible',searching&&hit===0);
+  }
+  q.addEventListener('input',apply);
+})();
+</script>
+"""
+
+
 def build_content(manifest, yomi) -> str:
     cats = manifest["categories"]
     posts = manifest["posts"]
@@ -93,21 +181,61 @@ def build_content(manifest, yomi) -> str:
 
     total_h = len(entries)
     total_a = sum(len(e["posts"]) for e in entries)
-    out = [f'      \n      \n<p>医療ミス・医療過誤・医療事故を報じた病院の索引です。'
-           f'全{total_h}病院・{total_a}記事を五十音順にまとめています。'
-           f'病院名をクリックすると、その病院の記事一覧が開きます。</p>\n']
-    for row in order:
-        if not grouped[row]:
-            continue
-        out.append(f"<h2>{row}</h2>\n<ul>\n")
+    used_rows = [r for r in order if grouped[r]]
+
+    out = ["      \n      \n", '<div class="hidx">\n', HIDX_STYLE]
+    out.append(
+        '<p class="hidx-summary">医療ミス・医療過誤・医療事故を報じた病院の索引です。'
+        f'全<strong>{total_h}</strong>病院・<strong>{total_a}</strong>記事を五十音順にまとめています。'
+        '病院名で記事一覧へ、記事名で本文へ移動できます。</p>\n')
+
+    # 検索フィルタ＋五十音ジャンプナビ（sticky）
+    out.append('<div class="hidx-tools">\n')
+    out.append('<input type="search" id="hidx-q" '
+               'placeholder="病院名・記事タイトルで絞り込み…" '
+               'aria-label="索引を絞り込み" autocomplete="off">\n')
+    out.append('<nav class="hidx-nav" aria-label="五十音ジャンプ">\n')
+    for row in used_rows:
+        out.append(f'<a href="#row-{row}">{ROW_LABEL[row]}</a>')
+    out.append('\n</nav>\n</div>\n')
+    out.append('<p class="hidx-noresult">該当する病院・記事が見つかりませんでした。'
+               'キーワードを変えてお試しください。</p>\n')
+
+    for row in used_rows:
+        out.append(f'<div class="hidx-row" id="row-{row}">\n<h2>{row}</h2>\n')
+        out.append('<ul class="hidx-list">\n')
         for e in grouped[row]:
             cat_url = f"{sitelib.ORIGIN}/category/{e['slug']}/"
-            out.append(f'<li><a href="{cat_url}">{esc(e["name"])}</a>（{len(e["posts"])}件）\n<ul>\n')
-            for p in e["posts"]:
+            n = len(e["posts"])
+            # 検索対象テキスト（病院名＋読み＋全記事タイトル）
+            search_text = " ".join(
+                [e["name"], e.get("reading", "")] + [p["title"] for p in e["posts"]])
+            out.append(f'<li class="hidx-item" data-text="{attr(search_text)}">\n')
+            if n == 1:
+                # 1記事の病院は入れ子をやめて1行に平坦化
+                p = e["posts"][0]
                 art_url = f"{sitelib.ORIGIN}/{p['slug']}/"
-                out.append(f'<li><a href="{art_url}">{esc(p["title"])}</a></li>\n')
-            out.append("</ul>\n</li>\n")
-        out.append("</ul>\n")
+                out.append(
+                    f'<a class="hidx-hosp" href="{cat_url}">{esc(e["name"])}</a>'
+                    f'<span class="hidx-count">{n}件</span>'
+                    f'<span class="hidx-sep">—</span>'
+                    f'<a class="hidx-art" href="{art_url}">{esc(p["title"])}</a>\n')
+            else:
+                # 複数記事は details で折りたたみ（初期は閉じる）
+                out.append(
+                    '<details>\n<summary>'
+                    f'<a class="hidx-hosp" href="{cat_url}">{esc(e["name"])}</a>'
+                    f'<span class="hidx-count">{n}件</span>'
+                    '</summary>\n<ul class="hidx-sublist">\n')
+                for p in e["posts"]:
+                    art_url = f"{sitelib.ORIGIN}/{p['slug']}/"
+                    out.append(f'<li><a href="{art_url}">{esc(p["title"])}</a></li>\n')
+                out.append('</ul>\n</details>\n')
+            out.append('</li>\n')
+        out.append('</ul>\n</div>\n')
+
+    out.append(HIDX_SCRIPT)
+    out.append('</div>\n')
     return "".join(out)
 
 

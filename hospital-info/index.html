@@ -192,39 +192,39 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 .hidx{--hidx-accent:#0b6ea8;line-height:1.7}
 .hidx .hidx-summary{margin:.2em 0 1em;color:#444}
 .hidx .hidx-summary strong{color:var(--hidx-accent)}
-.hidx-tools{position:sticky;top:0;z-index:5;background:#fff;
+.hidx .hidx-tools{position:sticky;top:0;z-index:5;background:#fff;
   padding:.5em 0 .4em;margin-bottom:1em;border-bottom:1px solid #e2e2e2}
-.hidx-tools input[type=search]{width:100%;box-sizing:border-box;
+.hidx .hidx-tools input[type=search]{width:100%;box-sizing:border-box;
   padding:.6em .8em;font-size:16px;border:1px solid #bbb;border-radius:8px}
-.hidx-nav{display:flex;flex-wrap:wrap;gap:.35em;margin-top:.5em}
-.hidx-nav a{display:inline-block;min-width:2.1em;text-align:center;
+.hidx .hidx-nav{display:flex;flex-wrap:wrap;gap:.35em;margin-top:.5em}
+.hidx .hidx-nav a{display:inline-block;min-width:2.1em;text-align:center;
   padding:.3em .1em;border:1px solid #cfd8dd;border-radius:6px;
   color:var(--hidx-accent);text-decoration:none;font-weight:600;font-size:.95em}
-.hidx-nav a:hover{background:var(--hidx-accent);color:#fff;border-color:var(--hidx-accent)}
-.hidx-row{margin:0 0 1.4em}
-.hidx-row h2{scroll-margin-top:64px;border-left:5px solid var(--hidx-accent);
+.hidx .hidx-nav a:hover{background:var(--hidx-accent);color:#fff;border-color:var(--hidx-accent)}
+.hidx .hidx-row{scroll-margin-top:7.5rem;margin:0 0 1.4em}
+.hidx .hidx-row h2{border-left:5px solid var(--hidx-accent);
   padding:.15em .55em;margin:.2em 0 .5em;font-size:1.15em;background:#f3f7fa}
-.hidx-list{list-style:none;margin:0;padding:0}
-.hidx-item{padding:.4em .2em;border-bottom:1px dotted #e6e6e6}
-.hidx-item.is-hidden{display:none}
-.hidx-hosp{font-weight:600}
-.hidx-count{display:inline-block;margin-left:.45em;padding:0 .5em;
+.hidx .hidx-list{list-style:none;margin:0;padding:0}
+.hidx .hidx-item{padding:.4em .2em;border-bottom:1px dotted #e6e6e6}
+.hidx .hidx-item.is-hidden{display:none}
+.hidx .hidx-hosp{font-weight:600}
+.hidx .hidx-count{display:inline-block;margin-left:.45em;padding:0 .5em;
   font-size:.78em;line-height:1.7;color:#555;background:#eef2f4;border-radius:10px}
-.hidx-sep{color:#bbb;margin:0 .4em}
-.hidx-art{color:#333}
-.hidx-item details>summary{cursor:pointer;list-style:none;display:flex;
+.hidx .hidx-sep{color:#bbb;margin:0 .4em}
+.hidx .hidx-art{color:#333}
+.hidx .hidx-item details>summary{cursor:pointer;list-style:none;display:flex;
   align-items:center;gap:.1em}
-.hidx-item details>summary::-webkit-details-marker{display:none}
-.hidx-item details>summary::before{content:"\25b6";color:#9aa;font-size:.7em;
+.hidx .hidx-item details>summary::-webkit-details-marker{display:none}
+.hidx .hidx-item details>summary::before{content:"\25b6";color:#9aa;font-size:.7em;
   margin-right:.5em;transition:transform .15s}
-.hidx-item details[open]>summary::before{transform:rotate(90deg)}
-.hidx-sublist{list-style:none;margin:.4em 0 .2em;padding:.2em 0 .2em 1.9em;
+.hidx .hidx-item details[open]>summary::before{transform:rotate(90deg)}
+.hidx .hidx-sublist{list-style:none;margin:.4em 0 .2em;padding:.2em 0 .2em 1.9em;
   border-left:2px solid #eef2f4}
-.hidx-sublist li{padding:.2em 0}
-.hidx-noresult{display:none;padding:1em;color:#a33;background:#fff5f5;
+.hidx .hidx-sublist li{padding:.2em 0}
+.hidx .hidx-noresult{display:none;padding:1em;color:#a33;background:#fff5f5;
   border:1px solid #f0caca;border-radius:8px}
 .hidx.is-searching .hidx-noresult.is-visible{display:block}
-@media (max-width:600px){.hidx-nav a{min-width:1.9em;padding:.35em 0}}
+@media (max-width:600px){.hidx .hidx-nav a{min-width:1.9em;padding:.35em 0}}
 </style>
 <p class="hidx-summary">医療ミス・医療過誤・医療事故を報じた病院の索引です。全<strong>125</strong>病院・<strong>211</strong>記事を五十音順にまとめています。病院名で記事一覧へ、記事名で本文へ移動できます。</p>
 <div class="hidx-tools">
@@ -945,6 +945,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
   var root=document.querySelector('.hidx');
   if(!root)return;
   var q=document.getElementById('hidx-q');
+  if(!q)return;
   var items=[].slice.call(root.querySelectorAll('.hidx-item'));
   var rows=[].slice.call(root.querySelectorAll('.hidx-row'));
   var none=root.querySelector('.hidx-noresult');
@@ -952,10 +953,12 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
   function apply(){
     var k=norm(q.value).trim();
     var searching=k.length>0;
+    var keywords=searching?k.split(/\s+/):[];
     root.classList.toggle('is-searching',searching);
     var hit=0;
     items.forEach(function(it){
-      var m=!searching||norm(it.getAttribute('data-text')).indexOf(k)>=0;
+      var text=norm(it.getAttribute('data-text'));
+      var m=!searching||keywords.every(function(kw){return text.indexOf(kw)>=0;});
       it.classList.toggle('is-hidden',!m);
       if(m)hit++;
       var d=it.querySelector('details');
@@ -969,6 +972,28 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
     if(none)none.classList.toggle('is-visible',searching&&hit===0);
   }
   q.addEventListener('input',apply);
+
+  // 五十音ジャンプ: sticky検索欄の実高さぶんオフセットして見出しが隠れないようにする
+  // （CSSの scroll-margin-top はフォールバック。JS有効時はこちらが正確に効く）
+  var tools=root.querySelector('.hidx-tools');
+  function scrollToRow(id){
+    var el=document.getElementById(id);
+    if(!el)return;
+    var pad=(tools?tools.offsetHeight:0)+8;
+    var y=el.getBoundingClientRect().top+window.pageYOffset-pad;
+    window.scrollTo({top:y<0?0:y,behavior:'smooth'});
+  }
+  var nav=root.querySelector('.hidx-nav');
+  if(nav){
+    nav.addEventListener('click',function(e){
+      var a=e.target.closest('a[href^="#row-"]');
+      if(!a)return;
+      e.preventDefault();
+      var id=a.getAttribute('href').slice(1);
+      scrollToRow(id);
+      if(history.replaceState)history.replaceState(null,'','#'+id);
+    });
+  }
 })();
 </script>
 </div>

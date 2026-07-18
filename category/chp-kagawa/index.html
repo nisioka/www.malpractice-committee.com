@@ -99,13 +99,13 @@ var related_posts_js_options = {"post_heading":"h4"};
 <script type="text/javascript" src="https://www.malpractice-committee.tech.server-on.net/wp-content/plugins/jetpack/_inc/build/related-posts/related-posts.min.js?ver=20240116" id="jetpack_related-posts-js"></script>
 <script type="application/json" id="wpp-json">
 
-{"sampling_active":0,"sampling_rate":100,"ajax_url":"https:\/\/www.malpractice-committee.tech.server-on.net\/wp-json\/wordpress-popular-posts\/v1\/popular-posts","api_url":"https:\/\/www.malpractice-committee.tech.server-on.net\/wp-json\/wordpress-popular-posts","ID":1072,"token":"f10930645c","lang":0,"debug":0}
+{"sampling_active":0,"sampling_rate":100,"ajax_url":"https:\/\/www.malpractice-committee.tech.server-on.net\/wp-json\/wordpress-popular-posts\/v1\/popular-posts","api_url":"https:\/\/www.malpractice-committee.tech.server-on.net\/wp-json\/wordpress-popular-posts","ID":0,"token":"f10930645c","lang":0,"debug":0}
 
 </script>
 <script type="text/javascript" src="https://www.malpractice-committee.tech.server-on.net/wp-content/plugins/wordpress-popular-posts/assets/js/wpp.min.js?ver=6.4.2" id="wpp-js-js"></script>
 <script type="text/javascript" src="https://www.malpractice-committee.tech.server-on.net/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
 <script type="text/javascript" src="https://www.malpractice-committee.tech.server-on.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
-<link rel="https://api.w.org/" href="https://www.malpractice-committee.tech.server-on.net/wp-json/" /><link rel="alternate" type="application/json" href="https://www.malpractice-committee.tech.server-on.net/wp-json/wp/v2/posts/1072" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.malpractice-committee.tech.server-on.net/xmlrpc.php?rsd" />
+<link rel="https://api.w.org/" href="https://www.malpractice-committee.tech.server-on.net/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.malpractice-committee.tech.server-on.net/xmlrpc.php?rsd" />
 <meta name="generator" content="WordPress 6.4.4" />
 <style>img#wpstats{display:none}</style>
 		            <style id="wpp-loading-animation-styles">@-webkit-keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}@keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}.wpp-widget-placeholder,.wpp-widget-block-placeholder,.wpp-shortcode-placeholder{margin:0 auto;width:60px;height:3px;background:#dd3737;background:linear-gradient(90deg,#dd3737 0%,#571313 10%,#dd3737 100%);background-size:200% auto;border-radius:3px;-webkit-animation:bgslide 1s infinite linear;animation:bgslide 1s infinite linear}</style>
@@ -133,9 +133,108 @@ var related_posts_js_options = {"post_heading":"h4"};
 <!-- Google AdSense（未有効化。独自ドメイン認証後に下行を有効化）
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 -->
+<style id="hp-css" type="text/css">
+.hp-wrap{line-height:1.7;color:#333}
+.hp-sec-title{font-size:1.15em;color:#0b6ea8;margin:1.6em 0 .7em;padding:0 0 .25em;border-bottom:2px solid #0b6ea8}
+.hp-sec-title:first-child{margin-top:.3em}
+/* basic info: single-column table, map lives inside a cell */
+.hp-facts{margin:0;border:1px solid #e0e9ef;border-radius:10px;overflow:hidden}
+.hp-fact{display:flex;border-top:1px solid #eef3f6}
+.hp-fact:first-child{border-top:0}
+.hp-fact dt{flex:0 0 7em;margin:0;padding:.6em .8em;background:#f2f8fb;color:#33586e;font-weight:600;font-size:.9em}
+.hp-fact dd{margin:0;padding:.6em .9em;flex:1 1 auto;min-width:0;word-break:break-word}
+.hp-fact a{color:#0b6ea8}
+.hp-fact-map dd{padding:0}
+.hp-map iframe{width:100%;height:280px;border:0;display:block}
+.hp-map-link{display:block;text-align:center;padding:.5em;font-size:.85em;background:#f7fbfd;color:#0b6ea8;text-decoration:none;border-top:1px solid #eef3f6}
+.hp-map-link:hover{background:#e9f3f8}
+.hp-note{margin:.8em 0 0;font-size:.82em;color:#888}
+/* article cards */
+.hp-cards{list-style:none;margin:0;padding:0;display:grid;gap:1em;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.hp-card{margin:0}
+.hp-card a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:#fff;border:1px solid #e3ebf0;border-radius:10px;overflow:hidden;transition:box-shadow .15s ease,transform .15s ease}
+.hp-card a:hover{box-shadow:0 6px 18px rgba(11,110,168,.15);transform:translateY(-2px)}
+.hp-card-thumb{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#eef3f6}
+.hp-card-body{display:flex;flex-direction:column;gap:.4em;padding:.7em .8em .9em;flex:1 1 auto}
+.hp-card-title{font-size:.92em;font-weight:600;line-height:1.45;color:#1a2b35;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.hp-card-date{margin-top:auto;font-size:.78em;color:#94a3ad}
+/* text-only card (no eyecatch) */
+.hp-card-text a{background:linear-gradient(160deg,#f4f9fc 0%,#eaf3f8 100%);border-color:#dbe8ef}
+.hp-card-text .hp-card-body{gap:.55em;padding:.9em .9em 1em;justify-content:flex-start}
+.hp-card-text .hp-card-tag{display:inline-flex;align-items:center;gap:.35em;align-self:flex-start;font-size:.72em;font-weight:600;color:#fff;background:#7aa7bf;border-radius:999px;padding:.15em .7em;letter-spacing:.03em}
+.hp-card-text .hp-card-title{font-size:1.0em;-webkit-line-clamp:6}
+.hp-card-text .hp-card-quote{color:#b7cdda;font-size:1.4em;line-height:1;margin-bottom:-.1em}
+@media (max-width:600px){.hp-cards{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+</style>
+<style id="hp-css" type="text/css">
+.hp-wrap{line-height:1.7;color:#333}
+.hp-sec-title{font-size:1.15em;color:#0b6ea8;margin:1.6em 0 .7em;padding:0 0 .25em;border-bottom:2px solid #0b6ea8}
+.hp-sec-title:first-child{margin-top:.3em}
+/* basic info: single-column table, map lives inside a cell */
+.hp-facts{margin:0;border:1px solid #e0e9ef;border-radius:10px;overflow:hidden}
+.hp-fact{display:flex;border-top:1px solid #eef3f6}
+.hp-fact:first-child{border-top:0}
+.hp-fact dt{flex:0 0 7em;margin:0;padding:.6em .8em;background:#f2f8fb;color:#33586e;font-weight:600;font-size:.9em}
+.hp-fact dd{margin:0;padding:.6em .9em;flex:1 1 auto;min-width:0;word-break:break-word}
+.hp-fact a{color:#0b6ea8}
+.hp-fact-map dd{padding:0}
+.hp-map iframe{width:100%;height:280px;border:0;display:block}
+.hp-map-link{display:block;text-align:center;padding:.5em;font-size:.85em;background:#f7fbfd;color:#0b6ea8;text-decoration:none;border-top:1px solid #eef3f6}
+.hp-map-link:hover{background:#e9f3f8}
+.hp-note{margin:.8em 0 0;font-size:.82em;color:#888}
+/* article cards */
+.hp-cards{list-style:none;margin:0;padding:0;display:grid;gap:1em;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.hp-card{margin:0}
+.hp-card a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:#fff;border:1px solid #e3ebf0;border-radius:10px;overflow:hidden;transition:box-shadow .15s ease,transform .15s ease}
+.hp-card a:hover{box-shadow:0 6px 18px rgba(11,110,168,.15);transform:translateY(-2px)}
+.hp-card-thumb{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#eef3f6}
+.hp-card-body{display:flex;flex-direction:column;gap:.4em;padding:.7em .8em .9em;flex:1 1 auto}
+.hp-card-title{font-size:.92em;font-weight:600;line-height:1.45;color:#1a2b35;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.hp-card-date{margin-top:auto;font-size:.78em;color:#94a3ad}
+/* text-only card (no eyecatch) */
+.hp-card-text a{background:linear-gradient(160deg,#f4f9fc 0%,#eaf3f8 100%);border-color:#dbe8ef}
+.hp-card-text .hp-card-body{gap:.55em;padding:.9em .9em 1em;justify-content:flex-start}
+.hp-card-text .hp-card-tag{display:inline-flex;align-items:center;gap:.35em;align-self:flex-start;font-size:.72em;font-weight:600;color:#fff;background:#7aa7bf;border-radius:999px;padding:.15em .7em;letter-spacing:.03em}
+.hp-card-text .hp-card-title{font-size:1.0em;-webkit-line-clamp:6}
+.hp-card-text .hp-card-quote{color:#b7cdda;font-size:1.4em;line-height:1;margin-bottom:-.1em}
+@media (max-width:600px){.hp-cards{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+</style>
+<style id="hp-css" type="text/css">
+.hp-wrap{line-height:1.7;color:#333}
+.hp-sec-title{font-size:1.15em;color:#0b6ea8;margin:1.6em 0 .7em;padding:0 0 .25em;border-bottom:2px solid #0b6ea8}
+.hp-sec-title:first-child{margin-top:.3em}
+/* basic info: single-column table, map lives inside a cell */
+.hp-facts{margin:0;border:1px solid #e0e9ef;border-radius:10px;overflow:hidden}
+.hp-fact{display:flex;border-top:1px solid #eef3f6}
+.hp-fact:first-child{border-top:0}
+.hp-fact dt{flex:0 0 7em;margin:0;padding:.6em .8em;background:#f2f8fb;color:#33586e;font-weight:600;font-size:.9em}
+.hp-fact dd{margin:0;padding:.6em .9em;flex:1 1 auto;min-width:0;word-break:break-word}
+.hp-fact a{color:#0b6ea8}
+.hp-fact-map dd{padding:0}
+.hp-map iframe{width:100%;height:280px;border:0;display:block}
+.hp-map-link{display:block;text-align:center;padding:.5em;font-size:.85em;background:#f7fbfd;color:#0b6ea8;text-decoration:none;border-top:1px solid #eef3f6}
+.hp-map-link:hover{background:#e9f3f8}
+.hp-note{margin:.8em 0 0;font-size:.82em;color:#888}
+/* article cards */
+.hp-cards{list-style:none;margin:0;padding:0;display:grid;gap:1em;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.hp-card{margin:0}
+.hp-card a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:#fff;border:1px solid #e3ebf0;border-radius:10px;overflow:hidden;transition:box-shadow .15s ease,transform .15s ease}
+.hp-card a:hover{box-shadow:0 6px 18px rgba(11,110,168,.15);transform:translateY(-2px)}
+.hp-card-thumb{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#eef3f6}
+.hp-card-body{display:flex;flex-direction:column;gap:.4em;padding:.7em .8em .9em;flex:1 1 auto}
+.hp-card-title{font-size:.92em;font-weight:600;line-height:1.45;color:#1a2b35;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.hp-card-date{margin-top:auto;font-size:.78em;color:#94a3ad}
+/* text-only card (no eyecatch) */
+.hp-card-text a{background:linear-gradient(160deg,#f4f9fc 0%,#eaf3f8 100%);border-color:#dbe8ef}
+.hp-card-text .hp-card-body{gap:.55em;padding:.9em .9em 1em;justify-content:flex-start}
+.hp-card-text .hp-card-tag{display:inline-flex;align-items:center;gap:.35em;align-self:flex-start;font-size:.72em;font-weight:600;color:#fff;background:#7aa7bf;border-radius:999px;padding:.15em .7em;letter-spacing:.03em}
+.hp-card-text .hp-card-title{font-size:1.0em;-webkit-line-clamp:6}
+.hp-card-text .hp-card-quote{color:#b7cdda;font-size:1.4em;line-height:1;margin-bottom:-.1em}
+@media (max-width:600px){.hp-cards{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+</style>
 </head>
 
-<body id="#top" class="archive category category-chp-kagawa left-content default" itemschope="itemscope" itemtype="http://schema.org/WebPage">
+<body id="#top" class="archive category category-chp-kagawa left-content default" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 
   <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -153,7 +252,7 @@ var related_posts_js_options = {"post_heading":"h4"};
         <a href="https://www.malpractice-committee.tech.server-on.net">医療ミス調査会</a>
       </p>
 
-  <div id="header-sns" class="sp-hide"><ul><li class="facebook_icon"><a href="https://www.facebook.com/%E5%8C%BB%E7%99%82%E3%83%9F%E3%82%B9%E8%AA%BF%E6%9F%BB%E4%BC%9A-1451712671799851/" target="_blank"><i class="fa fa-facebook-square"></i></li><li class="twitter_icon"><a target="_blank" href="https://twitter.com/MediMalpComm"><i class="fa fa-twitter-square"></i></a></li><li class="google_icon"><a target="_blank" href="https://plus.google.com/117212815815684530955"><i class="fa fa-google-plus-square"></i></li><li class="feedly_icon"><a target="_blank" href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttps%3A%2F%2Fwww.malpractice-committee.tech.server-on.net%2Ffeed%2F"><i class="fa fa-rss"></i></a></li></ul></div>
+  <div id="header-sns" class="sp-hide"><ul><li class="facebook_icon"><a href="https://www.facebook.com/%E5%8C%BB%E7%99%82%E3%83%9F%E3%82%B9%E8%AA%BF%E6%9F%BB%E4%BC%9A-1451712671799851/" target="_blank"><i class="fa fa-facebook-square"></i></a></li><li class="twitter_icon"><a target="_blank" href="https://twitter.com/MediMalpComm"><i class="fa fa-twitter-square"></i></a></li><li class="google_icon"><a target="_blank" href="https://plus.google.com/117212815815684530955"><i class="fa fa-google-plus-square"></i></a></li><li class="feedly_icon"><a target="_blank" href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttps%3A%2F%2Fwww.malpractice-committee.tech.server-on.net%2Ffeed%2F"><i class="fa fa-rss"></i></a></li></ul></div>
         <div id="header-menu-tog"> <a href="#"><i class="fa fa-align-justify"></i></a></div>
   </div>
 </header>
@@ -181,23 +280,24 @@ var related_posts_js_options = {"post_heading":"h4"};
         <h1 class="post-title">香川県立中央病院</h1>
       </header>
       <div class="cat-content-area">
-        <article id="post-1072" class="post-1072 post type-post status-publish format-standard hentry category-chp-kagawa" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-      <header class="post-header">
-        <ul class="post-meta list-inline">
-          <li class="date updated" itemprop="datePublished" datetime="2026-07-13T10:00:00+09:00"><i class="fa fa-clock-o"></i> 2026.07.13</li>
-        </ul>
-        <h2 class="post-title" itemprop="headline"><a href="https://www.malpractice-committee.tech.server-on.net/robot-surgery-hemostasis-death/">ロボット手術後に出血性ショックで死亡　香川県立中央病院、遺族に3200万円賠償へ</a></h2>
-      </header>
-    </article>
-
-        <article id="post-438" class="post-438 post type-post status-publish format-standard hentry category-chp-kagawa" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-      <header class="post-header">
-        <ul class="post-meta list-inline">
-          <li class="date updated" itemprop="datePublished" datetime="2016-03-16T11:58:38+09:00"><i class="fa fa-clock-o"></i> 2016.03.16</li>
-        </ul>
-        <h2 class="post-title" itemprop="headline"><a href="https://www.malpractice-committee.tech.server-on.net/oversight-cancer/">【医療事故】香川県立中央病院　がんを見落とし患者が死亡</a></h2>
-      </header>
-    </article>
+        <div class="hp-wrap">
+      <h2 class="hp-sec-title">基本情報</h2>
+      <dl class="hp-facts">
+          <div class="hp-fact"><dt>正式名称</dt><dd>香川県立中央病院</dd></div>
+          <div class="hp-fact"><dt>所在地</dt><dd>〒760-8557 香川県高松市朝日町1丁目2番1号</dd></div>
+          <div class="hp-fact"><dt>設立</dt><dd>1948年</dd></div>
+          <div class="hp-fact"><dt>病床数</dt><dd>533床</dd></div>
+          <div class="hp-fact"><dt>運営</dt><dd>香川県</dd></div>
+          <div class="hp-fact"><dt>公式サイト</dt><dd><a href="https://www.chp-kagawa.jp/" target="_blank" rel="noopener noreferrer">https://www.chp-kagawa.jp/</a></dd></div>
+          <div class="hp-fact hp-fact-map"><dt>地図</dt><dd><div class="hp-map"><iframe title="香川県立中央病院の地図" loading="lazy" src="https://maps.google.com/maps?q=%E3%80%92760-8557%20%E9%A6%99%E5%B7%9D%E7%9C%8C%E9%AB%98%E6%9D%BE%E5%B8%82%E6%9C%9D%E6%97%A5%E7%94%BA1%E4%B8%81%E7%9B%AE2%E7%95%AA1%E5%8F%B7&amp;z=16&amp;output=embed"></iframe><a class="hp-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%80%92760-8557%20%E9%A6%99%E5%B7%9D%E7%9C%8C%E9%AB%98%E6%9D%BE%E5%B8%82%E6%9C%9D%E6%97%A5%E7%94%BA1%E4%B8%81%E7%9B%AE2%E7%95%AA1%E5%8F%B7" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div></dd></div>
+      </dl>
+      <p class="hp-note">※基本情報は各病院の公式サイト等の公開情報をもとに作成しています。最新の情報は各病院の公式サイトをご確認ください。</p>
+      <h2 class="hp-sec-title">関連記事</h2>
+      <ul class="hp-cards">
+        <li class="hp-card hp-card-text"><a href="/robot-surgery-hemostasis-death/"><span class="hp-card-body"><span class="hp-card-tag">記事</span><span class="hp-card-title"><span class="hp-card-quote">“</span>ロボット手術後に出血性ショックで死亡　香川県立中央病院、遺族に3200万円賠償へ</span><span class="hp-card-date">2026.07.13</span></span></a></li>
+        <li class="hp-card"><a href="/oversight-cancer/"><img class="hp-card-thumb" src="/wp-content/uploads/2016/03/chp-kagawa.jpg" alt="" loading="lazy"><span class="hp-card-body"><span class="hp-card-title">【医療事故】香川県立中央病院　がんを見落とし患者が死亡</span><span class="hp-card-date">2016.03.16</span></span></a></li>
+      </ul>
+        </div>
       </div>
     </section>
 
@@ -287,7 +387,7 @@ var related_posts_js_options = {"post_heading":"h4"};
     {lang: 'ja'}
   </script>
 	<script type="text/javascript">
-		window.WPCOM_sharing_counts = {"https:\/\/www.malpractice-committee.tech.server-on.net\/chp-kagawa\/":1072};
+		window.WPCOM_sharing_counts = {};
 	</script>
 				<script type="text/javascript" src="https://www.malpractice-committee.tech.server-on.net/wp-content/themes/xeory_base/lib/js/jquery.pagetop.js?ver=6.4.4" id="pagetop-js"></script>
 <script type="text/javascript" id="jetpack-facebook-embed-js-extra">
@@ -300,8 +400,8 @@ var jpfbembed = {"appid":"249643311490","locale":"en_US"};
 <script type="text/javascript" id="jetpack-stats-js-after">
 /* <![CDATA[ */
 _stq = window._stq || [];
-_stq.push([ "view", JSON.parse("{\"v\":\"ext\",\"blog\":\"102782097\",\"post\":\"1072\",\"tz\":\"9\",\"srv\":\"www.malpractice-committee.tech.server-on.net\",\"j\":\"1:13.3.1\"}") ]);
-_stq.push([ "clickTrackerInit", "102782097", "1072" ]);
+_stq.push([ "view", JSON.parse("{\"v\":\"ext\",\"blog\":\"102782097\",\"post\":\"0\",\"tz\":\"9\",\"srv\":\"www.malpractice-committee.tech.server-on.net\",\"j\":\"1:13.3.1\"}") ]);
+_stq.push([ "clickTrackerInit", "102782097", "0" ]);
 /* ]]> */
 </script>
 <script defer type="text/javascript" src="https://www.malpractice-committee.tech.server-on.net/wp-content/plugins/akismet/_inc/akismet-frontend.js?ver=1711020232" id="akismet-frontend-js"></script>

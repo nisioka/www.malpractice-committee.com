@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /wp-json/
+Disallow: /*Pnoamp=
+Disallow: /*Preplytocom=
+
+Sitemap: https://www.malpractice-committee.tech.server-on.net/sitemap.xml

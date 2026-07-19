@@ -49,6 +49,7 @@
    python3 _automation/build_category.py                    # 新規/更新カテゴリページ
    python3 _automation/rebuild_listings.py                  # トップ＋page/N を非破壊シフト
    python3 _automation/build_hospital_index.py              # 病院索引 再生成
+   python3 _automation/build_sitemap.py                      # sitemap.xml 再生成
    ```
 
 6. **検証**

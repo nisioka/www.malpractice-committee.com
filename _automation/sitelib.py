@@ -36,9 +36,7 @@ HEAD_OPEN = (
     "\t<meta charset=\"UTF-8\">\n"
     "\t\n"
     "\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n"
-    "\t<!--[if lt IE 9]>\n"
-    "    <script src=\"http://html5shiv.googlecode.com/svn/trunk/html5.js\"></script>\n"
-    "  <![endif]-->\n\n\n"
+    "\n\n"
 )
 
 
@@ -252,8 +250,6 @@ def build_article_head(data: dict) -> str:
         f'<meta name="keywords" content="{esc_attr(kw)}" />\n'
         f'<meta name="description" content="{esc_attr(desc)}" />\n'
         '<meta name="robots" content="index" />\n'
-        '<meta property="fb:admins" content="197947167205693" />\n'
-        '<meta property="fb:app_id" content="764065833702089" />\n'
         f'<meta property="og:title" content="{esc_attr(title)}" />\n'
         '<meta property="og:type" content="article" />\n'
         f'<meta property="og:description" content="{esc_attr(desc)}" />\n'

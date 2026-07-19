@@ -47,8 +47,6 @@ def cat_head(slug, name):
         "\t\t</script>\n\t\t<!-- All in One SEO -->\n\n"
         '<meta name="keywords" content="" />\n<meta name="description" content="" />\n'
         '<meta name="robots" content="index" />\n'
-        '<meta property="fb:admins" content="197947167205693" />\n'
-        '<meta property="fb:app_id" content="764065833702089" />\n'
         f'<meta property="og:title" content="{sitelib.esc_attr(name)}" />\n'
         '<meta property="og:type" content="article" />\n'
         f'<meta property="og:url" content="{url}" />\n'

@@ -70,8 +70,9 @@ python3 _automation/build_sitemap.py                     # sitemap.xml 再生成
 
 ## 既知の事項・罠
 
-- **GA4未設定**: 全ページに `G-XXXXXXXXXX` プレースホルダのコメントアウト済みGA4スニペットあり。
-  オーナーが測定IDを取得したら一括置換で有効化する（旧Universal Analyticsは除去済み）。
+- **GA4有効**: 全ページに測定ID `G-JNHNKLLKNE` のGA4スニペットが有効化済み（旧Universal Analyticsは
+  除去済み）。定型ブロックは `_automation/templates/head_assets.html` と同期。測定IDを差し替える場合は
+  テンプレートと全ページの `G-JNHNKLLKNE` を一括置換すること。
 - **AdSense無効**: 無料ドメインでは認証不可。`sitelib.ADSENSE_HEAD` にコメント雛形のみ。
 - **Amazonアフィリエイト**（`mitsuwo-22`）はサイドバー「関連書籍」枠で全ページ有効。壊さない。
 - コメント投稿フォームは静的化に伴い除去済み（過去コメントの表示は残存）。

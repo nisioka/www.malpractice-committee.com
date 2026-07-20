@@ -405,12 +405,16 @@ def assemble_article_page(data: dict) -> str:
     body_class = (f"post-template-default single single-post postid-{pid} "
                   "single-format-standard left-content default")
     breadcrumb = (
-        '<ol class="breadcrumb clearfix"><li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">'
-        f'<a href="{ORIGIN}" itemprop="url"><i class="fa fa-home"></i> <span itemprop="title">ホーム</span></a> / </li>'
-        '<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">'
-        f'<a href="{ORIGIN}/category/{catslug}/" itemprop="url"><i class="fa fa-folder"></i> '
-        f'<span itemprop="title">{esc_text(catname)}</span></a> / </li>'
-        f'<li><i class="fa fa-file-text"></i> {esc_text(title)}</li></ol>'
+        '<ol class="breadcrumb clearfix" itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">'
+        '<li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">'
+        f'<a href="{ORIGIN}" itemprop="item"><i class="fa fa-home"></i> <span itemprop="name">ホーム</span></a>'
+        '<meta itemprop="position" content="1" /> / </li>'
+        '<li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">'
+        f'<a href="{ORIGIN}/category/{catslug}/" itemprop="item"><i class="fa fa-folder"></i> '
+        f'<span itemprop="name">{esc_text(catname)}</span></a><meta itemprop="position" content="2" /> / </li>'
+        '<li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">'
+        f'<i class="fa fa-file-text"></i> <span itemprop="name">{esc_text(title)}</span>'
+        '<meta itemprop="position" content="3" /></li></ol>'
     )
 
     return f"""{HEAD_OPEN}{head}{head_assets}

@@ -78,10 +78,13 @@ def build_category_page(slug, name, posts):
     footer = sitelib.fill_tokens(sitelib.partial("footer.html"), pid, slug).rstrip("\n")
     items = "\n\n".join(cat_article_item(p) for p in posts)
     breadcrumb = (
-        '<ol class="breadcrumb clearfix"><li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">'
-        f'<a href="{sitelib.ORIGIN}" itemprop="url"><i class="fa fa-home"></i> '
-        '<span itemprop="title">ホーム</span></a> / </li>'
-        f'<li><i class="fa fa-folder"></i> {sitelib.esc_text(name)}</li></ol>'
+        '<ol class="breadcrumb clearfix" itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">'
+        '<li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">'
+        f'<a href="{sitelib.ORIGIN}" itemprop="item"><i class="fa fa-home"></i> '
+        '<span itemprop="name">ホーム</span></a><meta itemprop="position" content="1" /> / </li>'
+        '<li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">'
+        f'<i class="fa fa-folder"></i> <span itemprop="name">{sitelib.esc_text(name)}</span>'
+        '<meta itemprop="position" content="2" /></li></ol>'
     )
     body_class = f"archive category category-{slug} left-content default"
     return f"""{sitelib.HEAD_OPEN}{head}{head_assets}

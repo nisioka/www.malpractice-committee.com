@@ -3,6 +3,14 @@
 サイト全体の調査（2026-07）で見つかった改善点の記録。対応済み項目は ✅、未対応は優先度付きで残す。
 新たに対応した際はこのファイルを更新すること。
 
+## 対応済み（2026-07, ブランチ claude/data-vocabulary-schema-deprecation-v5d4wn）
+
+- ✅ **data-vocabulary.org スキーマ廃止対応**（Search Console 指摘）: 全ページのパンくずを
+  廃止された `data-vocabulary.org/Breadcrumb` から `schema.org/BreadcrumbList`（`ListItem` +
+  `itemprop="item"/"name"/"position"` メタ）へ移行（621ファイル）。生成側も同期修正
+  （`_automation/sitelib.py` 記事用・`_automation/build_category.py` カテゴリ用）。
+  `hospital-info/` は既存HTMLのパンくずを温存する設計のためHTML側のみ更新。
+
 ## 対応済み（2026-07, ブランチ claude/blog-improvement-setup-tepgcw）
 
 - ✅ **構造化データのタイポ修正**: 全ページの `http://scheme.org/SiteNavigationElement` →

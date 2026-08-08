@@ -140,6 +140,13 @@
  },
  "posts": [
   {
+   "post_id": 1073,
+   "category_slug": "kyoto-u",
+   "date": "2026-08-08T10:00:00+09:00",
+   "title": "京大病院で医療事故、脳腫瘍摘出手術で正常部位を誤って摘出",
+   "slug": "wrong-site-brain-surgery-kyoto-u"
+  },
+  {
    "post_id": 1072,
    "category_slug": "chp-kagawa",
    "date": "2026-07-13T10:00:00+09:00",

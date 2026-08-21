@@ -136,9 +136,31 @@
   "scchr": "静岡がんセンター",
   "chuo-kcho": "神戸市立医療センター中央市民病院",
   "chiba-cancer-center": "千葉県がんセンター",
-  "kenkou-seikyou": "健生病院"
+  "kenkou-seikyou": "健生病院",
+  "hokkaido-cancer-center": "国立病院機構北海道がんセンター"
  },
  "posts": [
+  {
+   "post_id": 1076,
+   "category_slug": "hokkaido-cancer-center",
+   "date": "2026-08-21T10:20:00+09:00",
+   "title": "ロボット支援手術で血管損傷、患者死亡　北海道がんセンター、遺族と和解",
+   "slug": "robot-surgery-vessel-injury-death-hokkaido-cc"
+  },
+  {
+   "post_id": 1075,
+   "category_slug": "nishi-kcho",
+   "date": "2026-08-21T10:10:00+09:00",
+   "title": "胃がん術後フォローで肺の異常影を見落とし、骨転移判明　神戸市立医療センター西市民病院",
+   "slug": "lung-cancer-oversight-kobe-nishi"
+  },
+  {
+   "post_id": 1074,
+   "category_slug": "chuo-kcho",
+   "date": "2026-08-21T10:00:00+09:00",
+   "title": "CT画像の肺がん疑い所見を見落とし、根治困難なステージ4に　神戸市立医療センター中央市民病院",
+   "slug": "lung-cancer-oversight-kobe-chuo"
+  },
   {
    "post_id": 1073,
    "category_slug": "kyoto-u",

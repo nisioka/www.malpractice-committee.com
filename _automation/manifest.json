@@ -126,6 +126,7 @@
   "shin-kokura": "新小倉病院",
   "hosp-u-toyama": "富山大病院",
   "nishihosp": "兵庫県立西宮病院",
+  "hokkaido-cancer-center": "国立病院機構北海道がんセンター",
   "hemc": "兵庫県災害医療センター",
   "hyogo-kodomo": "兵庫県立こども病院",
   "jikei": "慈恵会医科大学附属病院",
@@ -137,9 +138,24 @@
   "chuo-kcho": "神戸市立医療センター中央市民病院",
   "chiba-cancer-center": "千葉県がんセンター",
   "kenkou-seikyou": "健生病院",
-  "hokkaido-cancer-center": "国立病院機構北海道がんセンター"
+  "kuwana-general-medical-center": "桑名市総合医療センター",
+  "saitama-childrens-medical-center": "埼玉県立小児医療センター"
  },
  "posts": [
+  {
+   "post_id": 1078,
+   "category_slug": "saitama-childrens-medical-center",
+   "date": "2026-08-28T10:10:00+09:00",
+   "title": "抗がん剤の髄腔内注射に別の薬剤混入か、白血病患者1人死亡・2人重体　埼玉県立小児医療センター",
+   "slug": "saitama-childrens-medical-center-vincristine-mixup"
+  },
+  {
+   "post_id": 1077,
+   "category_slug": "kuwana-general-medical-center",
+   "date": "2026-08-28T10:00:00+09:00",
+   "title": "禁忌薬と気づかず抗菌薬を誤投与、患者が難病発症し死亡　桑名市総合医療センター",
+   "slug": "kuwana-medical-center-bactramin-allergy-death"
+  },
   {
    "post_id": 1076,
    "category_slug": "hokkaido-cancer-center",

@@ -119,6 +119,7 @@
   "aomori-kenbyo": "青森県立中央病院",
   "akita-u": "秋田大医学部付属病院",
   "tsurumi-univ-dental-hospital": "鶴見大歯学部付属病院",
+  "kuwana-general-medical-center": "桑名市総合医療センター",
   "hyogo-cc": "兵庫県立がんセンター",
   "kumamoto-u": "熊本大学医学部附属病院",
   "furukisanfujinka": "ふるき産婦人科",
@@ -128,6 +129,7 @@
   "nishihosp": "兵庫県立西宮病院",
   "hokkaido-cancer-center": "国立病院機構北海道がんセンター",
   "hemc": "兵庫県災害医療センター",
+  "saitama-childrens-medical-center": "埼玉県立小児医療センター",
   "hyogo-kodomo": "兵庫県立こども病院",
   "jikei": "慈恵会医科大学附属病院",
   "osaka-metro-u": "大阪公立大学医学部附属病院",
@@ -138,10 +140,16 @@
   "chuo-kcho": "神戸市立医療センター中央市民病院",
   "chiba-cancer-center": "千葉県がんセンター",
   "kenkou-seikyou": "健生病院",
-  "kuwana-general-medical-center": "桑名市総合医療センター",
-  "saitama-childrens-medical-center": "埼玉県立小児医療センター"
+  "tottori-central": "鳥取県立中央病院"
  },
  "posts": [
+  {
+   "post_id": 1079,
+   "category_slug": "tottori-central",
+   "date": "2026-09-04T10:00:00+09:00",
+   "title": "エクモの酸素配管接続ミスで男性重体、鳥取県立中央病院が謝罪",
+   "slug": "tottori-central-ecmo-oxygen-2026"
+  },
   {
    "post_id": 1078,
    "category_slug": "saitama-childrens-medical-center",

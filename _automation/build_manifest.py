@@ -114,7 +114,9 @@ def main():
     for p in posts:
         p.pop("category_name", None)
 
-    manifest = {"categories": categories, "posts": posts}
+    # categories の並びは iterdir() 順（＝ファイルシステム依存）になるため、
+    # 実行環境が変わるだけで中身が同じまま全行が入れ替わる。slug 昇順に固定して差分を安定させる。
+    manifest = {"categories": dict(sorted(categories.items())), "posts": posts}
     OUT.write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"posts: {len(posts)}  categories: {len(categories)}")
     print(f"max post_id: {posts[0]['post_id'] if posts else 'N/A'}")

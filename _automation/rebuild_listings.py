@@ -29,8 +29,42 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 PER_PAGE = 10
 
 WRAP_RE = re.compile(r'(<div class="post-loop-wrap">)(.*?)(</div><!-- /post-loop-wrap -->)', re.S)
-CARD_RE = re.compile(r'<article id="post-\d+".*?</article>', re.S)
+CARD_START_RE = re.compile(r'<article id="post-\d+"')
+ARTICLE_TAG_RE = re.compile(r'<article\b|</article>')
 CLASS_RE = re.compile(r'(<article id="post-\d+" class="[^"]*)"')
+
+
+def find_cards(inner: str):
+    """カード境界を検出する。
+
+    一部の記事（例: post-1042）は本文中に入れ子の <article class="module...">
+    （引用埋め込み等、id無し）を含む。単純な非貪欲正規表現 `.*?</article>` だと
+    その内側の </article> で止まってしまい、カード末尾の共有ボタン等が
+    カード外へ漏れる。ここでは <article>/</article> のネスト深さを数えて、
+    深さが0に戻った位置を真のカード終端とする。
+    """
+    spans = []
+    pos = 0
+    while True:
+        m = CARD_START_RE.search(inner, pos)
+        if not m:
+            break
+        start = m.start()
+        depth = 0
+        end = None
+        for tag in ARTICLE_TAG_RE.finditer(inner, start):
+            if tag.group(0) == "</article>":
+                depth -= 1
+                if depth == 0:
+                    end = tag.end()
+                    break
+            else:
+                depth += 1
+        if end is None:
+            raise SystemExit(f"カード終端が見つからない: {m.group(0)}")
+        spans.append((start, end, inner[start:end]))
+        pos = end
+    return spans
 
 
 def page_path(n: int) -> pathlib.Path:
@@ -55,7 +89,7 @@ def split_wrap(html: str):
     if not m:
         raise SystemExit("post-loop-wrap が見つからない")
     inner = m.group(2)
-    spans = [(mm.start(), mm.end(), mm.group(0)) for mm in CARD_RE.finditer(inner)]
+    spans = find_cards(inner)
     cards = [s[2] for s in spans]
     gaps = [inner[:spans[0][0]]]  # prefix
     for a, b in zip(spans, spans[1:]):

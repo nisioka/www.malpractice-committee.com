@@ -10,6 +10,7 @@
   "chiba-cancer-center": "千葉県がんセンター",
   "chiba-u": "千葉大学医学部附属病院",
   "chikusei": "筑西市民病院",
+  "chitose-municipal": "市立千歳市民病院",
   "chp-kagawa": "香川県立中央病院",
   "chuo-kcho": "神戸市立医療センター中央市民病院",
   "city-aomori": "青森市民病院",
@@ -88,6 +89,7 @@
   "mmc-funabashi": "船橋市立医療センター",
   "municipal-hospital-ichinomiya": "一宮市民病院",
   "municipal-hp": "彦根市立病院",
+  "nagano-childrens-hospital": "長野県立こども病院",
   "nagasaki-u": "長崎大学病院",
   "nakatsugawa-hp": "中津川市民病院",
   "ncchd": "国立成育医療研究センター",
@@ -143,6 +145,20 @@
   "ypch": "山形県立中央病院"
  },
  "posts": [
+  {
+   "post_id": 1081,
+   "category_slug": "nagano-childrens-hospital",
+   "date": "2026-09-11T10:10:00+09:00",
+   "title": "心臓手術後に女児死亡、両親が長野県立こども病院を提訴　8300万円請求",
+   "slug": "nagano-childrens-cardiac-surgery-lawsuit-2026"
+  },
+  {
+   "post_id": 1080,
+   "category_slug": "chitose-municipal",
+   "date": "2026-09-11T10:00:00+09:00",
+   "title": "点滴で鎮痛剤と強心薬を取り違え、90代男性死亡　市立千歳市民病院",
+   "slug": "chitose-municipal-dopamine-mixup-2026"
+  },
   {
    "post_id": 1079,
    "category_slug": "tottori-central",

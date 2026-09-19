@@ -94,6 +94,7 @@
   "nakatsugawa-hp": "中津川市民病院",
   "ncchd": "国立成育医療研究センター",
   "ncgm": "国立国際医療研究センター",
+  "niigata-cancer-center": "新潟県立がんセンター新潟病院",
   "niigata-u": "新潟大医歯学総合病院",
   "ninohe-hp": "岩手県立二戸病院",
   "nishi-kcho": "神戸市立医療センター西市民病院",
@@ -145,6 +146,27 @@
   "ypch": "山形県立中央病院"
  },
  "posts": [
+  {
+   "post_id": 1084,
+   "category_slug": "osaka-metro-u",
+   "date": "2026-09-18T10:00:00+09:00",
+   "title": "手首骨折手術後に低酸素脳症、意識戻らず死亡　大阪公立大学病院に約4600万円の賠償命令",
+   "slug": "osaka-wrist-surgery-hypoxia"
+  },
+  {
+   "post_id": 1083,
+   "category_slug": "kyoto-u",
+   "date": "2026-09-18T11:00:00+09:00",
+   "title": "脳腫瘍手術で誤った部位を摘出、患者は寝たきりに　京都大学医学部附属病院が謝罪",
+   "slug": "kyoto-u-brain-tumor-wrong-site"
+  },
+  {
+   "post_id": 1082,
+   "category_slug": "niigata-cancer-center",
+   "date": "2026-09-18T12:00:00+09:00",
+   "title": "大腸がんの肝転移見落とし、女性死亡　新潟県立がんセンター新潟病院が調停で200万円賠償へ",
+   "slug": "niigata-cancer-center-liver-metastasis-overlooked"
+  },
   {
    "post_id": 1081,
    "category_slug": "nagano-childrens-hospital",

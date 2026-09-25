@@ -28,6 +28,7 @@
   "fukui": "福井県立病院",
   "furukisanfujinka": "ふるき産婦人科",
   "gh-opho": "大阪府立医療センター",
+  "gifu-general-medical-center": "岐阜県総合医療センター",
   "gmhosp": "岐阜市民病院",
   "h-osaki": "大崎市民病院",
   "handa-city-hospital": "半田市立半田病院",
@@ -146,6 +147,13 @@
   "ypch": "山形県立中央病院"
  },
  "posts": [
+  {
+   "post_id": 1085,
+   "category_slug": "gifu-general-medical-center",
+   "date": "2026-09-25T10:00:00+09:00",
+   "title": "気管カニューレ外れ3歳女児死亡、モニター中断が原因　岐阜県総合医療センターが謝罪",
+   "slug": "gifu-general-tracheostomy-alarm-2026"
+  },
   {
    "post_id": 1084,
    "category_slug": "osaka-metro-u",

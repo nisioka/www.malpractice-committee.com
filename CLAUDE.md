@@ -54,6 +54,9 @@ python3 _automation/build_sitemap.py                     # sitemap.xml 再生成
 
 - **回帰テスト**: `python3 _automation/rebuild_listings.py --check`
   （新規0件で全一覧ページがバイト一致すれば合格。横断修正後は必ず実行）
+- **参照切れの確認**: `python3 _automation/check_links.py`
+  全HTML/CSSの画像・CSS・JS・サイト内リンクをリポジトリ内の実体と突き合わせて集計する。
+  外部URLは叩かない。横断修正の前後で件数を比べる。
 - 生成/修正したページを chromium で開いて体裁確認。PRを作れば
   `.github/workflows/pr-preview.yml` が変更ページのスクリーンショットをPRにコメントする。
 - 変更範囲の確認: `git status` で意図したファイルだけが変わっているか確認。

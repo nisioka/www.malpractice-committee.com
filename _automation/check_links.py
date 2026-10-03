@@ -63,7 +63,8 @@ def tracked_files():
     out = subprocess.run(["git", "-C", ROOT, "ls-files", "-z", "--cached", "--others",
                           "--exclude-standard"],
                          check=True, capture_output=True).stdout
-    files = [p for p in out.decode("utf-8").split("\0") if p]
+    # マージの衝突中は、同じパスがステージごとに複数回出る。重複を落とさないと件数が膨らむ。
+    files = sorted({p for p in out.decode("utf-8").split("\0") if p})
     return [p for p in files if os.path.exists(os.path.join(ROOT, p))]
 
 

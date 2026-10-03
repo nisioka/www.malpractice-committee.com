@@ -54,6 +54,9 @@ python3 _automation/build_sitemap.py                     # sitemap.xml 再生成
 
 - **回帰テスト**: `python3 _automation/rebuild_listings.py --check`
   （新規0件で全一覧ページがバイト一致すれば合格。横断修正後は必ず実行）
+- **参照切れの確認**: `python3 _automation/check_links.py`
+  全HTML/CSSの画像・CSS・JS・サイト内リンクをリポジトリ内の実体と突き合わせて集計する。
+  外部URLは叩かない。横断修正の前後で件数を比べる。
 - 生成/修正したページを chromium で開いて体裁確認。PRを作れば
   `.github/workflows/pr-preview.yml` が変更ページのスクリーンショットをPRにコメントする。
 - 変更範囲の確認: `git status` で意図したファイルだけが変わっているか確認。
@@ -74,7 +77,9 @@ python3 _automation/build_sitemap.py                     # sitemap.xml 再生成
   除去済み）。定型ブロックは `_automation/templates/head_assets.html` と同期。測定IDを差し替える場合は
   テンプレートと全ページの `G-JNHNKLLKNE` を一括置換すること。
 - **AdSense無効**: 無料ドメインでは認証不可。`sitelib.ADSENSE_HEAD` にコメント雛形のみ。
-- **Amazonアフィリエイト**（`mitsuwo-22`）はサイドバー「関連書籍」枠で全ページ有効。壊さない。
+- **Amazonアフィリエイト**（`mitsuwo-22`）のサイドバー「関連書籍」枠は全ページにあるが、配信元が
+  応答せず表示されていない。外すか替えるかはオーナー判断待ちで、決まるまで枠のコードは変えない。
+  サイドバーの twitter・サイト内検索・アンドロイド アプリも同じ扱い（`docs/IMPROVEMENTS.md` の「未対応」）。
 - コメント投稿フォームは静的化に伴い除去済み（過去コメントの表示は残存）。
 - `wp-json/` は oEmbed discovery が参照するため残置（robots.txt でクロール除外済み）。
 - `pykakasi` 無しでも動作する（病院索引が「その他」に集約されるだけ）。

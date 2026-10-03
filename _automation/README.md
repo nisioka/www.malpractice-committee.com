@@ -20,6 +20,8 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `rebuild_listings.py` | トップ + page/N の一覧を非破壊シフトで再生成（`--check`で回帰テスト） |
 | `build_hospital_index.py` | 病院索引 `hospital-info/index.html` を全網羅で再生成 |
 | `build_sitemap.py` | `sitemap.xml` をルートに全網羅で再生成（manifest + 実在ページから） |
+| `check_links.py` | 全HTML/CSSのサイト内参照（画像・CSS・JS・リンク）を実体と突き合わせ、壊れ方の種類ごとに集計 |
+| `fix_refs.py` | 上記のうち機械的に直せるものを一括修正（実体の無い `srcset` 候補の削除、`/<親>/<slug>` 形の記事リンクの書き換え）。冪等 |
 
 ## 手動での使い方（例）
 ```bash
@@ -36,6 +38,7 @@ python3 _automation/build_sitemap.py
 ## 回帰テスト
 ```bash
 python3 _automation/rebuild_listings.py --check   # 新規0件で全ページがバイト一致すればOK
+python3 _automation/check_links.py                # 参照切れの集計（--strict で1件でもあれば終了コード1）
 ```
 
 ## 週次自動更新

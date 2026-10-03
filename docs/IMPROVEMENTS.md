@@ -82,9 +82,11 @@
 - **存在しないカテゴリページへのリンク**: `category/` 配下の9件。niigata-cc・gakuentoshi-mc・
   nagoya-cu・itoigawa-hp・tanushimaru・municipal-hospital-toyohashi・dongo・kcch-kanagawa・hiroo。
   ほとんどは上記の欠けた記事が属していたカテゴリ。
-- **Amazon のウィジェットが表示されない**: サイドバー「関連書籍」の `rcm-fe.amazon-adsystem.com` は
-  全ページ、記事本文の `rcm-jp.amazon.co.jp` は592ファイルにある。どちらのホスト名も
-  アドレスを返さなくなっており、`iframe` は読み込めない。枠ごと外すか別の掲載方法へ替えるかは
+- **Amazon の枠が表示されない**: サイドバー「関連書籍」は全ページにあり、
+  `rcm-fe.amazon-adsystem.com` の `iframe` が読み込めない。ホスト名がアドレスを返さなくなっている。
+  記事本文の商品枠は412ファイルに637個あり、うち408ファイルでは読み込み中の表示のまま止まる。
+  商品データが静的化のときに取り込まれておらず、代わりに使われる `rcm-jp.amazon.co.jp` の
+  `iframe` も同じ理由で読み込めない。枠ごと外すか、商品ページへの通常のリンクに替えるかは
   オーナー判断。
 - **medwatch.jp の図版が表示されない**: 記事本文が直接参照している図が191件・35ファイル、
   画像CDN経由の一覧サムネイルが144件・12ファイル。2026-10 時点で接続がタイムアウトし、

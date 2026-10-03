@@ -71,6 +71,7 @@
   "khsc": "高知医療センター",
   "kifmec": "神戸国際フロンティアメディカルセンター",
   "kitasato-u": "北里研究所病院",
+  "kobayashi-municipal-hospital": "小林市立病院",
   "kosei-hp": "立正佼成会付属佼成病院",
   "koseikan": "佐賀県医療センター好生館",
   "kouseiren-sanjo": "三条総合病院",
@@ -147,6 +148,13 @@
   "ypch": "山形県立中央病院"
  },
  "posts": [
+  {
+   "post_id": 1086,
+   "category_slug": "kobayashi-municipal-hospital",
+   "date": "2026-10-02T10:00:00+09:00",
+   "title": "膿胸の胸腔ドレナージ中に血管損傷、男性死亡　小林市立病院、遺族に約2600万円賠償で和解",
+   "slug": "kobayashi-municipal-empyema-drainage-death-2026"
+  },
   {
    "post_id": 1085,
    "category_slug": "gifu-general-medical-center",

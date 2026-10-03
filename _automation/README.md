@@ -21,6 +21,7 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `build_hospital_index.py` | 病院索引 `hospital-info/index.html` を全網羅で再生成 |
 | `build_sitemap.py` | `sitemap.xml` をルートに全網羅で再生成（manifest + 実在ページから） |
 | `check_links.py` | 全HTML/CSSのサイト内参照（画像・CSS・JS・リンク）を実体と突き合わせ、壊れ方の種類ごとに集計 |
+| `fix_refs.py` | 上記のうち機械的に直せるものを一括修正（実体の無い `srcset` 候補の削除、`/<親>/<slug>` 形の記事リンクの書き換え）。冪等 |
 
 ## 手動での使い方（例）
 ```bash

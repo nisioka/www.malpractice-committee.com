@@ -3,6 +3,9 @@
 
   サイト内検索 / twitter / 関連書籍 / アンドロイド アプリ
 
+サイト内検索は、WordPress が処理していた旧い検索欄（id="search-2"）のこと。今の検索欄
+（id="site-search"）は add_sidebar_search.py が入れるもので、このスクリプトは触らない。
+
 対象は全 HTML と `_automation/templates/sidebar.html`。部品は id と見出しの両方が
 一致したときだけ外し、見出しと外側のウィジェット要素ごと消す。サイドバーの外と、
 該当箇所以外のバイトは変えない。何度実行しても結果は同じ。

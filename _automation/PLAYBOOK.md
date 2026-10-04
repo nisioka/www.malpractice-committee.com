@@ -54,10 +54,14 @@
    python3 _automation/rebuild_listings.py                  # トップ＋page/N を非破壊シフト
    python3 _automation/build_hospital_index.py              # 病院索引 再生成
    python3 _automation/build_sitemap.py                      # sitemap.xml 再生成
+   python3 _automation/build_search.py                      # サイト内検索の索引 再生成
    ```
+   最後の `build_search.py` を飛ばすと、新しい記事がサイト内検索に出ない。
 
 6. **検証**
-   - `git status` で変更範囲を確認（新記事ディレクトリ、category/、index.html、page/N、hospital-info）。
+   - `git status` で変更範囲を確認（新記事ディレクトリ、category/、index.html、page/N、hospital-info、
+     search/search-index.json）。
+   - `python3 _automation/build_search.py --check` が「一致」を返すこと（索引が記事と揃っている）。
    - 生成した記事ページをブラウザ（chromium）で開き、体裁崩れが無いか確認。
 
 7. **PR作成**（**master へ直接 push しない**）

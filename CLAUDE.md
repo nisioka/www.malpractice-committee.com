@@ -77,9 +77,12 @@ python3 _automation/build_sitemap.py                     # sitemap.xml 再生成
   除去済み）。定型ブロックは `_automation/templates/head_assets.html` と同期。測定IDを差し替える場合は
   テンプレートと全ページの `G-JNHNKLLKNE` を一括置換すること。
 - **AdSense無効**: 無料ドメインでは認証不可。`sitelib.ADSENSE_HEAD` にコメント雛形のみ。
-- **Amazonアフィリエイト**（`mitsuwo-22`）のサイドバー「関連書籍」枠は全ページにあるが、配信元が
-  応答せず表示されていない。外すか替えるかはオーナー判断待ちで、決まるまで枠のコードは変えない。
-  サイドバーの twitter・サイト内検索・アンドロイド アプリも同じ扱い（`docs/IMPROVEMENTS.md` の「未対応」）。
+- **サイドバーの部品は「医療ミス調査会」と「閲覧ランキング」の2つ**。サイト内検索・twitter・
+  関連書籍・アンドロイド アプリは機能していなかったので、全ページとテンプレートから枠ごと外した
+  （`_automation/remove_sidebar_widgets.py`）。外した部品を含むHTMLを取り込み直したときは、
+  同じスクリプトを掛け直す。代替の部品は未対応（`docs/IMPROVEMENTS.md`）。
+- **記事本文の Amazon 商品枠**（`mitsuwo-22`）は残っているが表示されない。扱いはオーナー判断待ちで、
+  決まるまで枠のコードは変えない（`docs/IMPROVEMENTS.md` の「未対応」）。
 - コメント投稿フォームは静的化に伴い除去済み（過去コメントの表示は残存）。
 - `wp-json/` は oEmbed discovery が参照するため残置（robots.txt でクロール除外済み）。
 - `pykakasi` 無しでも動作する（病院索引が「その他」に集約されるだけ）。

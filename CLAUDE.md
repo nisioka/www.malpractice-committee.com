@@ -20,6 +20,7 @@
 | `index.html`, `page/N/` | 記事一覧（トップ + ページ送り。**page/11・12は元サイト由来の欠番**） |
 | `category/<slug>/` | 病院別カテゴリページ |
 | `hospital-info/` | 病院索引（全網羅再生成対象） |
+| `search/` | サイト内検索。結果ページ `index.html` と索引 `search-index.json` は `build_search.py` が再生成する。`search.js`・`search.css` は手書き |
 | `sitemap.xml`, `robots.txt` | クロール基盤（sitemapは `build_sitemap.py` で再生成） |
 | `wp-content/`, `wp-includes/`, `wp-json/` | WordPress遺産のアセット類（原則触らない） |
 | `_automation/` | Python製の決定論生成ツール一式 + `manifest.json`（全記事メタの単一情報源） |
@@ -48,12 +49,15 @@ python3 _automation/build_category.py                    # 病院カテゴリペ
 python3 _automation/rebuild_listings.py                  # トップ＋page/N を非破壊シフト
 python3 _automation/build_hospital_index.py              # 病院索引 再生成
 python3 _automation/build_sitemap.py                     # sitemap.xml 再生成
+python3 _automation/build_search.py                      # サイト内検索の索引 再生成
 ```
 
 ## 検証方法
 
 - **回帰テスト**: `python3 _automation/rebuild_listings.py --check`
   （新規0件で全一覧ページがバイト一致すれば合格。横断修正後は必ず実行）
+- **検索の索引**: `python3 _automation/build_search.py --check`
+  （索引と検索結果ページが、記事とテンプレートから作り直したものと一致すれば合格）
 - **参照切れの確認**: `python3 _automation/check_links.py`
   全HTML/CSSの画像・CSS・JS・サイト内リンクをリポジトリ内の実体と突き合わせて集計する。
   外部URLは叩かない。横断修正の前後で件数を比べる。
@@ -77,10 +81,16 @@ python3 _automation/build_sitemap.py                     # sitemap.xml 再生成
   除去済み）。定型ブロックは `_automation/templates/head_assets.html` と同期。測定IDを差し替える場合は
   テンプレートと全ページの `G-JNHNKLLKNE` を一括置換すること。
 - **AdSense無効**: 無料ドメインでは認証不可。`sitelib.ADSENSE_HEAD` にコメント雛形のみ。
-- **サイドバーの部品は「医療ミス調査会」と「閲覧ランキング」の2つ**。サイト内検索・twitter・
-  関連書籍・アンドロイド アプリは機能していなかったので、全ページとテンプレートから枠ごと外した
-  （`_automation/remove_sidebar_widgets.py`）。外した部品を含むHTMLを取り込み直したときは、
-  同じスクリプトを掛け直す。代替の部品は未対応（`docs/IMPROVEMENTS.md`）。
+- **サイドバーの部品は「サイト内検索」「医療ミス調査会」「閲覧ランキング」の3つ**。twitter・
+  関連書籍・アンドロイド アプリと、WordPress が処理していた旧い検索欄は機能していなかったので、
+  全ページとテンプレートから枠ごと外した（`_automation/remove_sidebar_widgets.py`）。外した部品を
+  含むHTMLを取り込み直したときは、同じスクリプトを掛け直し、続けて `add_sidebar_search.py` で
+  今の検索欄を入れる。関連書籍と twitter の代替は調査済みで未対応（`docs/IMPROVEMENTS.md`）。
+- **サイト内検索はブラウザ側だけで動く**。検索欄は語を `/search/` へ渡すだけで、`search/search.js` が
+  索引 `search/search-index.json` を読んで部分一致で探す。**記事を足したり本文を直したりしたら
+  `build_search.py` で索引を作り直す**。検索欄の HTML を変えるときは `add_sidebar_search.py` の
+  `WIDGET` を書き換えて実行する（全ページとテンプレートが同じ中身に揃う）。`search.js` に
+  ホスト名を書かない（プレビュー配信は別ホストなので動かなくなる）。
 - **記事本文の Amazon 商品枠**（`mitsuwo-22`）は残っているが表示されない。扱いはオーナー判断待ちで、
   決まるまで枠のコードは変えない（`docs/IMPROVEMENTS.md` の「未対応」）。
 - コメント投稿フォームは静的化に伴い除去済み（過去コメントの表示は残存）。

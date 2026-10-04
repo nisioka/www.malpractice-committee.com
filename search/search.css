@@ -1,0 +1,107 @@
+/* サイト内検索の結果ページ。入力欄はテーマの #searchform（サイドバーの検索欄）と同じ見た目にする。 */
+.site-search-form {
+  overflow: hidden;
+  max-width: 400px;
+  margin: 24px 0;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+}
+.site-search-form div {
+  position: relative;
+  padding-right: 40px;
+}
+.site-search-form input[type=text] {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 13px;
+  border: none;
+  /* 16px 未満だと iOS が入力時に画面を拡大する。 */
+  font-size: 16px;
+  line-height: 18px;
+}
+.site-search-form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  padding: 8px 5px;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #808080;
+  font-family: 'FontAwesome';
+  font-size: 21px;
+  line-height: 18px;
+  cursor: pointer;
+}
+
+.site-search-status {
+  margin: 0 0 24px;
+}
+.site-search-hint {
+  display: block;
+  margin-top: 8px;
+}
+
+/* 結果の1件。日付・病院名・題名の色と大きさは記事一覧のカードに合わせ、余白だけ詰める。 */
+.site-search-hit {
+  padding: 24px 0;
+  border-top: 1px solid #efefef;
+}
+.site-search-meta {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.site-search-meta li {
+  display: inline-block;
+  margin-right: 20px;
+}
+.site-search-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+.site-search-title a {
+  color: #383838;
+}
+.site-search-title a:hover {
+  color: #f24e4f;
+  text-decoration: none;
+}
+.site-search-snippet {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  /* 抜粋には URL や英数字の長い並びが入る。折り返さないとスマートフォンで横にはみ出す。 */
+  overflow-wrap: anywhere;
+}
+.site-search-snippet mark {
+  padding: 0 1px;
+  background: #fff2a8;
+  color: inherit;
+}
+
+.site-search-more {
+  margin: 8px 0 0;
+  text-align: center;
+}
+.site-search-more button {
+  padding: 8px 24px;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  background: #fff;
+  color: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.site-search-more button:hover {
+  background: #f9f9f9;
+}
+.site-search-more button[hidden] {
+  display: none;
+}

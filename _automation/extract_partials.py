@@ -9,7 +9,7 @@ _automation/templates/ に切り出す。可変部分（タイトル・本文な
 抽出する定型パーツ:
   head_assets.html  : head内の dns-prefetch 〜 </head> 直前（テーマCSS/JS・GA等）
   header_nav.html   : <body>直後の fb-root 〜 </nav>（ロゴ・SNS・グローバルナビ）
-  sidebar.html      : <div id="side"> 〜 </div><!-- /side -->（検索・案内・ランキング・広告枠）
+  sidebar.html      : <div id="side"> 〜 </div><!-- /side -->（案内・ランキング）
   footer.html       : <footer id="footer"> 〜 </html>（コピーライト・各種スクリプト）
                       ※ 記事ID依存の解析タグは {{POST_ID}} / {{SLUG}} トークン化する
 """

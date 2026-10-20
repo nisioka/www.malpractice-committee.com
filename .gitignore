@@ -1,0 +1,7 @@
+# site-ops の収集 CLI (scripts/site-ops/) の依存
+node_modules/
+.env
+
+# site-ops のスナップショット。
+# 検索クエリ・ページ別の流入数・掲載順位が入るため、public リポジトリではコミットしない
+.site-ops/

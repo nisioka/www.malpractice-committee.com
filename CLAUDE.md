@@ -25,6 +25,8 @@
 | `wp-content/`, `wp-includes/`, `wp-json/` | WordPress遺産のアセット類（原則触らない） |
 | `_automation/` | Python製の決定論生成ツール一式 + `manifest.json`（全記事メタの単一情報源） |
 | `docs/IMPROVEMENTS.md` | 改善バックログ（対応済み/未対応の記録） |
+| `.claude/site-ops.yml`, `.claude/skills/site-ops/` | 週次のサイト診断（GA4 / Search Console）の設定とスキル |
+| `scripts/site-ops/`, `package.json` | 診断の収集 CLI（[site-ops-ai](https://github.com/nisioka/site-ops-ai) から取り込み）。`pnpm site-ops collect` で実行。サイトのビルドには使わない |
 
 ## アーキテクチャの核心
 

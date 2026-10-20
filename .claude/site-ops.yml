@@ -1,0 +1,53 @@
+# site-ops スキルが読むサイト設定。
+# 収集: pnpm site-ops collect（CLI は scripts/site-ops/ に取り込み済み）
+
+name: "医療ミス調査会"
+
+# GA4 プロパティID
+ga4_property_id: "properties/546120577"
+
+# Search Console のプロパティ（URLプレフィックス形式で登録済み）
+gsc_site_url: "https://www.malpractice-committee.tech.server-on.net/"
+
+# サイトの前提。
+context: |
+  「医療ミス調査会」。日本の医療事故・医療過誤のニュースを、事案ごとの短い要約と
+  出典リンクでまとめているサイト。WordPress を静的 HTML 化したものを GitHub Pages で
+  配信している。ビルドステップは無く、コミットした HTML がそのまま公開される。
+  広告は表示していない（AdSense は無料ドメインのため使えない）。
+
+  読者は、病院名や事故の内容で検索して来る人が中心。記事そのものがコンテンツなので、
+  検索流入は目的に直結する。
+
+  作業の前に、リポジトリ直下の `CLAUDE.md` を必ず読むこと。生成ツールの手順、
+  検証方法、厳守ルールはそちらにある。
+
+  ## URL とファイルの対応
+
+  - `/<slug>/` → `<slug>/index.html`（記事。ルート直下に約260個フラットに並ぶ）
+  - `/category/<slug>/` → `category/<slug>/index.html`（病院別カテゴリ。`build_category.py` が生成）
+  - `/hospital-info/` → 病院索引（`build_hospital_index.py` が全体を再生成）
+  - `/` と `/page/N/` → 記事一覧（`rebuild_listings.py` が生成）
+  - `/<slug>/amp/` などは WordPress 時代のバリアント。保守対象外で、URL を残すためだけに置いている
+
+  `<title>`・meta description・canonical・構造化データは各 HTML の `<head>` に直接書かれている。
+  共通部分は `_automation/templates/` と `_automation/sitelib.py` にもあるので、複数ページに
+  またがる修正ではテンプレート側にも同じ修正を入れる（`CLAUDE.md` の「アーキテクチャの核心」）。
+
+  ## 打ち手の方針
+
+  医療分野（YMYL）のサイトなので、正確さを最優先にする。
+
+  - 既存記事の `<title>` / meta description の改善は PR にしてよい。ただし記事本文と出典に
+    書かれている事実の範囲で書く。出典に無い情報を足さず、実在の病院・個人について推測や
+    断定を書かない
+  - 構造化データ、内部リンク、sitemap の改善は PR にしてよい
+  - 既存 slug の改名、ディレクトリの移動、AMP / バリアントページの削除はしない。
+    リンク切れと評価の毀損になる。`/amp/` が検索結果に出ていても消さない
+  - 新しい事案の記事は週次の自動更新（`_automation/PLAYBOOK.md`）が追加している。
+    site-ops から記事を書き足さない。題材の提案は Issue に留める
+  - HTML を変えた PR では `python3 _automation/rebuild_listings.py --check` と
+    `python3 _automation/check_links.py` を実行し、結果を PR に書く
+
+  クリック数は小さいページがほとんどなので、クリックの増減率を根拠にしない。
+  表示回数と掲載順位の推移で見ること。

@@ -23,6 +23,7 @@
   "city-odawara": "小田原市立病院",
   "dokkyomed": "越谷病院-獨協医科大学",
   "edogawa-hospital": "江戸川病院",
+  "ehime-u": "愛媛大学医学部附属病院",
   "fff": "船橋整形外科病院",
   "fujita-hu": "藤田保健衛生大病院",
   "fukui": "福井県立病院",
@@ -148,6 +149,20 @@
   "ypch": "山形県立中央病院"
  },
  "posts": [
+  {
+   "post_id": 1088,
+   "category_slug": "niigata-u",
+   "date": "2026-11-13T10:00:00+09:00",
+   "title": "CT検査で見つかった肺の腫瘤を見落とし、1年8か月治療されず　新潟大学医歯学総合病院が公表し謝罪",
+   "slug": "niigata-u-lung-mass-ct-overlooked-2026"
+  },
+  {
+   "post_id": 1087,
+   "category_slug": "ehime-u",
+   "date": "2026-11-13T10:00:00+09:00",
+   "title": "心電図モニターの緊急アラームに対応せず、術後の高齢患者が重い意識障害　愛媛大学医学部附属病院が謝罪",
+   "slug": "ehime-u-ecg-alarm-unanswered-2026"
+  },
   {
    "post_id": 1086,
    "category_slug": "kobayashi-municipal-hospital",

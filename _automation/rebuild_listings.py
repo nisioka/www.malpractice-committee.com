@@ -10,14 +10,18 @@
 方針:
   掲載順は公開済みページの実体を正とする。存在するページ番号を昇順に並べ
   ([1,2..10,13..30] のように欠番はそのまま)、各ページからカードを順に集約 → 新規カードを
-  先頭に差し込み → 10件ずつ再チャンク → 各ページの prefix / pagination(suffix) は元のまま、
-  カード列だけ差し替えて書き戻す。
+  先頭に差し込み → 公開日時の新しい順に並べ直す → 10件ずつ再チャンク → 各ページの
+  prefix / pagination(suffix) は元のまま、カード列だけ差し替えて書き戻す。
+
+  並べ直しは安定ソートなので、公開日時が同じカードは今の掲載順のまま。新規カードは
+  入力JSONの並びに関わらず公開日時の新しい順に入る（同時刻は post_id の大きい順）。
 
   回帰テスト: 新規0件なら全ページがバイト単位で元に戻る（--check）。
 
 使い方:
   python3 _automation/rebuild_listings.py [new_articles.json] [--check]
 """
+import datetime
 import json
 import pathlib
 import re
@@ -32,6 +36,15 @@ WRAP_RE = re.compile(r'(<div class="post-loop-wrap">)(.*?)(</div><!-- /post-loop
 CARD_START_RE = re.compile(r'<article id="post-\d+"')
 ARTICLE_TAG_RE = re.compile(r'<article\b|</article>')
 CLASS_RE = re.compile(r'(<article id="post-\d+" class="[^"]*)"')
+CARD_DATE_RE = re.compile(r'itemprop="datePublished" datetime="([^"]+)"')
+
+
+def card_time(card: str) -> datetime.datetime:
+    """カード見出しの公開日時。"""
+    m = CARD_DATE_RE.search(card)
+    if not m:
+        raise SystemExit(f"カードに公開日時が無い: {card[:80]}")
+    return datetime.datetime.fromisoformat(m.group(1))
 
 
 def find_cards(inner: str):
@@ -145,9 +158,11 @@ def main(argv):
     for n in pages:
         all_cards.extend(parts[n]["cards"])
 
-    # 新規カード（先頭へ）+ 既存(firstpost除去)。先頭のみ firstpost 付与。
+    # 新規カード（先頭へ）+ 既存(firstpost除去) → 公開日時の新しい順。先頭のみ firstpost 付与。
+    new_data = sorted(new_data, key=lambda a: a["post_id"], reverse=True)
     new_cards = [sitelib.build_list_card(a, first=False) for a in new_data]
     ordered = new_cards + [strip_firstpost(c) for c in all_cards]
+    ordered.sort(key=card_time, reverse=True)
     if ordered:
         ordered[0] = add_firstpost(ordered[0])
 

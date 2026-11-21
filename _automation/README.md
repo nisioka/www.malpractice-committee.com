@@ -16,8 +16,8 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `sitelib.py` | 生成ロジック共通ライブラリ（記事ページ・一覧カード・ページ送り・JSON-LD 等） |
 | `build_manifest.py` | 全記事を走査し `manifest.json`（重複判定・索引の情報源）を生成 |
 | `generate_article.py` | 構造化JSON → 記事ページ(PC版 index.html)を生成、post_id採番 |
-| `build_category.py` | 病院カテゴリページを生成/再生成 |
-| `rebuild_listings.py` | トップ + page/N の一覧を非破壊シフトで再生成（`--check`で回帰テスト） |
+| `build_category.py` | 病院カテゴリページに新記事を反映。病院ページ（`hp-wrap`）と WordPress 由来の一覧は作り直さず、新記事のカードを日付順の位置に差し込む。このスクリプトが作った簡易一覧と新病院のページだけ作り直す。`--posts=<post_id>,...` で新記事を指定できる |
+| `rebuild_listings.py` | トップ + page/N の一覧を非破壊シフトで再生成。カードは公開日時の新しい順（同時刻は今の順のまま）（`--check`で回帰テスト） |
 | `build_hospital_index.py` | 病院索引 `hospital-info/index.html` を全網羅で再生成 |
 | `build_sitemap.py` | `sitemap.xml` をルートに全網羅で再生成（manifest + 実在ページから） |
 | `check_links.py` | 全HTML/CSSのサイト内参照（画像・CSS・JS・リンク）を実体と突き合わせ、壊れ方の種類ごとに集計 |
@@ -25,6 +25,7 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `remove_sidebar_widgets.py` | サイドバーから機能していない部品（WordPress が処理していた旧い検索欄・twitter・関連書籍・アンドロイド アプリ）を枠ごと外す。全ページとテンプレートが対象。冪等 |
 | `build_search.py` | サイト内検索の索引 `search/search-index.json` と検索結果ページ `search/index.html` を再生成（`--check` で一致だけ確認） |
 | `add_sidebar_search.py` | サイドバーの先頭にサイト内検索の入力欄を入れる。全ページとテンプレートが対象。冪等 |
+| `fix_shared_markup.py` | 定型ブロックの不具合を既存ページで生成側と同じ形に揃える（共有ボタンの直リンク化、`itemscope` の綴り、JSON-LD のパンくず名、`fb-root` の重複、一覧カードの画像リンクの alt）。冪等 |
 
 ## 手動での使い方（例）
 ```bash

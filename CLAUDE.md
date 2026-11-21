@@ -47,8 +47,8 @@
 pip install pykakasi                                     # 任意（病院索引の五十音分類）
 python3 _automation/generate_article.py articles.json    # 記事ページ生成＋post_id採番
 python3 _automation/build_manifest.py                    # manifest 更新
-python3 _automation/build_category.py                    # 病院カテゴリページ生成
-python3 _automation/rebuild_listings.py                  # トップ＋page/N を非破壊シフト
+python3 _automation/build_category.py                    # 病院カテゴリページへ新記事を反映
+python3 _automation/rebuild_listings.py                  # トップ＋page/N を非破壊シフト（公開日時順）
 python3 _automation/build_hospital_index.py              # 病院索引 再生成
 python3 _automation/build_sitemap.py                     # sitemap.xml 再生成
 python3 _automation/build_search.py                      # サイト内検索の索引 再生成
@@ -60,6 +60,8 @@ python3 _automation/build_search.py                      # サイト内検索の
   （新規0件で全一覧ページがバイト一致すれば合格。横断修正後は必ず実行）
 - **検索の索引**: `python3 _automation/build_search.py --check`
   （索引と検索結果ページが、記事とテンプレートから作り直したものと一致すれば合格）
+- **定型ブロック**: `python3 _automation/fix_shared_markup.py --dry-run`
+  （書き換え対象 0 件なら、全ページの共有欄・構造化データ等が生成側と揃っている）
 - **参照切れの確認**: `python3 _automation/check_links.py`
   全HTML/CSSの画像・CSS・JS・サイト内リンクをリポジトリ内の実体と突き合わせて集計する。
   外部URLは叩かない。横断修正の前後で件数を比べる。
@@ -95,6 +97,13 @@ python3 _automation/build_search.py                      # サイト内検索の
   ホスト名を書かない（プレビュー配信は別ホストなので動かなくなる）。
 - **記事本文の Amazon 商品枠**（`mitsuwo-22`）は残っているが表示されない。扱いはオーナー判断待ちで、
   決まるまで枠のコードは変えない（`docs/IMPROVEMENTS.md` の「未対応」）。
+- **カテゴリページは3つの形がある**。病院ページ（`hp-wrap`、基本情報・地図・関連記事カード）と
+  WordPress 由来の一覧は、`build_category.py` が作り直さずに新記事のカードを差し込む。作り直すのは
+  このスクリプトが作った簡易一覧と新病院だけ。週次更新でカテゴリページを手で直す必要は無い。
+  取り込み直したページに記事を足すときは `build_category.py <slug> --posts=<post_id>`。
+- **共有ボタンは各サービスの共有画面を直接指す**（`sitelib.share_hrefs`）。WordPress の `?share=twitter`
+  は静的配信では動かない。定型ブロックの不具合を直した `_automation/fix_shared_markup.py` は冪等なので、
+  WordPress 時代の HTML を取り込み直したときは掛け直す。
 - コメント投稿フォームは静的化に伴い除去済み（過去コメントの表示は残存）。
 - `wp-json/` は oEmbed discovery が参照するため残置（robots.txt でクロール除外済み）。
 - `pykakasi` 無しでも動作する（病院索引が「その他」に集約されるだけ）。

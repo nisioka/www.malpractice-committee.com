@@ -50,18 +50,24 @@
    ```
    python3 _automation/generate_article.py articles.json   # 記事ページ生成＋採番、_generated.json 出力
    python3 _automation/build_manifest.py                    # manifest 更新
-   python3 _automation/build_category.py                    # 新規/更新カテゴリページ
-   python3 _automation/rebuild_listings.py                  # トップ＋page/N を非破壊シフト
+   python3 _automation/build_category.py                    # カテゴリページへ新記事のカードを追加
+   python3 _automation/rebuild_listings.py                  # トップ＋page/N を非破壊シフト（公開日時順）
    python3 _automation/build_hospital_index.py              # 病院索引 再生成
    python3 _automation/build_sitemap.py                      # sitemap.xml 再生成
    python3 _automation/build_search.py                      # サイト内検索の索引 再生成
    ```
    最後の `build_search.py` を飛ばすと、新しい記事がサイト内検索に出ない。
+   `articles.json` の並び順は問わない（一覧には公開日時の新しい順で入る）。病院ページは
+   `build_category.py` が作り直さずにカードを差し込むので、カテゴリページを手で直さない。
+   共有欄・パンくず・構造化データなどの定型ブロックは全ページ共通なので、週次の PR で
+   レビュー指摘を受けたら、テンプレートと生成スクリプトを直す別の PR に回す。
 
 6. **検証**
    - `git status` で変更範囲を確認（新記事ディレクトリ、category/、index.html、page/N、hospital-info、
      search/search-index.json）。
    - `python3 _automation/build_search.py --check` が「一致」を返すこと（索引が記事と揃っている）。
+   - `python3 _automation/fix_shared_markup.py --dry-run` が「書き換え対象ファイル: 0」を返すこと
+     （新しいページの定型ブロックが既存ページと揃っている）。
    - 生成した記事ページをブラウザ（chromium）で開き、体裁崩れが無いか確認。
 
 7. **PR作成**（**master へ直接 push しない**）

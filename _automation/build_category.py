@@ -1,25 +1,49 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""カテゴリ（病院）ページを生成・再生成する。
+"""カテゴリ（病院）ページに新記事を反映する。
 
-- 新病院: category/<slug>/index.html を新規作成（記事リンク一覧付き）。
-- 既存病院に新記事: そのカテゴリページを再生成して新記事を先頭に反映。
+カテゴリページには3つの形があり、形ごとに扱いを変える。
+
+- 病院ページ（`<div class="hp-wrap">`）: 基本情報・地図と「関連記事」のカードを手作業で
+  整えたもの。**作り直さず**、`<ul class="hp-cards">` に新記事のカードを日付順の位置で
+  差し込む。カードはアイキャッチがあれば画像つき、無ければ文字だけの形。
+- WordPress 由来の一覧（`<div class="post-loop-wrap">`）: トップと同じ形の記事カード。
+  作り直さず、新記事のカードを日付順の位置で差し込み、`firstpost` を先頭のカードに移す。
+  ページ送りのあるカテゴリでも、1ページ目に足すだけで後ろのページへは送らない。
+- このスクリプトが作った簡易一覧（日付＋タイトルのリンク）と、ページが無い新病院:
+  manifest のそのカテゴリの全記事から作り直す。
+
+「新記事」は generate_article.py の引き継ぎファイル `_generated.json` の記事。
+病院ページは病院の概要記事などを意図して載せていないので、manifest にあってページに無い
+記事を全部足すことはしない。`--posts` で manifest の post_id を指定すると、
+`_generated.json` の代わりにその記事を新記事として扱う（取り込み直したページの復元用）。
 
 テーマ定型（head_assets/header_nav/sidebar/footer）は記事ページと共通の検証済みパーツを流用。
-記事一覧は日付＋タイトルリンクのシンプルな形式で全記事を新しい順に並べる。
+footer は記事ではないページ用（sitelib.archive_footer）で、統計に記事IDを渡さない。
 
 使い方:
-  python3 _automation/build_category.py <slug> [<slug> ...]
-  （slug 省略時は _automation/_generated.json のカテゴリを対象）
+  python3 _automation/build_category.py [<slug> ...] [--posts=<post_id>,<post_id>]
+  （slug 省略時は新記事のカテゴリを対象）
 """
 import json
 import pathlib
+import re
 import sys
 
+import rebuild_listings
 import sitelib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "_automation" / "manifest.json"
+GENERATED = ROOT / "_automation" / "_generated.json"
+
+HP_UL_RE = re.compile(r'(<ul class="hp-cards">\n)(.*?)(\n?[ \t]*</ul>)', re.S)
+HP_NOTE_RE = re.compile(r'<p class="hp-note">.*?</p>', re.S)
+HP_DATE_RE = re.compile(r'<span class="hp-card-date">(\d{4}\.\d{2}\.\d{2})</span>')
+HP_HREF_RE = re.compile(r'<a href="/([^"]+)/">')
+THUMB_SRC_RE = re.compile(r'<div class="post-thumbnail">\s*(?:<a [^>]*>)?<img [^>]*?\bsrc="([^"]+)"')
+CARD_ID_RE = re.compile(r'<article id="post-(\d+)"')
+CARD_DATE_RE = re.compile(r'datetime="([^"]+)"')
 
 
 def cat_head(slug, name):
@@ -69,13 +93,12 @@ def cat_article_item(p):
 
 
 def build_category_page(slug, name, posts):
-    posts = sorted(posts, key=lambda x: x["post_id"], reverse=True)
-    pid = posts[0]["post_id"] if posts else 0
+    posts = sorted(posts, key=newest_first)
     head = cat_head(slug, name)
-    head_assets = sitelib.fill_tokens(sitelib.partial("head_assets.html"), pid, slug).rstrip("\n")
+    head_assets = sitelib.fill_tokens(sitelib.partial("head_assets.html"), 0, slug).rstrip("\n")
     header_nav = sitelib.partial("header_nav.html").rstrip("\n")
     sidebar = sitelib.partial("sidebar.html").rstrip("\n")
-    footer = sitelib.fill_tokens(sitelib.partial("footer.html"), pid, slug).rstrip("\n")
+    footer = sitelib.archive_footer().rstrip("\n")
     items = "\n\n".join(cat_article_item(p) for p in posts)
     breadcrumb = (
         '<ol class="breadcrumb clearfix" itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">'
@@ -126,6 +149,117 @@ def build_category_page(slug, name, posts):
 """
 
 
+def newest_first(p):
+    """並べ替えのキー。公開日時の新しい順、同時刻は post_id の大きい順。"""
+    return (-int(re.sub(r"\D", "", p["date"][:19]) or 0), -p["post_id"])
+
+
+def read_article(slug):
+    path = ROOT / slug / "index.html"
+    return path.read_text(encoding="utf-8") if path.is_file() else ""
+
+
+def hp_card(p):
+    """病院ページの「関連記事」カード1枚（<li>）。既存カードと同じ書式。"""
+    href = f'/{p["slug"]}/'
+    title = sitelib.esc_text(p["title"])
+    date = sitelib.disp_date(p["date"])
+    m = THUMB_SRC_RE.search(read_article(p["slug"]))
+    if m:
+        src = m.group(1)
+        if src.startswith(sitelib.ORIGIN + "/"):
+            src = src[len(sitelib.ORIGIN):]
+        return (f'        <li class="hp-card"><a href="{href}"><img class="hp-card-thumb" src="{src}" '
+                f'alt="" loading="lazy"><span class="hp-card-body"><span class="hp-card-title">{title}</span>'
+                f'<span class="hp-card-date">{date}</span></span></a></li>')
+    return (f'        <li class="hp-card hp-card-text"><a href="{href}"><span class="hp-card-body">'
+            '<span class="hp-card-tag">記事</span><span class="hp-card-title">'
+            f'<span class="hp-card-quote">“</span>{title}</span>'
+            f'<span class="hp-card-date">{date}</span></span></a></li>')
+
+
+def add_hp_cards(page, posts):
+    """病院ページの <ul class="hp-cards"> に、まだ無い記事のカードを日付順の位置で足す。"""
+    m = HP_UL_RE.search(page)
+    present = {h for h in HP_HREF_RE.findall(m.group(2))} if m else set()
+    if all(p["slug"] in present for p in posts):
+        return page, []
+    if not m:
+        note = HP_NOTE_RE.search(page)
+        if not note:
+            raise SystemExit("病院ページに「関連記事」の欄も注記も見つからない")
+        # 関連記事がまだ1件も無い病院ページ: 注記の後ろに欄ごと作る
+        page = (page[:note.end()] + '\n      <h2 class="hp-sec-title">関連記事</h2>\n'
+                '      <ul class="hp-cards">\n      </ul>' + page[note.end():])
+        m = HP_UL_RE.search(page)
+    lines = [l for l in m.group(2).split("\n") if l.strip()]
+    added = []
+    for p in sorted(posts, key=newest_first):
+        if p["slug"] in present:
+            continue
+        d = sitelib.disp_date(p["date"])
+        at = next((i for i, l in enumerate(lines)
+                   if (dm := HP_DATE_RE.search(l)) and dm.group(1) <= d), len(lines))
+        lines.insert(at, hp_card(p))
+        present.add(p["slug"])
+        added.append(p)
+    body = "\n".join(lines)
+    return page[:m.start(2)] + body + ("\n" if not m.group(3).startswith("\n") else "") \
+        + page[m.end(2):], added
+
+
+def add_loop_cards(page, posts):
+    """WordPress 由来の一覧に、まだ無い記事のカードを日付順の位置で足す。"""
+    wm = rebuild_listings.WRAP_RE.search(page)
+    inner = wm.group(2)
+    spans = rebuild_listings.find_cards(inner)
+    cards = [s[2] for s in spans]
+    present = {int(CARD_ID_RE.match(c).group(1)) for c in cards}
+    sep = inner[spans[0][1]:spans[1][0]] if len(spans) > 1 else "\n\n"
+    added = []
+    for p in sorted(posts, key=newest_first):
+        if p["post_id"] in present:
+            continue
+        art = read_article(p["slug"])
+        if not art:
+            raise SystemExit(f"記事ページが無い: {p['slug']}/index.html")
+        card = sitelib.card_from_article(art, p["post_id"], p["slug"], p["category_slug"],
+                                         p["title"], p["date"]).lstrip()
+        key = newest_first(p)
+        at = next((i for i, c in enumerate(cards)
+                   if newest_first({"date": CARD_DATE_RE.search(c).group(1),
+                                    "post_id": int(CARD_ID_RE.match(c).group(1))}) >= key),
+                  len(cards))
+        cards.insert(at, card)
+        present.add(p["post_id"])
+        added.append(p)
+    if not added:
+        return page, added
+    cards = [rebuild_listings.strip_firstpost(c) for c in cards]
+    cards[0] = rebuild_listings.add_firstpost(cards[0])
+    start, end = spans[0][0], spans[-1][1]
+    body = inner[:start] + sep.join(cards) + inner[end:]
+    if len(spans) > 1 and any(inner[a[1]:b[0]] != sep for a, b in zip(spans, spans[1:])):
+        raise SystemExit("カード間に固定の部品があり、差し込み位置を決められない")
+    return page[:wm.start(2)] + body + page[wm.end(2):], added
+
+
+def load_new_posts(manifest, argv):
+    """新記事（manifest の形）。--posts 指定が優先、無ければ _generated.json。"""
+    by_id = {p["post_id"]: p for p in manifest["posts"]}
+    opt = next((a for a in argv if a.startswith("--posts=")), None)
+    if opt:
+        ids = [int(x) for x in opt.split("=", 1)[1].split(",") if x.strip()]
+    elif GENERATED.is_file():
+        ids = [a["post_id"] for a in json.loads(GENERATED.read_text(encoding="utf-8"))]
+    else:
+        ids = []
+    missing = [i for i in ids if i not in by_id]
+    if missing:
+        raise SystemExit(f"manifest に無い post_id: {missing}（先に build_manifest.py を実行）")
+    return [by_id[i] for i in ids]
+
+
 def main(argv):
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     cats = manifest["categories"]
@@ -133,12 +267,10 @@ def main(argv):
     for p in manifest["posts"]:
         by_cat.setdefault(p["category_slug"], []).append(p)
 
-    slugs = argv[1:]
+    new_posts = load_new_posts(manifest, argv)
+    slugs = [a for a in argv[1:] if not a.startswith("--")]
     if not slugs:
-        gen = ROOT / "_automation" / "_generated.json"
-        if gen.is_file():
-            data = json.loads(gen.read_text(encoding="utf-8"))
-            slugs = sorted({a["category_slug"] for a in data})
+        slugs = sorted({p["category_slug"] for p in new_posts})
     if not slugs:
         print("対象カテゴリslugを指定してください")
         return 1
@@ -146,11 +278,26 @@ def main(argv):
     for slug in slugs:
         name = cats.get(slug, slug)
         posts = by_cat.get(slug, [])
-        html = build_category_page(slug, name, posts)
+        new_here = [p for p in new_posts if p["category_slug"] == slug]
         out = ROOT / "category" / slug / "index.html"
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(html, encoding="utf-8")
-        print(f"再生成: category/{slug}/  ({name}, {len(posts)}記事)")
+        page = out.read_text(encoding="utf-8") if out.is_file() else ""
+        if 'class="hp-wrap"' in page:
+            html, added = add_hp_cards(page, new_here)
+            kind = "病院ページにカードを追加"
+        elif 'class="post-loop-wrap"' in page:
+            html, added = add_loop_cards(page, new_here)
+            kind = "一覧にカードを追加"
+            if added and 'class="pagination"' in page:
+                print(f"  注意: category/{slug}/ はページ送りがある。1ページ目に足しただけで、"
+                      "後ろのページへは送っていない")
+        else:
+            html = build_category_page(slug, name, posts)
+            added = posts
+            kind = "簡易一覧を作り直し" if page else "新規作成"
+        if html != page:
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(html, encoding="utf-8")
+        print(f"{kind}: category/{slug}/  ({name}, {len(added)}記事)")
     return 0
 
 

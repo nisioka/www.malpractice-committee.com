@@ -209,13 +209,21 @@ def add_hp_cards(page, posts):
 
 
 def add_loop_cards(page, posts):
-    """WordPress 由来の一覧に、まだ無い記事のカードを日付順の位置で足す。"""
+    """WordPress 由来の一覧に、まだ無い記事のカードを日付順の位置で足す。
+
+    既存カードとカード間の文字列には触らず、差し込む位置にだけカードと区切りを足す。
+    """
     wm = rebuild_listings.WRAP_RE.search(page)
     inner = wm.group(2)
+
+    def key_of(card):
+        return newest_first({"date": CARD_DATE_RE.search(card).group(1),
+                             "post_id": int(CARD_ID_RE.match(card).group(1))})
+
     spans = rebuild_listings.find_cards(inner)
-    cards = [s[2] for s in spans]
-    present = {int(CARD_ID_RE.match(c).group(1)) for c in cards}
-    sep = inner[spans[0][1]:spans[1][0]] if len(spans) > 1 else "\n\n"
+    gaps = [inner[x[1]:y[0]] for x, y in zip(spans, spans[1:])]
+    sep = max(set(gaps), key=gaps.count) if gaps else "\n\n"
+    present = {int(CARD_ID_RE.match(c).group(1)) for _, _, c in spans}
     added = []
     for p in sorted(posts, key=newest_first):
         if p["post_id"] in present:
@@ -225,23 +233,26 @@ def add_loop_cards(page, posts):
             raise SystemExit(f"記事ページが無い: {p['slug']}/index.html")
         card = sitelib.card_from_article(art, p["post_id"], p["slug"], p["category_slug"],
                                          p["title"], p["date"]).lstrip()
-        key = newest_first(p)
-        at = next((i for i, c in enumerate(cards)
-                   if newest_first({"date": CARD_DATE_RE.search(c).group(1),
-                                    "post_id": int(CARD_ID_RE.match(c).group(1))}) >= key),
-                  len(cards))
-        cards.insert(at, card)
+        spans = rebuild_listings.find_cards(inner)
+        at = next((i for i, (_, _, c) in enumerate(spans) if key_of(c) >= newest_first(p)), None)
+        if at is None:
+            pos = spans[-1][1]
+            inner = inner[:pos] + sep + card + inner[pos:]
+        else:
+            pos = spans[at][0]
+            inner = inner[:pos] + card + sep + inner[pos:]
         present.add(p["post_id"])
         added.append(p)
     if not added:
         return page, added
-    cards = [rebuild_listings.strip_firstpost(c) for c in cards]
-    cards[0] = rebuild_listings.add_firstpost(cards[0])
-    start, end = spans[0][0], spans[-1][1]
-    body = inner[:start] + sep.join(cards) + inner[end:]
-    if len(spans) > 1 and any(inner[a[1]:b[0]] != sep for a, b in zip(spans, spans[1:])):
-        raise SystemExit("カード間に固定の部品があり、差し込み位置を決められない")
-    return page[:wm.start(2)] + body + page[wm.end(2):], added
+    # firstpost は先頭のカードだけに付ける（後ろから置き換えて位置をずらさない）
+    spans = rebuild_listings.find_cards(inner)
+    for i, (x, y, c) in reversed(list(enumerate(spans))):
+        c2 = rebuild_listings.strip_firstpost(c)
+        if i == 0:
+            c2 = rebuild_listings.add_firstpost(c2)
+        inner = inner[:x] + c2 + inner[y:]
+    return page[:wm.start(2)] + inner + page[wm.end(2):], added
 
 
 def load_new_posts(manifest, argv):

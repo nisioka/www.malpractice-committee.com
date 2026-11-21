@@ -157,7 +157,7 @@ def render_page() -> str:
 <link rel='stylesheet' id='site-search-css' href='{sitelib.ORIGIN}/search/search.css' type='text/css' media='all' />
 {sitelib.ADSENSE_HEAD}</head>
 
-<body id="#top" class="site-search left-content default" itemschope="itemscope" itemtype="http://schema.org/WebPage">
+<body id="#top" class="site-search left-content default" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 
   {header_nav}
 

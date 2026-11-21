@@ -44,6 +44,19 @@ def fill_tokens(text: str, post_id, slug: str) -> str:
     return text.replace("{{POST_ID}}", str(post_id)).replace("{{SLUG}}", slug)
 
 
+_SHARING_COUNTS_RE = re.compile(r"(window\.WPCOM_sharing_counts = )\{[^\n]*\};")
+
+
+def archive_footer() -> str:
+    """記事ではないページ（カテゴリ等）の footer。
+
+    WordPress のカテゴリページと同じく、Jetpack の統計に渡す記事IDを 0 にし、共有数の
+    対象を空にする。記事IDを入れると、カテゴリページの閲覧がその記事の閲覧として数えられる。
+    """
+    footer = fill_tokens(partial("footer.html"), 0, "")
+    return _SHARING_COUNTS_RE.sub(r"\1{};", footer, count=1)
+
+
 # Google AdSense 雛形（現在は無効化）。
 # 独自ドメインでの所有権認証・審査通過後、下記コメントを外し ca-pub-XX... を差し込めば有効化できる。
 # サイト全体へ一括適用する場合は _automation/inject_adsense.py（将来）で全HTMLに挿入する。
@@ -118,19 +131,39 @@ def build_content_div(data: dict) -> str:
     return f"<div>\n{body}\n{src}\n</div>"
 
 
+TWITTER_SHARE = "https://twitter.com/intent/tweet"
+FACEBOOK_SHARE = "https://www.facebook.com/sharer/sharer.php"
+
+
+def share_hrefs(url: str, title: str = "") -> tuple:
+    """共有欄の Twitter / Facebook ボタンの href（HTML属性にそのまま書ける形）。
+
+    WordPress のときは記事URLに `?share=twitter` を付けて送り、サーバー側が共有画面へ
+    転送していた。静的配信ではその処理が無く、記事そのものが開くだけになるので、
+    各サービスの共有画面を直接指す。url と title はエスケープ前の文字列で渡す。
+    `sharing.min.js` は href に "share=" を含むリンクにだけ `&nb=1` を足すので、
+    この形のリンクには手を出さない。
+    """
+    q = lambda s: urllib.parse.quote(s, safe="")
+    tw = f"{TWITTER_SHARE}?text={q(title)}&amp;url={q(url)}" if title else f"{TWITTER_SHARE}?url={q(url)}"
+    fb = f"{FACEBOOK_SHARE}?u={q(url)}"
+    return tw, fb
+
+
 def build_sharebar(post_id, slug: str, title: str) -> str:
     """sharedaddy 共有バー（記事・一覧カード共通）。"""
     u = f"{ORIGIN}/{slug}/"
+    tw, fb = share_hrefs(u, title)
     subj = urllib.parse.quote(f"[共有投稿] {title}")
     body_url = urllib.parse.quote(f"{PUBLIC}/{slug}/")
     return (
         '<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social '
         'sd-social-icon-text sd-sharing"><h3 class="sd-title">共有:</h3><div class="sd-content"><ul>'
         f'<li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-{post_id}" '
-        f'class="share-twitter sd-button share-icon" href="{u}?share=twitter" target="_blank" '
+        f'class="share-twitter sd-button share-icon" href="{tw}" target="_blank" '
         'title="クリックして Twitter で共有" ><span>Twitter</span></a></li>'
         f'<li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-{post_id}" '
-        f'class="share-facebook sd-button share-icon" href="{u}?share=facebook" target="_blank" '
+        f'class="share-facebook sd-button share-icon" href="{fb}" target="_blank" '
         'title="Facebook で共有するにはクリックしてください" ><span>Facebook</span></a></li>'
         '<li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" '
         f'class="share-email sd-button share-icon" href="mailto:?subject={subj}&body={body_url}&share=email" '
@@ -160,16 +193,21 @@ def build_social_buttons(slug: str, title: str) -> str:
 
 
 def build_thumbnail(data: dict, linked: bool) -> str:
-    """アイキャッチ画像。image が無ければ空文字。"""
+    """アイキャッチ画像。image が無ければ空文字。
+
+    linked=True（一覧カード）では画像だけのリンクになるので、alt に記事タイトルを入れて
+    リンクの名前にする。記事ページ（linked=False）の画像は飾りなので alt は空のまま。
+    """
     img = data.get("image")
     if not img:
         return ""
     src = img["url"]
     w = img.get("width", 285)
     h = img.get("height", 214)
+    alt = esc_attr(data["title"]) if linked else ""
     tag = (
         f'<img width="{w}" height="{h}" src="{esc_attr(src)}" '
-        'class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" '
+        f'class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="{alt}" decoding="async" '
         f'srcset="{esc_attr(src)} {w}w" sizes="(max-width: {w}px) 100vw, {w}px" />'
     )
     if linked:
@@ -201,7 +239,7 @@ def build_jsonld(data: dict) -> str:
             "@id": f"{url}#breadcrumblist",
             "itemListElement": [
                 {"@type": "ListItem", "@id": f"{ORIGIN}/#listItem", "position": 1,
-                 "name": "家", "item": f"{ORIGIN}/", "nextItem": f"{url}#listItem"},
+                 "name": "ホーム", "item": f"{ORIGIN}/", "nextItem": f"{url}#listItem"},
                 {"@type": "ListItem", "@id": f"{url}#listItem", "position": 2,
                  "name": data["title"], "previousItem": f"{ORIGIN}/#listItem"},
             ],
@@ -420,7 +458,7 @@ def assemble_article_page(data: dict) -> str:
     return f"""{HEAD_OPEN}{head}{head_assets}
 {ADSENSE_HEAD}</head>
 
-<body id="#top" class="{body_class}" itemschope="itemscope" itemtype="http://schema.org/WebPage">
+<body id="#top" class="{body_class}" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 
   {header_nav}
 

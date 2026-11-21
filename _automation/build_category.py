@@ -90,7 +90,7 @@ def build_category_page(slug, name, posts):
     return f"""{sitelib.HEAD_OPEN}{head}{head_assets}
 {sitelib.ADSENSE_HEAD}</head>
 
-<body id="#top" class="{body_class}" itemschope="itemscope" itemtype="http://schema.org/WebPage">
+<body id="#top" class="{body_class}" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 
   {header_nav}
 

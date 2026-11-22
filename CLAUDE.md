@@ -65,6 +65,10 @@ python3 _automation/build_search.py                      # サイト内検索の
   （書き換え対象 0 件なら、全ページの共有欄・構造化データ等が生成側と揃っている）
 - **AMP の名残**: `python3 _automation/retire_amp.py --dry-run`
   （書き換え対象 0 件なら、`rel="amphtml"` も AMP 文書も残っていない）
+- **人気記事**: `python3 _automation/build_popular.py --dry-run`
+  （書き換え対象 0 件なら、全ページのサイドバーの人気記事が `popular.json` と記事ページに揃っている）
+- **フィードの名残**: `python3 _automation/remove_dead_feeds.py --dry-run`
+  （書き換え対象 0 件なら、実体の無いフィードを指す `rel="alternate"` が残っていない）
 - **参照切れの確認**: `python3 _automation/check_links.py`
   全HTML/CSSの画像・CSS・JS・サイト内リンクをリポジトリ内の実体と突き合わせて集計する。
   外部URLは叩かない。横断修正の前後で件数を比べる。
@@ -88,7 +92,7 @@ python3 _automation/build_search.py                      # サイト内検索の
   除去済み）。定型ブロックは `_automation/templates/head_assets.html` と同期。測定IDを差し替える場合は
   テンプレートと全ページの `G-JNHNKLLKNE` を一括置換すること。
 - **AdSense無効**: 無料ドメインでは認証不可。`sitelib.ADSENSE_HEAD` にコメント雛形のみ。
-- **サイドバーの部品は「サイト内検索」「医療ミス調査会」「閲覧ランキング」の3つ**。twitter・
+- **サイドバーの部品は「サイト内検索」「医療ミス調査会」「人気記事」の3つ**。twitter・
   関連書籍・アンドロイド アプリと、WordPress が処理していた旧い検索欄は機能していなかったので、
   全ページとテンプレートから枠ごと外した（`_automation/remove_sidebar_widgets.py`）。外した部品を
   含むHTMLを取り込み直したときは、同じスクリプトを掛け直し、続けて `add_sidebar_search.py` で
@@ -98,6 +102,14 @@ python3 _automation/build_search.py                      # サイト内検索の
   `build_search.py` で索引を作り直す**。検索欄の HTML を変えるときは `add_sidebar_search.py` の
   `WIDGET` を書き換えて実行する（全ページとテンプレートが同じ中身に揃う）。`search.js` に
   ホスト名を書かない（プレビュー配信は別ホストなので動かなくなる）。
+- **サイドバーの「人気記事」は閲覧数を数えていない**。静的配信では実行時に数えられないので、載せる
+  記事の slug を `_automation/popular.json` に表示順で書き、`build_popular.py` が全ページと
+  テンプレートへ同じ中身で埋め込む。リストに書けるのは記事ページがある slug だけ（無ければ止まる）。
+  見出しと日付は記事ページから取るので、**載っている記事のタイトルを直したら `build_popular.py` を
+  掛け直す**。リストを変えると約680ページが書き換わるので、週次更新では変えない。
+- **記事ページが失われた記事を同じ URL で作り直すとき**は、入力JSONに元の `post_id` と公開日 `date`
+  を書き、`modified` に作り直した日を入れて、通常の手順（`generate_article.py` から）で生成する。
+  `rebuild_listings.py` は一覧に同じ post_id のカードがあれば、足さずに置き換える。
 - **記事本文の Amazon 商品枠**（`mitsuwo-22`）は残っているが表示されない。扱いはオーナー判断待ちで、
   決まるまで枠のコードは変えない（`docs/IMPROVEMENTS.md` の「未対応」）。
 - **カテゴリページは3つの形がある**。病院ページ（`hp-wrap`、基本情報・地図・関連記事カード）と
@@ -111,8 +123,11 @@ python3 _automation/build_search.py                      # サイト内検索の
   （`<slug>/amp/` と `Pamp.html`）は、正規ページへ `rel="canonical"` と即時の `meta refresh` で送る
   転送ページになっている（GitHub Pages では 301 が使えないため）。WordPress 時代の HTML を取り込み
   直したときは `_automation/retire_amp.py` を掛け直す（冪等）。
-- **ページ送り（`page/N`）は noindex,follow**。検索結果には出さず、リンクはたどらせる。
+- **ページ送り（`page/N`）は noindex,follow**。検索結果には出さず（2026-11 にオーナーが不要と確認）、リンクはたどらせる。
   noindex のページは `build_sitemap.py` がサイトマップから落とす。
 - コメント投稿フォームは静的化に伴い除去済み（過去コメントの表示は残存）。
+- **フィード（RSS）は無い**。WordPress が `<head>` に出していたコメントフィード・カテゴリのフィードの
+  `rel="alternate"` は、実体が無いので外した。生成側も出さない。WordPress 時代の HTML を取り込み
+  直したときは `_automation/remove_dead_feeds.py` を掛け直す（冪等）。
 - `wp-json/` は oEmbed discovery が参照するため残置（robots.txt でクロール除外済み）。
 - `pykakasi` 無しでも動作する（病院索引が「その他」に集約されるだけ）。

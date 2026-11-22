@@ -17,7 +17,7 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `build_manifest.py` | 全記事を走査し `manifest.json`（重複判定・索引の情報源）を生成 |
 | `generate_article.py` | 構造化JSON → 記事ページ(PC版 index.html)を生成、post_id採番 |
 | `build_category.py` | 病院カテゴリページに新記事を反映。病院ページ（`hp-wrap`）と WordPress 由来の一覧は作り直さず、新記事のカードを日付順の位置に差し込む。このスクリプトが作った簡易一覧と新病院のページだけ作り直す。`--posts=<post_id>,...` で新記事を指定できる |
-| `rebuild_listings.py` | トップ + page/N の一覧を非破壊シフトで再生成。カードは公開日時の新しい順（同時刻は今の順のまま）（`--check`で回帰テスト） |
+| `rebuild_listings.py` | トップ + page/N の一覧を非破壊シフトで再生成。カードは公開日時の新しい順（同時刻は今の順のまま）。入力と同じ post_id のカードが既にあれば、足さずに置き換える（`--check`で回帰テスト） |
 | `build_hospital_index.py` | 病院索引 `hospital-info/index.html` を全網羅で再生成 |
 | `build_sitemap.py` | `sitemap.xml` をルートに全網羅で再生成（manifest + 実在ページから）。ページの HTML を読み、noindex のものと canonical が自分以外を指すものは載せない。`<loc>` はページ自身の canonical |
 | `check_links.py` | 全HTML/CSSのサイト内参照（画像・CSS・JS・リンク）を実体と突き合わせ、壊れ方の種類ごとに集計 |
@@ -26,6 +26,8 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `build_search.py` | サイト内検索の索引 `search/search-index.json` と検索結果ページ `search/index.html` を再生成（`--check` で一致だけ確認） |
 | `add_sidebar_search.py` | サイドバーの先頭にサイト内検索の入力欄を入れる。全ページとテンプレートが対象。冪等 |
 | `fix_shared_markup.py` | 定型ブロックの不具合を既存ページで生成側と同じ形に揃える（共有ボタンの直リンク化、`itemscope` の綴り、JSON-LD のパンくず名、`fb-root` の重複、一覧カードの画像リンクの alt）。冪等 |
+| `build_popular.py` | サイドバーの「人気記事」を `popular.json`（載せる記事の slug、表示順）から作り、全ページとテンプレートへ同じ中身で埋め込む。見出し・日付は記事ページから、サムネイルは WordPress Popular Posts の 75x75 か記事のアイキャッチの 150x150 から。記事ページが無い slug があれば止まる。冪等（`--dry-run` で件数だけ） |
+| `remove_dead_feeds.py` | `<head>` から、実体の無いフィード（コメントフィード・カテゴリのフィード）を指す `rel="alternate"` を行ごと外す。冪等（`--dry-run` で件数だけ） |
 | `retire_amp.py` | AMP をやめる。全ページの `rel="amphtml"` を外し、AMP 文書（`<slug>/amp/`・`Pamp.html`）と、`rel="amphtml"` が指していた実体の無い `<slug>/amp/` を、正規ページへ `rel="canonical"` と即時の `meta refresh` で送る転送ページにする。冪等（`--dry-run` で件数だけ） |
 
 ## 手動での使い方（例）
@@ -46,6 +48,8 @@ python3 _automation/build_search.py
 python3 _automation/rebuild_listings.py --check   # 新規0件で全ページがバイト一致すればOK
 python3 _automation/build_search.py --check       # 検索の索引と結果ページが記事・テンプレートと揃っていればOK
 python3 _automation/retire_amp.py --dry-run       # AMP の名残（rel=amphtml・AMP 文書）が 0 件ならOK
+python3 _automation/build_popular.py --dry-run    # 全ページの人気記事が popular.json と揃っていれば 0 件
+python3 _automation/remove_dead_feeds.py --dry-run  # 実体の無いフィードへのリンクが 0 件ならOK
 python3 _automation/check_links.py                # 参照切れの集計（--strict で1件でもあれば終了コード1）
 ```
 
@@ -58,8 +62,12 @@ python3 _automation/check_links.py                # 参照切れの集計（--st
 - ページ送りは元から page/11・page/12 が欠番（到達不能記事あり）。番号体系はURL温存のため触らない。
 - AdSense は無料ドメインでは所有権認証不可のため無効。生成ページにはコメント雛形のみ仕込み済み
   （`sitelib.ADSENSE_HEAD`）。独自ドメイン整備後に有効化可能。
-- サイドバーの部品は「サイト内検索」「医療ミス調査会」「閲覧ランキング」の3つ。Amazonアフィリエイト(mitsuwo-22)の
+- サイドバーの部品は「サイト内検索」「医療ミス調査会」「人気記事」の3つ。Amazonアフィリエイト(mitsuwo-22)の
   「関連書籍」枠は配信元が応答しなくなったため、他の機能していない部品と合わせて外した。
+- 「人気記事」は閲覧数を数えていない。静的配信では実行時に数えられず、GA4 のページ別の数字は
+  公開リポジトリに置かない（`.gitignore` の `.site-ops/`）ので、載せる記事は `popular.json` に手で書く。
+  最初のリストは WordPress Popular Posts の最後の集計の上位から、医療事故の事案ではない記事を外したもの。
+  GA4 を見て入れ替えるときは `popular.json` を書き換えて `build_popular.py` を実行する。
 - サイト内検索はブラウザ側だけで動く。索引は記事の本文をそのまま持つ JSON で、`search/search.js` が
   部分一致で探す。日本語は分かち書きされないので、語に区切る方式を採っていない
   （比較は `docs/IMPROVEMENTS.md`）。外部のライブラリやビルドは要らない。

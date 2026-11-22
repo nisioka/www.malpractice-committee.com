@@ -16,6 +16,10 @@
   並べ直しは安定ソートなので、公開日時が同じカードは今の掲載順のまま。新規カードは
   入力JSONの並びに関わらず公開日時の新しい順に入る（同時刻は post_id の大きい順）。
 
+  入力の記事と同じ post_id のカードが一覧に既にあれば、足さずにそのカードを入力から
+  作り直したものに置き換える（記事ページが失われた記事を同じ URL・post_id で作り直したとき）。
+  同じ入力で2回実行しても、カードは二重にならない。
+
   回帰テスト: 新規0件なら全ページがバイト単位で元に戻る（--check）。
 
 使い方:
@@ -37,6 +41,13 @@ CARD_START_RE = re.compile(r'<article id="post-\d+"')
 ARTICLE_TAG_RE = re.compile(r'<article\b|</article>')
 CLASS_RE = re.compile(r'(<article id="post-\d+" class="[^"]*)"')
 CARD_DATE_RE = re.compile(r'itemprop="datePublished" datetime="([^"]+)"')
+
+
+CARD_ID_RE = re.compile(r'<article id="post-(\d+)"')
+
+
+def card_post_id(card: str) -> int:
+    return int(CARD_ID_RE.match(card).group(1))
 
 
 def card_time(card: str) -> datetime.datetime:
@@ -159,9 +170,20 @@ def main(argv):
         all_cards.extend(parts[n]["cards"])
 
     # 新規カード（先頭へ）+ 既存(firstpost除去) → 公開日時の新しい順。先頭のみ firstpost 付与。
+    # 一覧に同じ post_id のカードが既にある記事（作り直した記事・同じ入力での再実行）は、
+    # 足さずにそのカードを置き換える。二重に載せない。
     new_data = sorted(new_data, key=lambda a: a["post_id"], reverse=True)
-    new_cards = [sitelib.build_list_card(a, first=False) for a in new_data]
-    ordered = new_cards + [strip_firstpost(c) for c in all_cards]
+    # カードの文字列は <article から始める（字下げはカード間の区切りが持つ）。
+    built = {a["post_id"]: sitelib.build_list_card(a, first=False).lstrip() for a in new_data}
+    existing = [strip_firstpost(c) for c in all_cards]
+    replaced = 0
+    for i, c in enumerate(existing):
+        pid = card_post_id(c)
+        if pid in built:
+            existing[i] = built.pop(pid)
+            replaced += 1
+    new_cards = [built[a["post_id"]] for a in new_data if a["post_id"] in built]
+    ordered = new_cards + existing
     ordered.sort(key=card_time, reverse=True)
     if ordered:
         ordered[0] = add_firstpost(ordered[0])
@@ -191,7 +213,8 @@ def main(argv):
     if check:
         print("CHECK:", "OK 全ページ既存とバイト一致" if mismatches == 0 else f"NG {mismatches}ページ差分")
         return 1 if mismatches else 0
-    print(f"再生成: {n_pages}ページ / 全{total}カード（新規{len(new_cards)}件, 先頭ページに追加）")
+    print(f"再生成: {n_pages}ページ / 全{total}カード（新規{len(new_cards)}件は公開日時の位置に追加、"
+          f"置き換え{replaced}件）")
     return 0
 
 

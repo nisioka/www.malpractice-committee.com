@@ -19,13 +19,14 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `build_category.py` | 病院カテゴリページに新記事を反映。病院ページ（`hp-wrap`）と WordPress 由来の一覧は作り直さず、新記事のカードを日付順の位置に差し込む。このスクリプトが作った簡易一覧と新病院のページだけ作り直す。`--posts=<post_id>,...` で新記事を指定できる |
 | `rebuild_listings.py` | トップ + page/N の一覧を非破壊シフトで再生成。カードは公開日時の新しい順（同時刻は今の順のまま）（`--check`で回帰テスト） |
 | `build_hospital_index.py` | 病院索引 `hospital-info/index.html` を全網羅で再生成 |
-| `build_sitemap.py` | `sitemap.xml` をルートに全網羅で再生成（manifest + 実在ページから） |
+| `build_sitemap.py` | `sitemap.xml` をルートに全網羅で再生成（manifest + 実在ページから）。ページの HTML を読み、noindex のものと canonical が自分以外を指すものは載せない。`<loc>` はページ自身の canonical |
 | `check_links.py` | 全HTML/CSSのサイト内参照（画像・CSS・JS・リンク）を実体と突き合わせ、壊れ方の種類ごとに集計 |
 | `fix_refs.py` | 上記のうち機械的に直せるものを一括修正（実体の無い `srcset` 候補の削除、`/<親>/<slug>` 形の記事リンクの書き換え）。冪等 |
 | `remove_sidebar_widgets.py` | サイドバーから機能していない部品（WordPress が処理していた旧い検索欄・twitter・関連書籍・アンドロイド アプリ）を枠ごと外す。全ページとテンプレートが対象。冪等 |
 | `build_search.py` | サイト内検索の索引 `search/search-index.json` と検索結果ページ `search/index.html` を再生成（`--check` で一致だけ確認） |
 | `add_sidebar_search.py` | サイドバーの先頭にサイト内検索の入力欄を入れる。全ページとテンプレートが対象。冪等 |
 | `fix_shared_markup.py` | 定型ブロックの不具合を既存ページで生成側と同じ形に揃える（共有ボタンの直リンク化、`itemscope` の綴り、JSON-LD のパンくず名、`fb-root` の重複、一覧カードの画像リンクの alt）。冪等 |
+| `retire_amp.py` | AMP をやめる。全ページの `rel="amphtml"` を外し、AMP 文書（`<slug>/amp/`・`Pamp.html`）と、`rel="amphtml"` が指していた実体の無い `<slug>/amp/` を、正規ページへ `rel="canonical"` と即時の `meta refresh` で送る転送ページにする。冪等（`--dry-run` で件数だけ） |
 
 ## 手動での使い方（例）
 ```bash
@@ -44,6 +45,7 @@ python3 _automation/build_search.py
 ```bash
 python3 _automation/rebuild_listings.py --check   # 新規0件で全ページがバイト一致すればOK
 python3 _automation/build_search.py --check       # 検索の索引と結果ページが記事・テンプレートと揃っていればOK
+python3 _automation/retire_amp.py --dry-run       # AMP の名残（rel=amphtml・AMP 文書）が 0 件ならOK
 python3 _automation/check_links.py                # 参照切れの集計（--strict で1件でもあれば終了コード1）
 ```
 

@@ -16,12 +16,13 @@
 | パス | 内容 |
 |---|---|
 | `<slug>/index.html` | 記事ページ（ルート直下に記事slugディレクトリが約260個フラットに並ぶ） |
-| `<slug>/amp/`, `<slug>/Pnoamp=mobile.html` 等 | WP時代のAMP/モバイル/返信バリアント（保守対象外・URL温存のため残置） |
+| `<slug>/amp/` | 旧AMP版のURL。正規ページ `<slug>/` へ転送するだけのページ（`retire_amp.py` が生成。AMPは廃止済み） |
+| `<slug>/Pnoamp=mobile.html` 等 | WP時代のモバイル/返信バリアント（保守対象外・URL温存のため残置） |
 | `index.html`, `page/N/` | 記事一覧（トップ + ページ送り。**page/11・12は元サイト由来の欠番**） |
 | `category/<slug>/` | 病院別カテゴリページ |
 | `hospital-info/` | 病院索引（全網羅再生成対象） |
 | `search/` | サイト内検索。結果ページ `index.html` と索引 `search-index.json` は `build_search.py` が再生成する。`search.js`・`search.css` は手書き |
-| `sitemap.xml`, `robots.txt` | クロール基盤（sitemapは `build_sitemap.py` で再生成） |
+| `sitemap.xml`, `robots.txt` | クロール基盤（sitemapは `build_sitemap.py` で再生成。noindex と canonical が他を指すページは載らない） |
 | `wp-content/`, `wp-includes/`, `wp-json/` | WordPress遺産のアセット類（原則触らない） |
 | `_automation/` | Python製の決定論生成ツール一式 + `manifest.json`（全記事メタの単一情報源） |
 | `docs/IMPROVEMENTS.md` | 改善バックログ（対応済み/未対応の記録） |
@@ -62,6 +63,8 @@ python3 _automation/build_search.py                      # サイト内検索の
   （索引と検索結果ページが、記事とテンプレートから作り直したものと一致すれば合格）
 - **定型ブロック**: `python3 _automation/fix_shared_markup.py --dry-run`
   （書き換え対象 0 件なら、全ページの共有欄・構造化データ等が生成側と揃っている）
+- **AMP の名残**: `python3 _automation/retire_amp.py --dry-run`
+  （書き換え対象 0 件なら、`rel="amphtml"` も AMP 文書も残っていない）
 - **参照切れの確認**: `python3 _automation/check_links.py`
   全HTML/CSSの画像・CSS・JS・サイト内リンクをリポジトリ内の実体と突き合わせて集計する。
   外部URLは叩かない。横断修正の前後で件数を比べる。
@@ -104,6 +107,12 @@ python3 _automation/build_search.py                      # サイト内検索の
 - **共有ボタンは各サービスの共有画面を直接指す**（`sitelib.share_hrefs`）。WordPress の `?share=twitter`
   は静的配信では動かない。定型ブロックの不具合を直した `_automation/fix_shared_markup.py` は冪等なので、
   WordPress 時代の HTML を取り込み直したときは掛け直す。
+- **AMP は廃止済み**。どのページにも `rel="amphtml"` を付けず、AMP 版も作らない。旧 AMP の URL
+  （`<slug>/amp/` と `Pamp.html`）は、正規ページへ `rel="canonical"` と即時の `meta refresh` で送る
+  転送ページになっている（GitHub Pages では 301 が使えないため）。WordPress 時代の HTML を取り込み
+  直したときは `_automation/retire_amp.py` を掛け直す（冪等）。
+- **ページ送り（`page/N`）は noindex,follow**。検索結果には出さず、リンクはたどらせる。
+  noindex のページは `build_sitemap.py` がサイトマップから落とす。
 - コメント投稿フォームは静的化に伴い除去済み（過去コメントの表示は残存）。
 - `wp-json/` は oEmbed discovery が参照するため残置（robots.txt でクロール除外済み）。
 - `pykakasi` 無しでも動作する（病院索引が「その他」に集約されるだけ）。

@@ -73,6 +73,8 @@ python3 _automation/build_search.py                      # サイト内検索の
   （書き換え対象 0 件なら、Facebook・X・Google+ のボタン・リンク・埋め込みが残っていない）
 - **著者欄の名残**: `python3 _automation/remove_post_author.py --dry-run`
   （書き換え対象 0 件なら、記事の末尾の著者欄（「管理者」）が残っていない）
+- **構造化データの著者**: `python3 _automation/set_jsonld_organization.py --dry-run`
+  （書き換え対象 0 件なら、JSON-LD の著者・発行者に「管理者」の Person が残っていない）
 - **参照切れの確認**: `python3 _automation/check_links.py`
   全HTML/CSSの画像・CSS・JS・サイト内リンクをリポジトリ内の実体と突き合わせて集計する。
   外部URLは叩かない。横断修正の前後で件数を比べる。
@@ -136,9 +138,14 @@ python3 _automation/build_search.py                      # サイト内検索の
   （`<aside class="post-author">`。仮の人型アイコンと「管理者」という名前だけ）は WordPress の名残で
   意味が無いので（2026-11 のオーナー判断）、全ページから外した（`_automation/remove_post_author.py`、
   冪等）。生成側（`sitelib.py`）からも外し、テンプレート `post_author.html` は削除したので、新しい
-  ページにも入らない。`<head>` の構造化データ（JSON-LD）の `author`・`publisher`（名前は「管理者」）は
-  画面に出ず、検索結果の扱いに関わるので残している（変えるかはオーナー判断待ち、`docs/IMPROVEMENTS.md`
-  の「未対応」）。WordPress 時代の HTML を取り込み直したときは `remove_post_author.py` を掛け直す。
+  ページにも入らない。WordPress 時代の HTML を取り込み直したときは `remove_post_author.py` を掛け直す。
+- **構造化データの著者・発行者はサイトの組織「医療ミス調査会」**。`<head>` の JSON-LD の `author`・
+  `publisher`（と WordPress 時代のページの `creator`、一覧の `about`）は、名前「管理者」の Person を
+  指していたので、サイト名「医療ミス調査会」の組織（`Organization`、`@id` は `<トップ>/#organization`、
+  `url` はトップ）にした（2026-11 のオーナー判断）。実体の無い著者ページ `/author/fushigibana/` を指す
+  著者の URL も無くなった。既存ページは `_automation/set_jsonld_organization.py`（冪等。JSON の書き方は
+  ページごとに元のまま）で書き換え、生成側は `sitelib.ORGANIZATION` から同じノードを出す。WordPress 時代の
+  HTML を取り込み直したときは、このスクリプトを掛け直す。
 - 定型ブロックの不具合を直した `_automation/fix_shared_markup.py` は冪等なので、WordPress 時代の
   HTML を取り込み直したときは掛け直す。
 - **AMP は廃止済み**。どのページにも `rel="amphtml"` を付けず、AMP 版も作らない。旧 AMP の URL

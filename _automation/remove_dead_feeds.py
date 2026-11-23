@@ -15,7 +15,7 @@ RSS アイコンと記事下の「Feedly でフォローする」でサイトの
   `<li>`。ヘッダーのアイコンの並びと、記事下の「SNSでもご購読できます。」の欄にある。
   `<li>` が1行を占めていれば行ごと外す
 
-対象は全 HTML と `_automation/templates/`（`header_nav.html`・`post_share.html`）。
+対象は全 HTML と `_automation/templates/`（`header_nav.html` など）。
 WordPress 時代の HTML を取り込み直したときは、このスクリプトを掛け直す。
 
   python3 _automation/remove_dead_feeds.py --dry-run   # 件数だけ表示

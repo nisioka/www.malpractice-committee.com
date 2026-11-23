@@ -7,19 +7,16 @@ _automation/templates/ の定型パーツ（extract_partials.py が生成）を�
 
 用語:
   ORIGIN  : サイト内リンクの正規オリジン（既存の焼き込みに合わせる）
-  PUBLIC  : 共有ウィジェットが使うオリジン（現在は ORIGIN と同一の正規ホスト）
 """
 import html
 import json
 import pathlib
 import re
-import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TPL = ROOT / "_automation" / "templates"
 
 ORIGIN = "https://www.malpractice-committee.tech.server-on.net"
-PUBLIC = "https://www.malpractice-committee.tech.server-on.net"
 SITE_NAME = "医療ミス調査会"
 GSV = "H1KgfloTeWRYi-qgex21ur4c_holl4FXFgq9XaCAzz0"
 
@@ -44,17 +41,13 @@ def fill_tokens(text: str, post_id, slug: str) -> str:
     return text.replace("{{POST_ID}}", str(post_id)).replace("{{SLUG}}", slug)
 
 
-_SHARING_COUNTS_RE = re.compile(r"(window\.WPCOM_sharing_counts = )\{[^\n]*\};")
-
-
 def archive_footer() -> str:
     """記事ではないページ（カテゴリ等）の footer。
 
-    WordPress のカテゴリページと同じく、Jetpack の統計に渡す記事IDを 0 にし、共有数の
-    対象を空にする。記事IDを入れると、カテゴリページの閲覧がその記事の閲覧として数えられる。
+    WordPress のカテゴリページと同じく、Jetpack の統計に渡す記事IDを 0 にする。
+    記事IDを入れると、カテゴリページの閲覧がその記事の閲覧として数えられる。
     """
-    footer = fill_tokens(partial("footer.html"), 0, "")
-    return _SHARING_COUNTS_RE.sub(r"\1{};", footer, count=1)
+    return fill_tokens(partial("footer.html"), 0, "")
 
 
 # Google AdSense 雛形（現在は無効化）。
@@ -129,23 +122,6 @@ def build_content_div(data: dict) -> str:
         f'<a href="{esc_attr(data["source_url"])}">{esc_text(data["source_name"])}</a></p>'
     )
     return f"<div>\n{body}\n{src}\n</div>"
-
-
-def build_sharebar(post_id, slug: str, title: str) -> str:
-    """sharedaddy 共有バー（記事・一覧カード共通）。
-
-    SNS のボタン（Twitter・Facebook）は外した（`remove_sns.py`）。メールで送るボタンだけ残す。
-    """
-    subj = urllib.parse.quote(f"[共有投稿] {title}")
-    body_url = urllib.parse.quote(f"{PUBLIC}/{slug}/")
-    return (
-        '<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social '
-        'sd-social-icon-text sd-sharing"><h3 class="sd-title">共有:</h3><div class="sd-content"><ul>'
-        '<li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" '
-        f'class="share-email sd-button share-icon" href="mailto:?subject={subj}&body={body_url}&share=email" '
-        'target="_blank" title="クリックして友達にメールでリンクを送信"><span>メールアドレス</span></a></li>'
-        '<li class="share-end"></li></ul></div></div></div>'
-    )
 
 
 def build_thumbnail(data: dict, linked: bool) -> str:
@@ -267,7 +243,6 @@ def build_article(data: dict) -> str:
     thumb_cls = " has-post-thumbnail" if data.get("image") else ""
     thumb = build_thumbnail(data, linked=False)
     content = build_content_div(data)
-    sharebar = build_sharebar(pid, slug, title)
     comments = fill_tokens(partial("comments.html"), pid, slug).rstrip("\n")
 
     return f"""        <article id="post-{pid}" class="post-{pid} post type-post status-publish format-standard{thumb_cls} hentry category-{catslug}" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
@@ -283,7 +258,6 @@ def build_article(data: dict) -> str:
 
                 {thumb}
 {content}
-{sharebar}
 <div id='jp-relatedposts' class='jp-relatedposts' >
 	<h3 class="jp-relatedposts-headline"><em>関連</em></h3>
 </div>
@@ -315,7 +289,6 @@ def build_list_card(data: dict, first: bool = False) -> str:
     first_cls = " firstpost" if first else ""
     thumb_cls = " has-post-thumbnail" if data.get("image") else ""
     content = build_content_div(data)
-    sharebar = build_sharebar(pid, slug, title)
     # build_thumbnail は <div class="post-thumbnail">…</div> を丸ごと返す（画像無しは空文字）
     thumb_block = ("                " + build_thumbnail(data, linked=True)) if data.get("image") else ""
 
@@ -333,7 +306,7 @@ def build_list_card(data: dict, first: bool = False) -> str:
 {thumb_block}
 
 {content}
-{sharebar}      </section>
+      </section>
 
     </article>"""
 

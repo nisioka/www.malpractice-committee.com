@@ -69,11 +69,7 @@ sidebar = slice_between(html, '<div id="side"', "</div><!-- /side -->", include_
 
 # 4) footer: <footer id="footer"> から </html> まで。記事ID/slug依存部分をトークン化。
 footer = slice_between(html, '<footer id="footer">', "</html>", include_end=True)
-# WPCOM_sharing_counts の {".../settlement/":548}
-footer = footer.replace(
-    r'{"https:\/\/www.malpractice-committee.tech.server-on.net\/settlement\/":548}',
-    r'{"https:\/\/www.malpractice-committee.tech.server-on.net\/{{SLUG}}\/":{{POST_ID}}}',
-)
+# 共有バーの共有数の設定（WPCOM_sharing_counts）は remove_sns.py で外してある
 # _stq view の post":"548"
 footer = footer.replace('\\"post\\":\\"548\\"', '\\"post\\":\\"{{POST_ID}}\\"')
 # clickTrackerInit の "548"

@@ -29,6 +29,7 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `build_popular.py` | サイドバーの「人気記事」を `popular.json`（載せる記事の slug、表示順）から作り、全ページとテンプレートへ同じ中身で埋め込む。見出し・日付は記事ページから、サムネイルは WordPress Popular Posts の 75x75 か記事のアイキャッチの 150x150 から。記事ページが無い slug があれば止まる。冪等（`--dry-run` で件数だけ） |
 | `remove_dead_feeds.py` | 実体の無いフィードへのリンクを外す。`<head>` のコメントフィード・カテゴリのフィードの `rel="alternate"` と、サイトのフィードを Feedly で購読させる `<li>`（ヘッダーの RSS アイコン、記事下の「Feedly でフォローする」）。全ページとテンプレートが対象。冪等（`--dry-run` で件数だけ） |
 | `remove_sns.py` | SNS（Facebook・X・Google+）の部品と共有バーを外す。`fb-root` と Facebook SDK、ヘッダーの SNS アイコン、ツイート・Google+ ボタン、共有バー（「共有:」、メールのボタンを含む。中身がバーだけのカテゴリページの見出しの下の枠も）、記事下の「SNSでもご購読できます。」欄、Facebook 埋め込みの読み込みとスタイル、共有バーのためだけの読み込み（`sharing.min.js` とその設定、共有数の設定、`social-logos.min.css`、共有ボタンのブロックのスタイル）、`twitter:site` などアカウントを指すメタタグ。`og:*` と `twitter:card` は残す。共有画面の写し（`Pshare=facebook.html` など）は記事への転送ページにする。全ページとテンプレートが対象。冪等（`--dry-run` で件数だけ） |
+| `remove_post_author.py` | 記事の末尾の著者欄（`<aside class="post-author">`、仮のアイコンと「管理者」）を、手前の空行ごと外す。`<head>` の JSON-LD の `author`・`publisher` と、本文の中の「管理者」は触らない。全ページが対象。冪等（`--dry-run` で件数だけ） |
 | `retire_amp.py` | AMP をやめる。全ページの `rel="amphtml"` を外し、AMP 文書（`<slug>/amp/`・`Pamp.html`）と、`rel="amphtml"` が指していた実体の無い `<slug>/amp/` を、正規ページへ `rel="canonical"` と即時の `meta refresh` で送る転送ページにする。冪等（`--dry-run` で件数だけ） |
 
 ## 手動での使い方（例）
@@ -52,6 +53,7 @@ python3 _automation/retire_amp.py --dry-run       # AMP の名残（rel=amphtml�
 python3 _automation/build_popular.py --dry-run    # 全ページの人気記事が popular.json と揃っていれば 0 件
 python3 _automation/remove_dead_feeds.py --dry-run  # 実体の無いフィードへのリンクが 0 件ならOK
 python3 _automation/remove_sns.py --dry-run       # SNS のボタン・リンク・埋め込みが 0 件ならOK
+python3 _automation/remove_post_author.py --dry-run  # 記事の末尾の著者欄（「管理者」）が 0 件ならOK
 python3 _automation/check_links.py                # 参照切れの集計（--strict で1件でもあれば終了コード1）
 ```
 

@@ -79,9 +79,7 @@ footer = footer.replace('"clickTrackerInit", "102782097", "548"',
 
 # 5) post_share（記事下の「SNSでもご購読できます。」欄）は remove_sns.py で外したので抽出しない
 
-# 6) post_author: <aside class="post-author" 〜 </aside>（著者枠・定型）
-post_author = slice_between(html, '<aside class="post-author"', "</aside>", include_end=True)
-(OUT / "post_author.html").write_text(post_author + "\n", encoding="utf-8")
+# 6) post_author（記事の末尾の著者欄「管理者」）は remove_post_author.py で外したので抽出しない
 
 # 7) comments: <div id="comments" 〜 </div><!-- #comments -->。記事ID/slug依存をトークン化。
 comments = slice_between(html, '<div id="comments"', "</div><!-- #comments -->", include_end=True)

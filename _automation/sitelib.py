@@ -270,10 +270,6 @@ def build_article(data: dict) -> str:
                   </ul>
       </footer>
 
-
-
-          {partial("post_author.html").rstrip(chr(10))}
-
 {comments}
 
     </article>"""

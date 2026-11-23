@@ -40,15 +40,18 @@ TITLE = re.compile(r"<title>(.*?)</title>", re.S)
 MARK = "<!-- AMP 版は廃止。正規ページへ転送する（_automation/retire_amp.py が生成） -->"
 
 
-def redirect_page(url: str, title: str) -> str:
-    """url へ転送するだけのページ。title は元ページの <title> の中身（エスケープ済み）。"""
+def redirect_page(url: str, title: str, mark: str = MARK) -> str:
+    """url へ転送するだけのページ。title は元ページの <title> の中身（エスケープ済み）。
+
+    mark は生成元を示すコメント（`remove_sns.py` も同じ形の転送ページを作る）。
+    """
     attr = html.escape(url, quote=True)
     return (
         "<!DOCTYPE html>\n"
         '<html lang="ja">\n'
         "<head>\n"
         '<meta charset="UTF-8">\n'
-        f"{MARK}\n"
+        f"{mark}\n"
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         f"<title>{title}</title>\n"
         f'<link rel="canonical" href="{attr}">\n'

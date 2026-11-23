@@ -8,7 +8,7 @@ _automation/templates/ に切り出す。可変部分（タイトル・本文な
 
 抽出する定型パーツ:
   head_assets.html  : head内の dns-prefetch 〜 </head> 直前（テーマCSS/JS・GA等）
-  header_nav.html   : <body>直後の fb-root 〜 </nav>（ロゴ・SNS・グローバルナビ）
+  header_nav.html   : <header id="header" 〜 </nav>（ロゴ・グローバルナビ）
   sidebar.html      : <div id="side"> 〜 </div><!-- /side -->（案内・ランキング）
   footer.html       : <footer id="footer"> 〜 </html>（コピーライト・各種スクリプト）
                       ※ 記事ID依存の解析タグは {{POST_ID}} / {{SLUG}} トークン化する
@@ -59,8 +59,8 @@ head_assets = head_assets.replace(
 
 (OUT / "head_assets.html").write_text(head_assets, encoding="utf-8")
 
-# 2) header_nav: <body>直後の fb-root から </nav> まで
-header_nav = slice_between(html, '<div id="fb-root"></div>', "</nav>", include_end=True)
+# 2) header_nav: <header id="header" から </nav> まで（SNS の部品は remove_sns.py で外してある）
+header_nav = slice_between(html, '<header id="header"', "</nav>", include_end=True)
 (OUT / "header_nav.html").write_text(header_nav + "\n", encoding="utf-8")
 
 # 3) sidebar: <div id="side" ... から </div><!-- /side --> まで
@@ -81,10 +81,7 @@ footer = footer.replace('"clickTrackerInit", "102782097", "548"',
                         '"clickTrackerInit", "102782097", "{{POST_ID}}"')
 (OUT / "footer.html").write_text(footer + "\n", encoding="utf-8")
 
-# 5) post_share: <div class="post-share"> 〜 <aside class="post-author"> 直前（FB案内・定型）
-post_share = slice_between(html, '<div class="post-share">',
-                           '<aside class="post-author"', include_end=False).rstrip() + "\n"
-(OUT / "post_share.html").write_text(post_share, encoding="utf-8")
+# 5) post_share（記事下の「SNSでもご購読できます。」欄）は remove_sns.py で外したので抽出しない
 
 # 6) post_author: <aside class="post-author" 〜 </aside>（著者枠・定型）
 post_author = slice_between(html, '<aside class="post-author"', "</aside>", include_end=True)

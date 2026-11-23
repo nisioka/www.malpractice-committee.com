@@ -77,7 +77,6 @@ def cat_head(slug, name):
         '<meta property="og:locale" content="ja_JP" />\n'
         f'<meta property="og:site_name" content="{sitelib.SITE_NAME}" />\n'
         '<meta content="summary" name="twitter:card" />\n'
-        '<meta content="MediMalpComm" name="twitter:site" />\n'
     )
 
 

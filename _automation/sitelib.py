@@ -131,64 +131,20 @@ def build_content_div(data: dict) -> str:
     return f"<div>\n{body}\n{src}\n</div>"
 
 
-TWITTER_SHARE = "https://twitter.com/intent/tweet"
-FACEBOOK_SHARE = "https://www.facebook.com/sharer/sharer.php"
-
-
-def share_hrefs(url: str, title: str = "") -> tuple:
-    """共有欄の Twitter / Facebook ボタンの href（HTML属性にそのまま書ける形）。
-
-    WordPress のときは記事URLに `?share=twitter` を付けて送り、サーバー側が共有画面へ
-    転送していた。静的配信ではその処理が無く、記事そのものが開くだけになるので、
-    各サービスの共有画面を直接指す。url と title はエスケープ前の文字列で渡す。
-    `sharing.min.js` は href に "share=" を含むリンクにだけ `&nb=1` を足すので、
-    この形のリンクには手を出さない。
-    """
-    q = lambda s: urllib.parse.quote(s, safe="")
-    tw = f"{TWITTER_SHARE}?text={q(title)}&amp;url={q(url)}" if title else f"{TWITTER_SHARE}?url={q(url)}"
-    fb = f"{FACEBOOK_SHARE}?u={q(url)}"
-    return tw, fb
-
-
 def build_sharebar(post_id, slug: str, title: str) -> str:
-    """sharedaddy 共有バー（記事・一覧カード共通）。"""
-    u = f"{ORIGIN}/{slug}/"
-    tw, fb = share_hrefs(u, title)
+    """sharedaddy 共有バー（記事・一覧カード共通）。
+
+    SNS のボタン（Twitter・Facebook）は外した（`remove_sns.py`）。メールで送るボタンだけ残す。
+    """
     subj = urllib.parse.quote(f"[共有投稿] {title}")
     body_url = urllib.parse.quote(f"{PUBLIC}/{slug}/")
     return (
         '<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social '
         'sd-social-icon-text sd-sharing"><h3 class="sd-title">共有:</h3><div class="sd-content"><ul>'
-        f'<li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-{post_id}" '
-        f'class="share-twitter sd-button share-icon" href="{tw}" target="_blank" '
-        'title="クリックして Twitter で共有" ><span>Twitter</span></a></li>'
-        f'<li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-{post_id}" '
-        f'class="share-facebook sd-button share-icon" href="{fb}" target="_blank" '
-        'title="Facebook で共有するにはクリックしてください" ><span>Facebook</span></a></li>'
         '<li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" '
         f'class="share-email sd-button share-icon" href="mailto:?subject={subj}&body={body_url}&share=email" '
         'target="_blank" title="クリックして友達にメールでリンクを送信"><span>メールアドレス</span></a></li>'
         '<li class="share-end"></li></ul></div></div></div>'
-    )
-
-
-def build_social_buttons(slug: str, title: str) -> str:
-    """bzb-sns-btn（Tweet + g-plusone）。記事のヘッダ/フッタ2箇所で使用。"""
-    return (
-        '<!-- ソーシャルボタン -->\n'
-        '  <ul class="bzb-sns-btn ">\n'
-        '      <li class="bzb-twitter">\n'
-        f'      <a href="https://twitter.com/share" class="twitter-share-button"  '
-        f'data-url="{ORIGIN}/{slug}/"  data-text="{esc_attr(title)}">Tweet</a>\n'
-        "      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],"
-        "p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);"
-        "js.id=id;js.async=true;js.src=p+'://platform.twitter.com/widgets.js';"
-        "fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>\n"
-        '    </li>    <li class="bzb-googleplus">\n'
-        f'      <div class="g-plusone" data-href="{urllib.parse.quote(PUBLIC + "/" + slug + "/", safe="")}" ></div>\n'
-        '    </li>\n'
-        '  </ul>\n'
-        '  <!-- /bzb-sns-btns -->'
     )
 
 
@@ -297,7 +253,6 @@ def build_article_head(data: dict) -> str:
         + '<meta property="og:locale" content="ja_JP" />\n'
         f'<meta property="og:site_name" content="{SITE_NAME}" />\n'
         '<meta content="summary" name="twitter:card" />\n'
-        '<meta content="MediMalpComm" name="twitter:site" />\n'
     )
 
 
@@ -310,7 +265,6 @@ def build_article(data: dict) -> str:
     catname = data["hospital_name"]
     title = data["title"]
     thumb_cls = " has-post-thumbnail" if data.get("image") else ""
-    social = build_social_buttons(slug, title)
     thumb = build_thumbnail(data, linked=False)
     content = build_content_div(data)
     sharebar = build_sharebar(pid, slug, title)
@@ -323,8 +277,6 @@ def build_article(data: dict) -> str:
           <li class="date updated" itemprop="datePublished" datetime="{data["date"]}"><i class="fa fa-clock-o"></i> {disp_date(data["date"])}</li>
         </ul>
         <h1 class="post-title" itemprop="headline">{esc_text(title)}</h1>
-        <div class="post-header-meta">
-            {social}        </div>
       </header>
 
       <section class="post-content" itemprop="text">
@@ -339,14 +291,12 @@ def build_article(data: dict) -> str:
 
       <footer class="post-footer">
 
-        {social}
         <ul class="post-footer-list">
           <li class="cat"><i class="fa fa-folder"></i> <a href="{ORIGIN}/category/{catslug}/" rel="category tag">{esc_text(catname)}</a></li>
                   </ul>
       </footer>
 
 
-      {partial("post_share.html").rstrip(chr(10))}
 
           {partial("post_author.html").rstrip(chr(10))}
 

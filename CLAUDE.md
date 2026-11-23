@@ -62,13 +62,15 @@ python3 _automation/build_search.py                      # サイト内検索の
 - **検索の索引**: `python3 _automation/build_search.py --check`
   （索引と検索結果ページが、記事とテンプレートから作り直したものと一致すれば合格）
 - **定型ブロック**: `python3 _automation/fix_shared_markup.py --dry-run`
-  （書き換え対象 0 件なら、全ページの共有欄・構造化データ等が生成側と揃っている）
+  （書き換え対象 0 件なら、全ページの構造化データ・一覧カードの画像の alt 等が生成側と揃っている）
 - **AMP の名残**: `python3 _automation/retire_amp.py --dry-run`
   （書き換え対象 0 件なら、`rel="amphtml"` も AMP 文書も残っていない）
 - **人気記事**: `python3 _automation/build_popular.py --dry-run`
   （書き換え対象 0 件なら、全ページのサイドバーの人気記事が `popular.json` と記事ページに揃っている）
 - **フィードの名残**: `python3 _automation/remove_dead_feeds.py --dry-run`
   （書き換え対象 0 件なら、実体の無いフィードを指す `rel="alternate"` が残っていない）
+- **SNS の名残**: `python3 _automation/remove_sns.py --dry-run`
+  （書き換え対象 0 件なら、Facebook・X・Google+ のボタン・リンク・埋め込みが残っていない）
 - **参照切れの確認**: `python3 _automation/check_links.py`
   全HTML/CSSの画像・CSS・JS・サイト内リンクをリポジトリ内の実体と突き合わせて集計する。
   外部URLは叩かない。横断修正の前後で件数を比べる。
@@ -96,7 +98,8 @@ python3 _automation/build_search.py                      # サイト内検索の
   関連書籍・アンドロイド アプリと、WordPress が処理していた旧い検索欄は機能していなかったので、
   全ページとテンプレートから枠ごと外した（`_automation/remove_sidebar_widgets.py`）。外した部品を
   含むHTMLを取り込み直したときは、同じスクリプトを掛け直し、続けて `add_sidebar_search.py` で
-  今の検索欄を入れる。関連書籍と twitter の代替は調査済みで未対応（`docs/IMPROVEMENTS.md`）。
+  今の検索欄を入れる。関連書籍の代替は調査済みで未対応（`docs/IMPROVEMENTS.md`）。twitter は
+  SNS を運用していないので戻さない。
 - **サイト内検索はブラウザ側だけで動く**。検索欄は語を `/search/` へ渡すだけで、`search/search.js` が
   索引 `search/search-index.json` を読んで部分一致で探す。**記事を足したり本文を直したりしたら
   `build_search.py` で索引を作り直す**。検索欄の HTML を変えるときは `add_sidebar_search.py` の
@@ -106,19 +109,27 @@ python3 _automation/build_search.py                      # サイト内検索の
   記事の slug を `_automation/popular.json` に表示順で書き、`build_popular.py` が全ページと
   テンプレートへ同じ中身で埋め込む。リストに書けるのは記事ページがある slug だけ（無ければ止まる）。
   見出しと日付は記事ページから取るので、**載っている記事のタイトルを直したら `build_popular.py` を
-  掛け直す**。リストを変えると約680ページが書き換わるので、週次更新では変えない。
-- **記事ページが失われた記事を同じ URL で作り直すとき**は、入力JSONに元の `post_id` と公開日 `date`
-  を書き、`modified` に作り直した日を入れて、通常の手順（`generate_article.py` から）で生成する。
-  `rebuild_listings.py` は一覧に同じ post_id のカードがあれば、足さずに置き換える。
+  掛け直す**。リストを変えると約680ページが書き換わるので、週次更新では変えない。リストは
+  WordPress のときの最後の集計の上位 10 本を当時の順位のまま載せている（記事ページの無い1本だけ次点で
+  埋めた）。内容で選り好みしない（2026-11 のオーナー方針）。
+- **記事ページが無い記事は作り直さない**。ニュースの出典は消えるもので、記事ページが無い記事も当時の
+  スナップショットとして、一覧・カテゴリのカードとリンクをそのまま残す（2026-11 のオーナー方針）。
+  `check_links.py` が数える「記事・固定ページ」の参照切れの多くはこれで、直す対象ではない。
 - **記事本文の Amazon 商品枠**（`mitsuwo-22`）は残っているが表示されない。扱いはオーナー判断待ちで、
   決まるまで枠のコードは変えない（`docs/IMPROVEMENTS.md` の「未対応」）。
 - **カテゴリページは3つの形がある**。病院ページ（`hp-wrap`、基本情報・地図・関連記事カード）と
   WordPress 由来の一覧は、`build_category.py` が作り直さずに新記事のカードを差し込む。作り直すのは
   このスクリプトが作った簡易一覧と新病院だけ。週次更新でカテゴリページを手で直す必要は無い。
   取り込み直したページに記事を足すときは `build_category.py <slug> --posts=<post_id>`。
-- **共有ボタンは各サービスの共有画面を直接指す**（`sitelib.share_hrefs`）。WordPress の `?share=twitter`
-  は静的配信では動かない。定型ブロックの不具合を直した `_automation/fix_shared_markup.py` は冪等なので、
-  WordPress 時代の HTML を取り込み直したときは掛け直す。
+- **SNS の部品は無い**。サイトの Facebook ページと X のアカウントは運用していないので（2026-11 に
+  オーナーが全部外すと決めた）、フォロー・共有のボタン、アカウントへのリンク、埋め込みとその読み込み、
+  記事下の「SNSでもご購読できます。」欄、`twitter:site` を全ページとテンプレートから外した
+  （`_automation/remove_sns.py`、冪等）。共有バー（「共有:」）にはメールで送るボタンだけが残る。
+  OGP（`og:*`）と `twitter:card` は、他人がリンクを貼ったときのプレビュー用なので残す。生成側
+  （`sitelib.py`・`build_category.py`）からも外してあるので、新しいページにも入らない。WordPress 時代の
+  HTML を取り込み直したときは `remove_sns.py` を掛け直す。
+- 定型ブロックの不具合を直した `_automation/fix_shared_markup.py` は冪等なので、WordPress 時代の
+  HTML を取り込み直したときは掛け直す。
 - **AMP は廃止済み**。どのページにも `rel="amphtml"` を付けず、AMP 版も作らない。旧 AMP の URL
   （`<slug>/amp/` と `Pamp.html`）は、正規ページへ `rel="canonical"` と即時の `meta refresh` で送る
   転送ページになっている（GitHub Pages では 301 が使えないため）。WordPress 時代の HTML を取り込み
@@ -128,8 +139,8 @@ python3 _automation/build_search.py                      # サイト内検索の
 - コメント投稿フォームは静的化に伴い除去済み（過去コメントの表示は残存）。
 - **フィード（RSS）は無い**。WordPress が `<head>` に出していたコメントフィード・カテゴリのフィードの
   `rel="alternate"` と、サイトのフィードを Feedly で購読させるリンク（ヘッダーの RSS アイコン、記事下の
-  「Feedly でフォローする」）は、実体が無いので外した。テンプレート（`header_nav.html`・`post_share.html`）
-  からも外してあるので、新しいページにも入らない。WordPress 時代の HTML を取り込み直したときは
+  「Feedly でフォローする」）は、実体が無いので外した。テンプレートからも外してあるので、新しいページにも
+  入らない。WordPress 時代の HTML を取り込み直したときは
   `_automation/remove_dead_feeds.py` を掛け直す（冪等）。
 - `wp-json/` は oEmbed discovery が参照するため残置（robots.txt でクロール除外済み）。
 - `pykakasi` 無しでも動作する（病院索引が「その他」に集約されるだけ）。

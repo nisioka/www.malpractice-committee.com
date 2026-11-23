@@ -68,9 +68,10 @@
    - `python3 _automation/build_search.py --check` が「一致」を返すこと（索引が記事と揃っている）。
    - `python3 _automation/fix_shared_markup.py --dry-run` が「書き換え対象ファイル: 0」を返すこと
      （新しいページの定型ブロックが既存ページと揃っている）。
-   - `python3 _automation/build_popular.py --dry-run` と `python3 _automation/remove_dead_feeds.py --dry-run`
-     が「書き換え対象ファイル: 0」を返すこと（新しいページのサイドバーの人気記事が全ページと揃い、
-     フィードへのリンクが無い）。人気記事のリスト `popular.json` は週次更新では変えない。
+   - `python3 _automation/build_popular.py --dry-run`・`python3 _automation/remove_dead_feeds.py --dry-run`・
+     `python3 _automation/remove_sns.py --dry-run` が「書き換え対象ファイル: 0」を返すこと（新しいページの
+     サイドバーの人気記事が全ページと揃い、フィードへのリンクも SNS の部品も無い）。人気記事のリスト
+     `popular.json` は週次更新では変えない。
    - 生成した記事ページをブラウザ（chromium）で開き、体裁崩れが無いか確認。
 
 7. **PR作成**（**master へ直接 push しない**）

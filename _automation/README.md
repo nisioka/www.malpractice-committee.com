@@ -25,9 +25,10 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `remove_sidebar_widgets.py` | サイドバーから機能していない部品（WordPress が処理していた旧い検索欄・twitter・関連書籍・アンドロイド アプリ）を枠ごと外す。全ページとテンプレートが対象。冪等 |
 | `build_search.py` | サイト内検索の索引 `search/search-index.json` と検索結果ページ `search/index.html` を再生成（`--check` で一致だけ確認） |
 | `add_sidebar_search.py` | サイドバーの先頭にサイト内検索の入力欄を入れる。全ページとテンプレートが対象。冪等 |
-| `fix_shared_markup.py` | 定型ブロックの不具合を既存ページで生成側と同じ形に揃える（共有ボタンの直リンク化、`itemscope` の綴り、JSON-LD のパンくず名、`fb-root` の重複、一覧カードの画像リンクの alt）。冪等 |
+| `fix_shared_markup.py` | 定型ブロックの不具合を既存ページで生成側と同じ形に揃える（`itemscope` の綴り、JSON-LD のパンくず名、一覧カードの画像リンクの alt）。冪等 |
 | `build_popular.py` | サイドバーの「人気記事」を `popular.json`（載せる記事の slug、表示順）から作り、全ページとテンプレートへ同じ中身で埋め込む。見出し・日付は記事ページから、サムネイルは WordPress Popular Posts の 75x75 か記事のアイキャッチの 150x150 から。記事ページが無い slug があれば止まる。冪等（`--dry-run` で件数だけ） |
 | `remove_dead_feeds.py` | 実体の無いフィードへのリンクを外す。`<head>` のコメントフィード・カテゴリのフィードの `rel="alternate"` と、サイトのフィードを Feedly で購読させる `<li>`（ヘッダーの RSS アイコン、記事下の「Feedly でフォローする」）。全ページとテンプレートが対象。冪等（`--dry-run` で件数だけ） |
+| `remove_sns.py` | SNS（Facebook・X・Google+）の部品を外す。`fb-root` と Facebook SDK、ヘッダーの SNS アイコン、ツイート・Google+ ボタン、共有バーの SNS のボタン（メールは残す）、記事下の「SNSでもご購読できます。」欄、Facebook 埋め込みの読み込みとスタイル、共有ボタンを小窓で開く処理、`twitter:site` などアカウントを指すメタタグ。`og:*` と `twitter:card` は残す。SNS の共有画面の写し（`Pshare=facebook.html`）は記事への転送ページにする。全ページとテンプレートが対象。冪等（`--dry-run` で件数だけ） |
 | `retire_amp.py` | AMP をやめる。全ページの `rel="amphtml"` を外し、AMP 文書（`<slug>/amp/`・`Pamp.html`）と、`rel="amphtml"` が指していた実体の無い `<slug>/amp/` を、正規ページへ `rel="canonical"` と即時の `meta refresh` で送る転送ページにする。冪等（`--dry-run` で件数だけ） |
 
 ## 手動での使い方（例）
@@ -50,6 +51,7 @@ python3 _automation/build_search.py --check       # 検索の索引と結果ペ�
 python3 _automation/retire_amp.py --dry-run       # AMP の名残（rel=amphtml・AMP 文書）が 0 件ならOK
 python3 _automation/build_popular.py --dry-run    # 全ページの人気記事が popular.json と揃っていれば 0 件
 python3 _automation/remove_dead_feeds.py --dry-run  # 実体の無いフィードへのリンクが 0 件ならOK
+python3 _automation/remove_sns.py --dry-run       # SNS のボタン・リンク・埋め込みが 0 件ならOK
 python3 _automation/check_links.py                # 参照切れの集計（--strict で1件でもあれば終了コード1）
 ```
 
@@ -66,7 +68,8 @@ python3 _automation/check_links.py                # 参照切れの集計（--st
   「関連書籍」枠は配信元が応答しなくなったため、他の機能していない部品と合わせて外した。
 - 「人気記事」は閲覧数を数えていない。静的配信では実行時に数えられず、GA4 のページ別の数字は
   公開リポジトリに置かない（`.gitignore` の `.site-ops/`）ので、載せる記事は `popular.json` に手で書く。
-  最初のリストは WordPress Popular Posts の最後の集計の上位から、医療事故の事案ではない記事を外したもの。
+  リストは WordPress Popular Posts の最後の集計の上位 10 本を当時の順位のまま載せたもの（記事ページの
+  無い1本だけ次点で埋めた）。
   GA4 を見て入れ替えるときは `popular.json` を書き換えて `build_popular.py` を実行する。
 - サイト内検索はブラウザ側だけで動く。索引は記事の本文をそのまま持つ JSON で、`search/search.js` が
   部分一致で探す。日本語は分かち書きされないので、語に区切る方式を採っていない

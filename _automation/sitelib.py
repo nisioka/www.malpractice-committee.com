@@ -18,6 +18,10 @@ TPL = ROOT / "_automation" / "templates"
 
 ORIGIN = "https://www.malpractice-committee.tech.server-on.net"
 SITE_NAME = "医療ミス調査会"
+# 構造化データ（JSON-LD）の著者・発行者。サイトの組織として名乗る（2026-11 のオーナー判断）。
+# 既存ページは set_jsonld_organization.py が同じノードに書き換える。
+ORGANIZATION = {"@type": "Organization", "@id": f"{ORIGIN}/#organization",
+                "name": SITE_NAME, "url": f"{ORIGIN}/"}
 GSV = "H1KgfloTeWRYi-qgex21ur4c_holl4FXFgq9XaCAzz0"
 
 # ---- 定型パーツ読み込み --------------------------------------------------
@@ -157,8 +161,8 @@ def build_jsonld(data: dict) -> str:
             "@type": "Article",
             "@id": f"{url}#article",
             "headline": data["title"],
-            "author": {"@id": f"{ORIGIN}/#person"},
-            "publisher": {"@id": f"{ORIGIN}/#person"},
+            "author": {"@id": ORGANIZATION["@id"]},
+            "publisher": {"@id": ORGANIZATION["@id"]},
             "datePublished": data["date"],
             "dateModified": data.get("modified", data["date"]),
             "inLanguage": "ja",
@@ -176,7 +180,7 @@ def build_jsonld(data: dict) -> str:
                  "name": data["title"], "previousItem": f"{ORIGIN}/#listItem"},
             ],
         },
-        {"@type": "Person", "@id": f"{ORIGIN}/#person", "name": "管理者"},
+        dict(ORGANIZATION),
         {
             "@type": "WebPage", "@id": f"{url}#webpage", "url": url,
             "name": f'{data["title"]} | {SITE_NAME}',
@@ -189,7 +193,7 @@ def build_jsonld(data: dict) -> str:
             "@type": "WebSite", "@id": f"{ORIGIN}/#website", "url": f"{ORIGIN}/",
             "name": SITE_NAME,
             "description": "あなたとあなたの家族、あなたの大切な人の命に直結する場所、それが病院。",
-            "inLanguage": "ja", "publisher": {"@id": f"{ORIGIN}/#person"},
+            "inLanguage": "ja", "publisher": {"@id": ORGANIZATION["@id"]},
         },
     ]
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)

@@ -59,7 +59,7 @@
    最後の `build_search.py` を飛ばすと、新しい記事がサイト内検索に出ない。
    `articles.json` の並び順は問わない（一覧には公開日時の新しい順で入る）。病院ページは
    `build_category.py` が作り直さずにカードを差し込むので、カテゴリページを手で直さない。
-   共有欄・パンくず・構造化データなどの定型ブロックは全ページ共通なので、週次の PR で
+   パンくず・構造化データ・サイドバーなどの定型ブロックは全ページ共通なので、週次の PR で
    レビュー指摘を受けたら、テンプレートと生成スクリプトを直す別の PR に回す。
 
 6. **検証**
@@ -68,6 +68,13 @@
    - `python3 _automation/build_search.py --check` が「一致」を返すこと（索引が記事と揃っている）。
    - `python3 _automation/fix_shared_markup.py --dry-run` が「書き換え対象ファイル: 0」を返すこと
      （新しいページの定型ブロックが既存ページと揃っている）。
+   - `python3 _automation/build_popular.py --dry-run`・`python3 _automation/remove_dead_feeds.py --dry-run`・
+     `python3 _automation/remove_sns.py --dry-run`・`python3 _automation/remove_post_author.py --dry-run`・
+     `python3 _automation/set_jsonld_organization.py --dry-run` が
+     「書き換え対象ファイル: 0」を返すこと（新しいページのサイドバーの人気記事が全ページと揃い、フィードへの
+     リンクも SNS の部品も共有バーも記事の末尾の著者欄（「管理者」）も無く、構造化データの著者・発行者が
+     サイトの組織「医療ミス調査会」になっている）。人気記事のリスト
+     `popular.json` は週次更新では変えない。
    - 生成した記事ページをブラウザ（chromium）で開き、体裁崩れが無いか確認。
 
 7. **PR作成**（**master へ直接 push しない**）

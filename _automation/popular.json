@@ -1,0 +1,16 @@
+{
+ "説明": "サイドバー「人気記事」に載せる記事の slug（上から表示順）。書き換えたら python3 _automation/build_popular.py を実行する。記事ページがある slug しか書けない。",
+ "根拠": "WordPress Popular Posts が数えた閲覧数の、静的化した時点の最後の集計（676 ページ中 583 ページのサイドバーに出ていた並び）の上位 10 本を、当時の順位のまま載せる。10 位の a-vegetative-state-in-medical-malpractice は記事ページが無いので外し、次点の uterine-operation で埋めた。",
+ "posts": [
+  "death-after-giving-birth",
+  "secretary-misses-and-medical-malpractice",
+  "mad-hospital",
+  "accept-medical-errors",
+  "medical-errors-in-the-artificial-joint-surgery",
+  "attitude-that-hospitals-fight",
+  "sequelae-by-the-inspection-delay",
+  "died-in-the-diagnostic-mistake",
+  "analgesic-overdose",
+  "uterine-operation"
+ ]
+}

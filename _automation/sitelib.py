@@ -7,20 +7,21 @@ _automation/templates/ の定型パーツ（extract_partials.py が生成）を�
 
 用語:
   ORIGIN  : サイト内リンクの正規オリジン（既存の焼き込みに合わせる）
-  PUBLIC  : 共有ウィジェットが使うオリジン（現在は ORIGIN と同一の正規ホスト）
 """
 import html
 import json
 import pathlib
 import re
-import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TPL = ROOT / "_automation" / "templates"
 
 ORIGIN = "https://www.malpractice-committee.tech.server-on.net"
-PUBLIC = "https://www.malpractice-committee.tech.server-on.net"
 SITE_NAME = "医療ミス調査会"
+# 構造化データ（JSON-LD）の著者・発行者。サイトの組織として名乗る（2026-11 のオーナー判断）。
+# 既存ページは set_jsonld_organization.py が同じノードに書き換える。
+ORGANIZATION = {"@type": "Organization", "@id": f"{ORIGIN}/#organization",
+                "name": SITE_NAME, "url": f"{ORIGIN}/"}
 GSV = "H1KgfloTeWRYi-qgex21ur4c_holl4FXFgq9XaCAzz0"
 
 # ---- 定型パーツ読み込み --------------------------------------------------
@@ -44,17 +45,13 @@ def fill_tokens(text: str, post_id, slug: str) -> str:
     return text.replace("{{POST_ID}}", str(post_id)).replace("{{SLUG}}", slug)
 
 
-_SHARING_COUNTS_RE = re.compile(r"(window\.WPCOM_sharing_counts = )\{[^\n]*\};")
-
-
 def archive_footer() -> str:
     """記事ではないページ（カテゴリ等）の footer。
 
-    WordPress のカテゴリページと同じく、Jetpack の統計に渡す記事IDを 0 にし、共有数の
-    対象を空にする。記事IDを入れると、カテゴリページの閲覧がその記事の閲覧として数えられる。
+    WordPress のカテゴリページと同じく、Jetpack の統計に渡す記事IDを 0 にする。
+    記事IDを入れると、カテゴリページの閲覧がその記事の閲覧として数えられる。
     """
-    footer = fill_tokens(partial("footer.html"), 0, "")
-    return _SHARING_COUNTS_RE.sub(r"\1{};", footer, count=1)
+    return fill_tokens(partial("footer.html"), 0, "")
 
 
 # Google AdSense 雛形（現在は無効化）。
@@ -131,67 +128,6 @@ def build_content_div(data: dict) -> str:
     return f"<div>\n{body}\n{src}\n</div>"
 
 
-TWITTER_SHARE = "https://twitter.com/intent/tweet"
-FACEBOOK_SHARE = "https://www.facebook.com/sharer/sharer.php"
-
-
-def share_hrefs(url: str, title: str = "") -> tuple:
-    """共有欄の Twitter / Facebook ボタンの href（HTML属性にそのまま書ける形）。
-
-    WordPress のときは記事URLに `?share=twitter` を付けて送り、サーバー側が共有画面へ
-    転送していた。静的配信ではその処理が無く、記事そのものが開くだけになるので、
-    各サービスの共有画面を直接指す。url と title はエスケープ前の文字列で渡す。
-    `sharing.min.js` は href に "share=" を含むリンクにだけ `&nb=1` を足すので、
-    この形のリンクには手を出さない。
-    """
-    q = lambda s: urllib.parse.quote(s, safe="")
-    tw = f"{TWITTER_SHARE}?text={q(title)}&amp;url={q(url)}" if title else f"{TWITTER_SHARE}?url={q(url)}"
-    fb = f"{FACEBOOK_SHARE}?u={q(url)}"
-    return tw, fb
-
-
-def build_sharebar(post_id, slug: str, title: str) -> str:
-    """sharedaddy 共有バー（記事・一覧カード共通）。"""
-    u = f"{ORIGIN}/{slug}/"
-    tw, fb = share_hrefs(u, title)
-    subj = urllib.parse.quote(f"[共有投稿] {title}")
-    body_url = urllib.parse.quote(f"{PUBLIC}/{slug}/")
-    return (
-        '<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social '
-        'sd-social-icon-text sd-sharing"><h3 class="sd-title">共有:</h3><div class="sd-content"><ul>'
-        f'<li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-{post_id}" '
-        f'class="share-twitter sd-button share-icon" href="{tw}" target="_blank" '
-        'title="クリックして Twitter で共有" ><span>Twitter</span></a></li>'
-        f'<li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-{post_id}" '
-        f'class="share-facebook sd-button share-icon" href="{fb}" target="_blank" '
-        'title="Facebook で共有するにはクリックしてください" ><span>Facebook</span></a></li>'
-        '<li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" '
-        f'class="share-email sd-button share-icon" href="mailto:?subject={subj}&body={body_url}&share=email" '
-        'target="_blank" title="クリックして友達にメールでリンクを送信"><span>メールアドレス</span></a></li>'
-        '<li class="share-end"></li></ul></div></div></div>'
-    )
-
-
-def build_social_buttons(slug: str, title: str) -> str:
-    """bzb-sns-btn（Tweet + g-plusone）。記事のヘッダ/フッタ2箇所で使用。"""
-    return (
-        '<!-- ソーシャルボタン -->\n'
-        '  <ul class="bzb-sns-btn ">\n'
-        '      <li class="bzb-twitter">\n'
-        f'      <a href="https://twitter.com/share" class="twitter-share-button"  '
-        f'data-url="{ORIGIN}/{slug}/"  data-text="{esc_attr(title)}">Tweet</a>\n'
-        "      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],"
-        "p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);"
-        "js.id=id;js.async=true;js.src=p+'://platform.twitter.com/widgets.js';"
-        "fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>\n"
-        '    </li>    <li class="bzb-googleplus">\n'
-        f'      <div class="g-plusone" data-href="{urllib.parse.quote(PUBLIC + "/" + slug + "/", safe="")}" ></div>\n'
-        '    </li>\n'
-        '  </ul>\n'
-        '  <!-- /bzb-sns-btns -->'
-    )
-
-
 def build_thumbnail(data: dict, linked: bool) -> str:
     """アイキャッチ画像。image が無ければ空文字。
 
@@ -225,8 +161,8 @@ def build_jsonld(data: dict) -> str:
             "@type": "Article",
             "@id": f"{url}#article",
             "headline": data["title"],
-            "author": {"@id": f"{ORIGIN}/#person"},
-            "publisher": {"@id": f"{ORIGIN}/#person"},
+            "author": {"@id": ORGANIZATION["@id"]},
+            "publisher": {"@id": ORGANIZATION["@id"]},
             "datePublished": data["date"],
             "dateModified": data.get("modified", data["date"]),
             "inLanguage": "ja",
@@ -244,7 +180,7 @@ def build_jsonld(data: dict) -> str:
                  "name": data["title"], "previousItem": f"{ORIGIN}/#listItem"},
             ],
         },
-        {"@type": "Person", "@id": f"{ORIGIN}/#person", "name": "管理者"},
+        dict(ORGANIZATION),
         {
             "@type": "WebPage", "@id": f"{url}#webpage", "url": url,
             "name": f'{data["title"]} | {SITE_NAME}',
@@ -257,7 +193,7 @@ def build_jsonld(data: dict) -> str:
             "@type": "WebSite", "@id": f"{ORIGIN}/#website", "url": f"{ORIGIN}/",
             "name": SITE_NAME,
             "description": "あなたとあなたの家族、あなたの大切な人の命に直結する場所、それが病院。",
-            "inLanguage": "ja", "publisher": {"@id": f"{ORIGIN}/#person"},
+            "inLanguage": "ja", "publisher": {"@id": ORGANIZATION["@id"]},
         },
     ]
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)
@@ -297,7 +233,6 @@ def build_article_head(data: dict) -> str:
         + '<meta property="og:locale" content="ja_JP" />\n'
         f'<meta property="og:site_name" content="{SITE_NAME}" />\n'
         '<meta content="summary" name="twitter:card" />\n'
-        '<meta content="MediMalpComm" name="twitter:site" />\n'
     )
 
 
@@ -310,10 +245,8 @@ def build_article(data: dict) -> str:
     catname = data["hospital_name"]
     title = data["title"]
     thumb_cls = " has-post-thumbnail" if data.get("image") else ""
-    social = build_social_buttons(slug, title)
     thumb = build_thumbnail(data, linked=False)
     content = build_content_div(data)
-    sharebar = build_sharebar(pid, slug, title)
     comments = fill_tokens(partial("comments.html"), pid, slug).rstrip("\n")
 
     return f"""        <article id="post-{pid}" class="post-{pid} post type-post status-publish format-standard{thumb_cls} hentry category-{catslug}" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
@@ -323,15 +256,12 @@ def build_article(data: dict) -> str:
           <li class="date updated" itemprop="datePublished" datetime="{data["date"]}"><i class="fa fa-clock-o"></i> {disp_date(data["date"])}</li>
         </ul>
         <h1 class="post-title" itemprop="headline">{esc_text(title)}</h1>
-        <div class="post-header-meta">
-            {social}        </div>
       </header>
 
       <section class="post-content" itemprop="text">
 
                 {thumb}
 {content}
-{sharebar}
 <div id='jp-relatedposts' class='jp-relatedposts' >
 	<h3 class="jp-relatedposts-headline"><em>関連</em></h3>
 </div>
@@ -339,16 +269,10 @@ def build_article(data: dict) -> str:
 
       <footer class="post-footer">
 
-        {social}
         <ul class="post-footer-list">
           <li class="cat"><i class="fa fa-folder"></i> <a href="{ORIGIN}/category/{catslug}/" rel="category tag">{esc_text(catname)}</a></li>
                   </ul>
       </footer>
-
-
-      {partial("post_share.html").rstrip(chr(10))}
-
-          {partial("post_author.html").rstrip(chr(10))}
 
 {comments}
 
@@ -365,7 +289,6 @@ def build_list_card(data: dict, first: bool = False) -> str:
     first_cls = " firstpost" if first else ""
     thumb_cls = " has-post-thumbnail" if data.get("image") else ""
     content = build_content_div(data)
-    sharebar = build_sharebar(pid, slug, title)
     # build_thumbnail は <div class="post-thumbnail">…</div> を丸ごと返す（画像無しは空文字）
     thumb_block = ("                " + build_thumbnail(data, linked=True)) if data.get("image") else ""
 
@@ -383,7 +306,7 @@ def build_list_card(data: dict, first: bool = False) -> str:
 {thumb_block}
 
 {content}
-{sharebar}      </section>
+      </section>
 
     </article>"""
 

@@ -35,12 +35,16 @@ Search Console の対応（下の節）で提案にとどめた事項に、オ�
     アイコン（679）
   - 記事の見出しの下と末尾のツイート・Google+ ボタン（996 か所）。見出しの下の枠は空になるので枠ごと
     外した（498）
-  - 共有バー（「共有:」）の Twitter・Facebook のボタン（各 862）。メールで送るボタンは SNS ではない
-    ので残した
+  - 共有バー（「共有:」）を、メールで送るボタンを含めてバーごと（862 か所。記事 498、一覧・カテゴリの
+    カード 350、WordPress 由来のカテゴリページの見出しの下 14）。メール共有も使わないので要らない
+    （オーナー判断）。見出しの下の枠（`cat-content-area`）は中身がバーだけで空になるので枠ごと外した（14）
   - 記事下の「SNSでもご購読できます。」の欄（498。Facebook ページの埋め込みと X のフォローリンク）
   - Google+ の読み込み（`platform.js`）、Jetpack の Facebook 埋め込みの読み込み
     （`facebook-embed.min.js` と設定。前は実行時に2つ目の `#fb-root` と別の app ID の SDK を足していた）、
     共有ボタンを小窓で開く処理、Facebook ページ埋め込みのスタイル（各 679）
+  - 共有バーのためだけの読み込み: `sharing.min.js` とその設定、共有数の設定（`WPCOM_sharing_counts`）、
+    ボタンのアイコンの字体（`social-logos.min.css`）、Jetpack の共有ボタンのブロックのスタイル（各 679）。
+    `jetpack.css` は Jetpack の他の部品と1つにまとまっているので残した
   - `twitter:site`（`MediMalpComm`、677）。OGP（`og:*`）と `twitter:card` は、他人がリンクを貼ったときの
     プレビュー用なので残した。`article:publisher`・`fb:app_id` は元から無かった
   - `?share=facebook` を辿って取り込まれた Facebook のログイン画面の写し

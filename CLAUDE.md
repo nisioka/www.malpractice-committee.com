@@ -121,10 +121,12 @@ python3 _automation/build_search.py                      # サイト内検索の
   WordPress 由来の一覧は、`build_category.py` が作り直さずに新記事のカードを差し込む。作り直すのは
   このスクリプトが作った簡易一覧と新病院だけ。週次更新でカテゴリページを手で直す必要は無い。
   取り込み直したページに記事を足すときは `build_category.py <slug> --posts=<post_id>`。
-- **SNS の部品は無い**。サイトの Facebook ページと X のアカウントは運用していないので（2026-11 に
+- **SNS の部品と共有バーは無い**。サイトの Facebook ページと X のアカウントは運用していないので（2026-11 に
   オーナーが全部外すと決めた）、フォロー・共有のボタン、アカウントへのリンク、埋め込みとその読み込み、
   記事下の「SNSでもご購読できます。」欄、`twitter:site` を全ページとテンプレートから外した
-  （`_automation/remove_sns.py`、冪等）。共有バー（「共有:」）にはメールで送るボタンだけが残る。
+  （`_automation/remove_sns.py`、冪等）。記事と一覧のカードの下にあった共有バー（「共有:」）も、メールで
+  送るボタンを含めて要らない（同じくオーナー判断）ので、バーごと外し、それだけのための
+  `sharing.min.js`・共有数の設定・ボタンのアイコンの字体（`social-logos.min.css`）も外した。
   OGP（`og:*`）と `twitter:card` は、他人がリンクを貼ったときのプレビュー用なので残す。生成側
   （`sitelib.py`・`build_category.py`）からも外してあるので、新しいページにも入らない。WordPress 時代の
   HTML を取り込み直したときは `remove_sns.py` を掛け直す。

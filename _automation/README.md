@@ -27,7 +27,7 @@ WordPressを静的HTML化した本サイトに、**新しいニュース記事�
 | `add_sidebar_search.py` | サイドバーの先頭にサイト内検索の入力欄を入れる。全ページとテンプレートが対象。冪等 |
 | `fix_shared_markup.py` | 定型ブロックの不具合を既存ページで生成側と同じ形に揃える（共有ボタンの直リンク化、`itemscope` の綴り、JSON-LD のパンくず名、`fb-root` の重複、一覧カードの画像リンクの alt）。冪等 |
 | `build_popular.py` | サイドバーの「人気記事」を `popular.json`（載せる記事の slug、表示順）から作り、全ページとテンプレートへ同じ中身で埋め込む。見出し・日付は記事ページから、サムネイルは WordPress Popular Posts の 75x75 か記事のアイキャッチの 150x150 から。記事ページが無い slug があれば止まる。冪等（`--dry-run` で件数だけ） |
-| `remove_dead_feeds.py` | `<head>` から、実体の無いフィード（コメントフィード・カテゴリのフィード）を指す `rel="alternate"` を行ごと外す。冪等（`--dry-run` で件数だけ） |
+| `remove_dead_feeds.py` | 実体の無いフィードへのリンクを外す。`<head>` のコメントフィード・カテゴリのフィードの `rel="alternate"` と、サイトのフィードを Feedly で購読させる `<li>`（ヘッダーの RSS アイコン、記事下の「Feedly でフォローする」）。全ページとテンプレートが対象。冪等（`--dry-run` で件数だけ） |
 | `retire_amp.py` | AMP をやめる。全ページの `rel="amphtml"` を外し、AMP 文書（`<slug>/amp/`・`Pamp.html`）と、`rel="amphtml"` が指していた実体の無い `<slug>/amp/` を、正規ページへ `rel="canonical"` と即時の `meta refresh` で送る転送ページにする。冪等（`--dry-run` で件数だけ） |
 
 ## 手動での使い方（例）

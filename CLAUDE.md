@@ -127,7 +127,9 @@ python3 _automation/build_search.py                      # サイト内検索の
   noindex のページは `build_sitemap.py` がサイトマップから落とす。
 - コメント投稿フォームは静的化に伴い除去済み（過去コメントの表示は残存）。
 - **フィード（RSS）は無い**。WordPress が `<head>` に出していたコメントフィード・カテゴリのフィードの
-  `rel="alternate"` は、実体が無いので外した。生成側も出さない。WordPress 時代の HTML を取り込み
-  直したときは `_automation/remove_dead_feeds.py` を掛け直す（冪等）。
+  `rel="alternate"` と、サイトのフィードを Feedly で購読させるリンク（ヘッダーの RSS アイコン、記事下の
+  「Feedly でフォローする」）は、実体が無いので外した。テンプレート（`header_nav.html`・`post_share.html`）
+  からも外してあるので、新しいページにも入らない。WordPress 時代の HTML を取り込み直したときは
+  `_automation/remove_dead_feeds.py` を掛け直す（冪等）。
 - `wp-json/` は oEmbed discovery が参照するため残置（robots.txt でクロール除外済み）。
 - `pykakasi` 無しでも動作する（病院索引が「その他」に集約されるだけ）。
